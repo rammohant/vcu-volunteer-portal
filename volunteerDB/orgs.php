@@ -59,11 +59,11 @@ li a:hover {
     background-color: #111;
 }
 
-/* table { */
+table { */
 /*   width: 100%;  */
 /*   background-color: #615F5F; */
-/*   opacity: 0.80; */
-/* } */
+ opacity: 0.90; 
+} */
 
 /* tr{ */
 /*     color: #EEEAE9; */
@@ -86,16 +86,12 @@ li a:hover {
 	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
+    <li><a href="org.php">Organizations</a></li>
 	<li><a href="signup.php">Sign up</a></li>
-	
 </ul>
 
 <?php 
-
 global $conn;
-
-$sql = "SELECT orgID, orgname, phone_number,email FROM organizations";
-$result = $conn->query($sql);
 
 $sql = "SELECT orgID, org_name, phone_number, email, website FROM v_allorgs where type like 'off-campus org'";
 if($result = mysqli_query($link, $sql)){
@@ -103,10 +99,10 @@ if($result = mysqli_query($link, $sql)){
         echo "<h2>Off Campus Organizations</h2>";
         echo "<table class='table table-dark table-stripped'>";
         echo "<tr>";
-        echo "<th>org_name</th>";
-        echo "<th>phone_number</th>";
-        echo "<th>email</th>";
-        echo "<th>website</th>";
+        echo "<th>Organization</th>";
+        echo "<th>Contact Number</th>";
+        echo "<th>Contact Email</th>";
+        echo "<th>Website</th>";
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
@@ -125,7 +121,40 @@ if($result = mysqli_query($link, $sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+?>
 
+<?php 
+
+global $conn;
+
+$sql = "SELECT orgID, org_name, email, university_name, school_address FROM v_allorgs where type like 'student org'";
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        echo "<h2>Student Organizations</h2>";
+        echo "<table class='table table-dark table-stripped'>";
+        echo "<tr>";
+        echo "<th>Club</th>";
+        echo "<th>University</th>";
+        echo "<th>Contact Email</th>";
+        echo "<th>Address</th>";
+        echo "</tr>";
+        while($row = mysqli_fetch_array($result)){
+            echo "<tr>";
+            echo "<td>" . $row['org_name'] . "</td>";
+            echo "<td>" . $row['university_name'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['school_address'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Free result set
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
 ?>
 </body>
 </html>
