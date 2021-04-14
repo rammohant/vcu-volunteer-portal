@@ -51,7 +51,7 @@ li a {
   font-family: "Verdana"; 
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-right: 15px; 
+  padding-right: 20px; 
   text-decoration: none;
 }
 
@@ -97,20 +97,20 @@ global $conn;
 $sql = "SELECT orgID, orgname, phone_number,email FROM organizations";
 $result = $conn->query($sql);
 
-$sql = "SELECT orgID, orgname, phone_number,email,website FROM v_allorgs where type like 'off-campus org'";
+$sql = "SELECT orgID, org_name, phone_number, email, website FROM v_allorgs where type like 'off-campus org'";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<h2>Off Campus Organizations</h2>";
         echo "<table class='table table-dark table-stripped'>";
         echo "<tr>";
-        echo "<th>orgname</th>";
+        echo "<th>org_name</th>";
         echo "<th>phone_number</th>";
         echo "<th>email</th>";
         echo "<th>website</th>";
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-            echo "<td>" . $row['orgname'] . "</td>";
+            echo "<td>" . $row['org_name'] . "</td>";
             echo "<td>" . $row['phone_number'] . "</td>";
             echo "<td>" . $row['email'] . "</td>";
             echo "<td>" . $row['website'] . "</td>";
