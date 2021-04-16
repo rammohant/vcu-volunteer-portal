@@ -1,24 +1,31 @@
-<?php 
+<html>
+<head>
+<title>University Volunteer Database</title>
+<?php require_once('header.php'); ?>
+<!-- My JS libraries -->
+<script src="js/volunteer_opportunities.js"></script>
+</head>
 
-require_once('connection.php');
+<?php require_once('connection.php'); ?>
 
-if (!isset($_GET['eventID'])) {
+<body>
 
-    // Retrieve list of employees
-    $stmt = $conn->prepare("SELECT title, description, type, available_spots, category, age_minimum, needed_skills FROM volunteer_events ORDER BY startdate, enddate");
-    $stmt->execute();
-    
-    echo "<form method='get'>";
-    echo "<select name='eventID' onchange='this.form.submit();'>";
-    
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[eventID]'>$row[title]</option>";
-    }
-    
-    echo "</select>";
-    echo "</form>";
-} else {
-      
-}
+<div class="container-fluid mt-3 mb-3">
+	<h4>Volunteer Opportunities</h4>
+	<div class="table-responsive">
+		<table id="table-employee" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Name</th>
+					<th>Salary</th>
+					<th>Manager</th>
+					<th>Department</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
 
-?>
+</body>
+</html>
