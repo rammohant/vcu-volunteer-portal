@@ -8,17 +8,15 @@ class VolunteerOpportunities
         global $conn;
         
         $sqlQuery = "SELECT v.eventID as `ID`,
-                            v.title as `Title`,
+                            v.Title as `Title`,
                             v.description as `Description`,
-                            v.link as 'Link'
-                            v.type as 'Type'
-                            CONCAT(v.startdate,' - ', v.enddate) as `Date`,
-                            v.available_spots as 'Available Spots'
-                            v.needed_skills as 'Skills Needed'
+                            v.link as 'Link',
+                            v.type as 'Type',
+                            v.DateRange as `Date`,
+                            v.available_spots as 'Available Spots',
+                            v.needed_skills as 'Skills Needed',
                             v.age_minimum as 'Age Minimum'   
-                     FROM volunteer_events v
-                     INNER JOIN employees m ON (e.manager_ID = m.employee_ID)
-                     INNER JOIN departments d ON (e.department_ID = d.department_ID)";
+                     FROM v_volunteer_ops v";
         
         $stmt = $conn->prepare($sqlQuery);
         $stmt->execute();
