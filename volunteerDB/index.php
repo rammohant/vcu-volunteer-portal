@@ -1,16 +1,20 @@
-<?php
-phpinfo();
-?>
 <html>
 <head>
-<title>CMSC 508</title>
+<title>HR database</title>
+<?php require_once('header.php'); ?>
 </head>
+
+<?php require_once('connection.php'); ?>
+
 <body>
-<ul>
-<li><a href="employees.php">List all employees</a></li>
-<li><a href="employee.php">List information for an employee</a></li>
-<li><a href="addEmployee.php">Add an employee</a></li>
-<li><a href="editEmployee.php">Edit an employee</a></li>
-</ul>
+
+<div class="container-fluid mt-3 mb-3">
+    <ul>
+    	<li><a href="volunteer_events.php">List all volunteer events</a></li>
+		<li><a href="organization.php">List all organizations</a></li>
+		<li><a href="signup.php">Sign up for event</a></li>
+    </ul>
+</div>
+
 </body>
 </html>
