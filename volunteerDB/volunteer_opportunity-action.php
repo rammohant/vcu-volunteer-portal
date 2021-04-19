@@ -1,3 +1,4 @@
+<!-- will allow ALL users to see volunteer opportunities and sign up if wanted -->
 <?php
 require_once ('connection.php');
 
@@ -52,10 +53,10 @@ class VolunteerOpportunities
     }
 }
 
-$volunteerops = new VolunteerOpportunities();
+$volunteeropportunities = new VolunteerOpportunities();
 
 if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerOpportunities') {
-    $volunteerops->listVolunteerOpportunities();
+    $volunteeropportunities->listVolunteerOpportunities();
 }
 
 ?>
