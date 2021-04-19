@@ -1,16 +1,32 @@
 <html>
 <head>
+<style type="text/css">
+
+h1 {
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+div {
+    text-align: center;
+}
+body {
+ background-image:url('bg.png');
+}
+
+</style>
+
 <title>HR database</title>
 <?php require_once('header.php'); ?>
 </head>
-
 <?php require_once('connection.php'); ?>
 
 <body>
 
 <div class="wrapper"> 
-	<h2>University Volunteer Database</h2>
-	<p>Please enter email and password.</p>
+	<h2 align=center style="font-size:30px">VCU Volunteer Database</h2>
+	<p align=center style="font-size:15px">For all your volunteering needs and desires</p>
 	<div class="container mt-3 mb-3">
 		<form method="post">
 			<div class="row justify-content-center">

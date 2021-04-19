@@ -1,5 +1,22 @@
 <html>
 <head>
+<style type="text/css">
+
+h1 {
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+div {
+    text-align: center;
+}
+body {
+ background-image:url('bg.png');
+}
+
+</style>
+
 <title>HR database</title>
 <?php require_once('header.php'); ?>
 </head>
