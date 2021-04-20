@@ -33,7 +33,7 @@ body {
     <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
     	<li><a href="volunteer_events.php">Volunteer Events</a></li>
-    	<li><a href="organization.php">Organizations</a></li>
+    	<li><a href="addEvent.php">Add events</a></li>
     	<li><a href="signup.php">Sign up for event</a></li>
     </ul>
   </div>
