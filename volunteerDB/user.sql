@@ -1,3 +1,4 @@
+--this can be deleted, users table already exists  
 CREATE TABLE `user` (
   `ID` int(11)  PRIMARY KEY AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,

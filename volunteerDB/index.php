@@ -12,7 +12,11 @@ div {
     text-align: center;
 }
 body {
- background-image:url('bg.png');
+    background-image:url('bg.png'); */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 </style>
@@ -32,9 +36,9 @@ body {
     </div>
     <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-    	<li><a href="volunteer_events.php">Volunteer Events</a></li>
+    	<li><a href="volunteer_opportunities.php">Volunteer Events</a></li>
     	<li><a href="addEvent.php">Add events</a></li>
-    	<li><a href="signup.php">Sign up for event</a></li>
+    	<li><a href="manager_v.php">Manager Portal</a></li>
     </ul>
   </div>
 </nav>

@@ -86,7 +86,7 @@ if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerOpportunities')
 }
 
 if(!empty($_POST['action']) && $_POST['action'] == 'signUp') {
-    $volunteeropportunities->listVolunteerOpportunities();
+    $volunteeropportunities->signUp();
 }
 
 

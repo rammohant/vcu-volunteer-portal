@@ -20,12 +20,12 @@ try {
 session_start();
 
 // If the user_ID session is not set, then the user has not logged in yet
-if (!isset($_SESSION['user_ID']))
+if (!isset($_SESSION['userID']))
 {
     // If the page is receiving the email and password from the login form then verify the login data
     if (isset($_POST['email']) && isset($_POST['password']))
     {
-        $stmt = $conn->prepare("SELECT ID, password FROM user WHERE email=:email");
+        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email");
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->execute();
         
@@ -35,7 +35,7 @@ if (!isset($_SESSION['user_ID']))
         if(!empty($queryResult) && password_verify($_POST["password"], $queryResult['password']))
         {
             // Create session variable
-            $_SESSION['user_ID'] = $queryResult['ID'];
+            $_SESSION['userID'] = $queryResult['userID'];
             
             // Redirect to URL 
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
