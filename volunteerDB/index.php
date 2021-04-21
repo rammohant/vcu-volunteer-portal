@@ -12,7 +12,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg.png'); */
+    background-image:url('bg.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,12 +43,26 @@ body {
   </div>
 </nav>
 
-<!-- <div class="container-fluid mt-3 mb-3">
-    <ul>
-    	<li><a href="volunteer_events.php">List all volunteer events</a></li>
-		<li><a href="organization.php">List all organizations</a></li>
-		<li><a href="signup.php">Sign up for event</a></li>
-    </ul>
-</div> -->
+<div class="container-fluid mt-3 mb-3">
+	<h4>Volunteer Opportunities</h4>
+	<div class="table-responsive">
+		<table id="volunteer_events" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Link</th>
+					<th>Type</th>
+					<th>Date</th>
+					<th>Available Spots</th>
+					<th>Skills Needed</th>
+					<th>Age Minimum</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+
 </body>
 </html>
