@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt = $conn->prepare("Select type from v_volunteer_ops");
     $stmt->execute();
     
-    echo "<select name='manager_id'>";
+    echo "<select name='type'>";
     
 //     echo "<option value='-1'>No manager</option>";
     
@@ -32,28 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "</select>";
     echo "</td></tr>";
-    
-    echo "<tr><td>Category</td><td>";
-    
-    // Retrieve list of departments
-    $stmt = $conn->prepare("SELECT department_id, department_name FROM departments");
-    $stmt->execute();
-    
-    echo "<select name='department_id'>";
-    
-    echo "<option value='-1'>No department</option>";
-    
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[department_id]'>$row[department_name]</option>";
-    }
-    
-    echo "</select>";
-    echo "</td></tr>";
-    
-    echo "<tr><td>Job</td><td>";
-    
  
-    
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     
     echo "</tbody>";

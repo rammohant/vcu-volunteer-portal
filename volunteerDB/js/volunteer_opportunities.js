@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$('#table-volunteer-opportunities').DataTable({
+	$('#t_volunteer_events').DataTable({
 		"dom": 'Blfrtip',
 		"ordering":false,
 		"bLengthChange": false,
