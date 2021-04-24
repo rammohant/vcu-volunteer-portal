@@ -1,16 +1,16 @@
 $(document).ready(function(){
 	
-	$('#t_volunteer_events').DataTable({
+	$('#t_volunteer_event').DataTable({
 		"dom": 'Blfrtip',
 		"ordering":false,
 		"bLengthChange": false,
 		"searching": false,
 		"paging": false,
 		"ajax":{
-			url:"volunteer-opportunities-action.php",
+			url:"volunteer-events-action.php",
 			type:"POST",
 			data:{
-					action:'listVolunteerOpportunities'
+					action:'listVolunteerEvent'
 				 },
 			dataType:"json"
 		}

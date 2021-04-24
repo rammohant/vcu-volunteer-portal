@@ -2,9 +2,9 @@
 <?php
 require_once ('connection.php');
 
-class VolunteerOpportunities
+class VolunteerEvent
 {
-    public function listVolunteerOpportunities()
+    public function listVolunteerEvent()
     {
         global $conn;
         
@@ -53,10 +53,10 @@ class VolunteerOpportunities
     }
 }
 
-$volunteeropportunities = new VolunteerOpportunities();
+$volunteerevent = new VolunteerEvent();
 
-if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerOpportunities') {
-    $volunteeropportunities->listVolunteerOpportunities();
+if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerEvent') {
+    $volunteerevent->listVolunteerEvent();
 }
 
 ?>

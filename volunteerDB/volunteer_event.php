@@ -3,7 +3,7 @@
 <title>University Volunteer Database</title>
 <?php require_once('header.php'); ?>
 <!-- My JS libraries -->
-<script src="js/volunteer_opportunities.js"></script>
+<script src="js/volunteer_event.js"></script>
 </head>
 
 <?php require_once('connection.php'); ?>
@@ -13,7 +13,7 @@
 <div class="container-fluid mt-3 mb-3">
 	<h4>Volunteer Opportunities</h4>
 	<div class="table-responsive">
-		<table id="volunteer_events" class="table table-bordered table-striped">
+		<table id="t_volunteer_event" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
