@@ -1,31 +1,11 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$servername = "localhost";
-$username = "rammohant";
-$password = "V00854777";
-$database = "project_rammohant";
-
-try {
-    // Establish a connection with the MySQL server
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-
-// Start or resume session variables
-session_start();
-
 // If the user_ID session is not set, then the user has not logged in yet
 if (!isset($_SESSION['userID']))
 {
     // If the page is receiving the email and password from the login form then verify the login data
     if (isset($_POST['email']) && isset($_POST['password']))
     {
-        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email");
+        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type IN ('organizer','admin')");
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->execute();
         
@@ -42,6 +22,7 @@ if (!isset($_SESSION['userID']))
         } else {
             // Password mismatch
             require('login.php');
+            echo("Please login to your admin/organizer account to access this page.");
             exit();
         }
     }
@@ -49,8 +30,8 @@ if (!isset($_SESSION['userID']))
     {
         // Show login page
         require('login.php');
+        echo("Please login to your manager account to access this page.");
         exit();
     }
 }
-
 ?>
