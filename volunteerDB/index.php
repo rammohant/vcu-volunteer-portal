@@ -23,6 +23,8 @@ body {
 
 <title>HR database</title>
 <?php require_once('header.php'); ?>
+<script src="js/volunteer_opportunities.js"></script>
+
 </head>
 
 <?php require_once('connection.php'); ?>
