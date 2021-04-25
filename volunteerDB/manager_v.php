@@ -1,29 +1,15 @@
 <html>
 <head>
+
 <title>HR database - Organizer/Admin View</title>
 
 <?php require_once('header.php'); ?>
 
-<!-- Font Awesome library -->
-<script src="https://kit.fontawesome.com/c6c713cdbc.js"></script>
-
-<!-- JS libraries for datatables buttons-->
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
-
 <script src="js/manager_v.js"></script>
 
-<!-- CSS for datatables buttons -->
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css"/>
-
 </head>
-
 <!-- check if user is logged in and a manager -->
-<?php require_once('manager_connection.php'); ?>
+<?php require_once('connection.php'); ?>
 
 <body>
 
@@ -49,7 +35,7 @@
 	</div> 
         	
 	<div class="table-responsive">
-		<table id="volunteer_events" class="table table-bordered table-striped">
+		<table id="t_m_volunteer_event" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>eventID</th>

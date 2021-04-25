@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	var volunteer_events = $('#volunteer_events').DataTable({
+	var t_m_volunteer_event = $('#t_m_volunteer_events').DataTable({
 		"dom": 'Blfrtip',
 		"autoWidth": false,
 		"processing":true,
@@ -78,7 +78,7 @@ $(document).ready(function(){
 		})
 	});		
 	
-	$("#volunteer_events").on('click', '.update', function(){
+	$("#t_m_volunteer_event").on('click', '.update', function(){
 		var eventID = $(this).attr("eventID");
 		var action = 'getEvent';
 		$.ajax({
@@ -108,7 +108,7 @@ $(document).ready(function(){
 		})
 	});
 	
-	$("#volunteer_events").on('click', '.delete', function(){
+	$("#t_m_volunteer_event").on('click', '.delete', function(){
 		var eventID = $(this).attr("emp_id");		
 		var action = "deleteEvent";
 		if(confirm("Are you sure you want to delete this event? This action cannot be undone.")) {
