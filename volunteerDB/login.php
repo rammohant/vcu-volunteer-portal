@@ -2,22 +2,31 @@
 <head>
 <style type="text/css">
 
-h1 {
+h2 {
     text-align: center;
+    font-size: 30px; 
+    padding-top: 25px; 
+    font-family: "Andale Mono";
+    font-weight: bold; 
 }
+
 p {
     text-align: center;
+    font-size: 13px;
+    font-family: "Verdana"; 
+    
 }
 div {
     text-align: center;
+    font-family: "Verdana"; 
 }
 body {
- background-image:url('bg.png');
+ background-image:url('bg1.png');
 }
 
 </style>
 
-<title>HR database</title>
+<title>Welcome to VDash!</title>
 <?php require_once('header.php'); ?>
 </head>
 <?php require_once('connection.php'); ?>
@@ -25,8 +34,8 @@ body {
 <body>
 
 <div class="wrapper"> 
-	<h2 align=center style="font-size:30px">VCU Volunteer Database</h2>
-	<p align=center style="font-size:15px">For all your volunteering needs and desires</p>
+	<h2 align=center >VCU Volunteer Database</h2>
+	<p align=center >For all your volunteering needs and desires</p>
 	<div class="container mt-3 mb-3">
 		<form method="post">
 			<div class="row justify-content-center">

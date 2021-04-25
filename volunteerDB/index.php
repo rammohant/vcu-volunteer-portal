@@ -12,7 +12,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg.png'); 
+    background-image:url('bg2.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body {
 
 <?php require_once('header.php'); ?>
 
-<script src="js/volunteer_opportunities.js"></script>
+<script src="js/volunteer_event.js"></script>
 
 </head>
 
@@ -40,7 +40,7 @@ body {
     </div>
     <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-    	<li><a href="volunteer_opportunities.php">Volunteer Events</a></li>
+    	<li><a href="volunteer_event.php">Volunteer Events</a></li>
     	<li><a href="addEvent.php">Add events</a></li>
     	<li><a href="manager_v.php">Manager Portal</a></li>
     </ul>
