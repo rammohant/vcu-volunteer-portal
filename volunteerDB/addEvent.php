@@ -22,16 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt = $conn->prepare("Select type from v_volunteer_ops");
     $stmt->execute();
     
-    echo "<select name='type'>";
-    
-//     echo "<option value='-1'>No manager</option>";
-    
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[type]'>$row[type]</option>";
+        echo "<option value=$row[type]</option>";
+        echo "<option value='$row[job_id]'>$row[job_title]</option>";
+        
     }
     
     echo "</select>";
     echo "</td></tr>";
+    
+    echo "<tr><td>Approved by</td><td>";
+    // Retrieve list of admin 
+    $stmt = $conn->prepare("SELECT userID, name FROM allusers where type like 'admin'");
+    $stmt->execute();
+    
+    echo "<select name='userID'>";
+        
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[userID]'>$row[name]</option>";
+    }
+    
+    echo "</select>";
+    echo "</td></tr>";
+    
  
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     
@@ -50,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number' size='25'></td></tr>";
     
     try {
-        $stmt = $conn->prepare("INSERT INTO employees (title, description, start_date, end_date, link, age_minimum, needed_skills, available_spots,type)
-                                VALUES (:title, :description, :start_date, :end_date, :link, :age_minimum, :needed_skills, :available_spots,:type)");
+        $stmt = $conn->prepare("INSERT INTO employees (title, description, start_date, end_date, link, age_minimum, needed_skills, available_spots,type, userid)
+                                VALUES (:title, :description, :start_date, :end_date, :link, :age_minimum, :needed_skills, :available_spots,:type, :userid)");
 
         $stmt->bindValue(':title', $_POST['title']);
         $stmt->bindValue(':description', $_POST['description']);
@@ -66,6 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 //         } else {
 //             $stmt->bindValue(':type', null, PDO::PARAM_INT);
 //         }
+        if($_POST['userID'] != -1) {
+            $stmt->bindValue(':userID', $_POST['userID']); 
+                     } else {
+                         $stmt->bindValue(':userID', null, PDO::PARAM_INT);
+                    }
         
         $stmt->execute();
     } catch (PDOException $e) {
