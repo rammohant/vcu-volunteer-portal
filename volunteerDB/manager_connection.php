@@ -21,16 +21,16 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            require('login.php');
             echo("Please login to your admin/organizer account to access this page.");
+            require('login.php');
             exit();
         }
     }
     else
     {
         // Show login page
+        echo("Please login to your admin/organizer account to access this page.");
         require('login.php');
-        echo("Please login to your manager account to access this page.");
         exit();
     }
 }

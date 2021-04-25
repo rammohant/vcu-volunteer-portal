@@ -1,7 +1,7 @@
 <?php
 require_once ('connection.php');
 
-class Manager_VolunteerOpps
+class VolunteerEventsM
 {
     public function listEvent()
     {
@@ -168,7 +168,7 @@ class Manager_VolunteerOpps
 
 
 
-$event = new Manager_VolunteerOpps();
+$event = new VolunteerEventsM();
 
 if(!empty($_POST['action']) && $_POST['action'] == 'listEvent') {
     $event->listEvent();

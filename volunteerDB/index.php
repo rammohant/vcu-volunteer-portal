@@ -29,8 +29,8 @@ body {
 
 </head>
 
-<?php require_once('connection.php'); ?>
-
+<?php require_once('connection.php'); ?> <!-- comment this out once file is done -->
+s
 <body>
 
 <nav class="navbar navbar-inverse">

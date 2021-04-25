@@ -17,7 +17,6 @@ p {
     
 }
 div {
-    text-align: center;
     font-family: "Verdana"; 
 }
 body {
@@ -26,7 +25,7 @@ body {
 
 </style>
 
-<title>Welcome to VDash!</title>
+<title>Login Page</title>
 <?php require_once('header.php'); ?>
 </head>
 <?php require_once('connection.php'); ?>

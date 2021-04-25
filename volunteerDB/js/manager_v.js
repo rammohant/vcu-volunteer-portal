@@ -22,20 +22,20 @@ $(document).ready(function(){
 		"buttons": [
 				{
 					extend: 'excelHtml5',
-					title: 'VolunteerOps',
-					filename: 'VolunteerOps',
+					title: 'VolunteerEventsM',
+					filename: 'VolunteerEventsM',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				},
 				{
 					extend: 'pdfHtml5',
-					title: 'VolunteerOps',
-					filename: 'VolunteerOps',
+					title: 'VolunteerEventsM',
+					filename: 'VolunteerEventsM',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				},
 				{
 					extend: 'print',
-					title: 'VolunteerOps',
-					filename: 'VolunteerOps',
+					title: 'VolunteerEventsM',
+					filename: 'VolunteerEventsM',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				}]
 	});	
@@ -73,7 +73,7 @@ $(document).ready(function(){
 				$('#event-modal').modal('hide');
 				$('#event-form')[0].reset();
 				$('#save').attr('disabled', false);
-				volunteer_events.ajax.reload();
+				t_m_volunteer_event.ajax.reload();
 			}
 		})
 	});		
@@ -109,7 +109,7 @@ $(document).ready(function(){
 	});
 	
 	$("#t_m_volunteer_event").on('click', '.delete', function(){
-		var eventID = $(this).attr("emp_id");		
+		var eventID = $(this).attr("eventID");		
 		var action = "deleteEvent";
 		if(confirm("Are you sure you want to delete this event? This action cannot be undone.")) {
 			$.ajax({
@@ -117,7 +117,7 @@ $(document).ready(function(){
 				method:"POST",
 				data:{ID:eventID, action:action},
 				success:function() {					
-					volunteer_events.ajax.reload();
+					t_m_volunteer_event.ajax.reload();
 				}
 			})
 		} else {
