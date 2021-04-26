@@ -22,20 +22,20 @@ $(document).ready(function(){
 		"buttons": [
 				{
 					extend: 'excelHtml5',
-					title: 'VolunteerEventsM',
-					filename: 'VolunteerEventsM',
+					title: 'VolunteerEvents',
+					filename: 'VolunteerEvents',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				},
 				{
 					extend: 'pdfHtml5',
-					title: 'VolunteerEventsM',
-					filename: 'VolunteerEventsM',
+					title: 'VolunteerEvents',
+					filename: 'VolunteerEvents',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				},
 				{
 					extend: 'print',
-					title: 'VolunteerEventsM',
-					filename: 'VolunteerEventsM',
+					title: 'VolunteerEvents',
+					filename: 'VolunteerEvents',
 					exportOptions: {columns: [1,2,3,4,5,6]}
 				}]
 	});	

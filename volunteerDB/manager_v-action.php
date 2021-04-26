@@ -7,7 +7,7 @@ class VolunteerEventsM
     {
         global $conn;
         
-        $sqlQuery = "SELECT v.eventID as `ID`,
+        $sqlQuery = "SELECT v.eventID as `eventID`,
                             v.Title as `Title`,
                             v.description as `Description`,
                             v.link as 'Link',
@@ -33,7 +33,7 @@ class VolunteerEventsM
         while ($sqlRow = $stmt->fetch()) {
             $dataRow = array();
             
-            $dataRow[] = $sqlRow['ID'];
+            $dataRow[] = $sqlRow['eventID'];
             $dataRow[] = $sqlRow['Title'];
             $dataRow[] = $sqlRow['Description'];
             $dataRow[] = $sqlRow['Link'];
@@ -43,8 +43,8 @@ class VolunteerEventsM
             $dataRow[] = $sqlRow['Skills Needed'];
             $dataRow[] = $sqlRow['Age Minimum'];
             
-            $dataRow[] = '<button type="button" name="update" event_id="' . $sqlRow["ID"] . '" class="btn btn-warning btn-sm update">Update</button>
-                          <button type="button" name="delete" event_id="' . $sqlRow["ID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
+            $dataRow[] = '<button type="button" name="update" eventID="' . $sqlRow["eventID"] . '" class="btn btn-warning btn-sm update">Update</button>
+                          <button type="button" name="delete" eventID="' . $sqlRow["eventID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
             
             $dataTable[] = $dataRow;
         }
@@ -62,7 +62,7 @@ class VolunteerEventsM
     {
         global $conn;
         
-        if ($_POST["ID"]) {
+        if ($_POST["eventID"]) {
             
             $sqlQuery = "SELECT eventID,
                             title,
@@ -78,7 +78,7 @@ class VolunteerEventsM
                             organizer,
                             approved_by
                      FROM volunteer_events
-                     WHERE event_id = :event_id";
+                     WHERE eventID = :eventID";
             
             $stmt = $conn->prepare($sqlQuery);
             $stmt->bindValue(':eventID', $_POST["eventID"]);
@@ -154,7 +154,7 @@ class VolunteerEventsM
     {
         global $conn;
         
-        if ($_POST["ID"]) {
+        if ($_POST["eventID"]) {
             
             $sqlQuery = "DELETE FROM volunteer_events WHERE eventID = :eventID";
             
