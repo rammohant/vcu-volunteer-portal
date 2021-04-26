@@ -18,7 +18,29 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
 </style>
 
 <title>Welcome to VDash!</title>
@@ -33,19 +55,27 @@ body {
 s
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">VDash </a>
-    </div>
-    <ul class="topnav">
-        <li class="active"><a href="#">Home</a></li>
-    	<li><a href="volunteer_event.php">Volunteer Events</a></li>
-    	<li><a href="addEvent.php">Add events</a></li>
-    	<li><a href="manager_v.php">Manager Portal</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- <nav class="navbar navbar-inverse"> -->
+<!--   <div class="container-fluid"> -->
+<!--     <div class="navbar-header"> -->
+<!--       <a class="navbar-brand" href="#">VDash</a> -->
+<!--     </div> -->
+<!--     <ul class="topnav"> -->
+<!--         <li class="active"><a href="#">Home</a></li> -->
+<!--     	<li><a href="volunteer_event.php">Volunteer Events</a></li> -->
+<!--     	<li><a href="addEvent.php">Add events</a></li> -->
+<!--     	<li><a href="manager_v.php">Manager Portal</a></li> -->
+<!--     </ul> -->
+<!--   </div> -->
+<!-- </nav> -->
+
+
+<ul>
+    <li class="active"><a href="#">Home</a></li>
+	<li><a href="volunteer_event.php">Volunteer Events</a></li>
+	<li><a href="addEvent.php">Add events</a></li>
+	<li><a href="manager_v.php">Manager Portal</a></li>
+</ul>
 
 <div class="container-fluid mt-3 mb-3">
 	<h4>Volunteer Opportunities</h4>
