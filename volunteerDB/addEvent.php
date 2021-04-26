@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<form method='post' action='addEvent.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
-    echo "<tr><td>Title</td><td><input name='title' type='text' size='25'></td></tr>";
-    echo "<tr><td>Description</td><td><input name='description' type='text' size='25'></td></tr>";
-    echo "<tr><td>Start Date</td><td><input name='email' type='datetime' size='25'></td></tr>";
-    echo "<tr><td>End Date</td><td><input name='salary' type='number' min='0.01' step='0.01' size='8'></td></tr>";
-    echo "<tr><td>Link</td><td><input name='description' type='text' size='25'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' size='25'></td></tr>";
-    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text' size='25'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='int' size='25'></td></tr>";
+    echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
+    echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
+    echo "<tr><td>Start Date</td><td><input name='email' type='datetime'></td></tr>";
+    echo "<tr><td>End Date</td><td><input name='salary' type='datetime'></td></tr>";
+    echo "<tr><td>Link</td><td><input name='description' type='text'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
+    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='int'></td></tr>";
     
     echo "<tr><td>Type</td><td>";
     // Retrieve list of employees as potential manager of the new employee
@@ -23,9 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->execute();
     
     while ($row = $stmt->fetch()) {
-        echo "<option value=$row[type]</option>";
-        echo "<option value='$row[job_id]'>$row[job_title]</option>";
-        
+        echo "<option value=$row[type]</option>";        
     }
     
     echo "</select>";
@@ -53,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</form>";
 } else {
     
-    echo "<tr><td>Title</td><td><input name='title' type='text' size='25'></td></tr>";
-    echo "<tr><td>Description</td><td><input name='description' type='text' size='25'></td></tr>";
-    echo "<tr><td>Start Date</td><td><input name='start_date' type='date' size='25'></td></tr>";
-    echo "<tr><td>End Date</td><td><input name='end_date' type='date' type='date' size='25'></td></tr>";
-    echo "<tr><td>Link</td><td><input name='link' type='text' size='25'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number' size='25'></td></tr>";
-    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text' size='25'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number' size='25'></td></tr>";
+    echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
+    echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
+    echo "<tr><td>Start Date (dd-mm-yyyy)</td><td><input name='start_date' type='date'></td></tr>";
+    echo "<tr><td>End Date (dd-mm-yyyy)</td><td><input name='end_date' type='date'></td></tr>";
+    echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
+    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
     
     try {
         $stmt = $conn->prepare("INSERT INTO employees (title, description, start_date, end_date, link, age_minimum, needed_skills, available_spots,type, userid)

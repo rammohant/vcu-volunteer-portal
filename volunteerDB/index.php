@@ -12,7 +12,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg2.png'); 
+    background-image:url('bg.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,7 +21,7 @@ body {
 
 </style>
 
-<title>HR database</title>
+<title>Welcome to VDash!</title>
 
 <?php require_once('header.php'); ?>
 
@@ -36,9 +36,9 @@ s
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Volunter DB</a>
+      <a class="navbar-brand" href="#">VDash </a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul class="topnav">
         <li class="active"><a href="#">Home</a></li>
     	<li><a href="volunteer_event.php">Volunteer Events</a></li>
     	<li><a href="addEvent.php">Add events</a></li>

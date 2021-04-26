@@ -7,7 +7,7 @@ $(document).ready(function(){
 		"searching": false,
 		"paging": false,
 		"ajax":{
-			url:"volunteer-events-action.php",
+			url:"volunteer_events-action.php",
 			type:"POST",
 			data:{
 					action:'listVolunteerEvent'

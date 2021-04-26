@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>University Volunteer Database</title>
+
 <?php require_once('header.php'); ?>
 <!-- My JS libraries -->
 <script src="js/volunteer_event.js"></script>
