@@ -1,39 +1,82 @@
 <html>
 <head>
 
-  <title>Manager View</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>VDASH Manager Portal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
+<style type="text/css">
+h2 {
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+div {
+    text-align: center;
+}
+body {
+    background-image:url('bg.png'); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+/*   float: right; */
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
 <?php require_once('header.php'); ?>
 
 <script src="js/manager_v.js"></script>
 
 </head>
 <!-- check if user is logged in and a manager -->
-<?php require_once('connection.php'); ?>
+<?php require_once('connection_manager.php'); ?>
 
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-    	<li><a href="volunteer_opportunities.php">Volunteer Events</a></li>
-    	<li><a href="addEvent.php">Add events</a></li>
-    	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
-    </ul>
-  </div>
-</nav>
+<a class="navbar-brand" href="/">
+      <div class="logo-image">
+            <img src="image" class="img-fluid">
+      </div>
+</a>
+
+<ul>
+	<li><a href="#" class="pull-left" style="height:100%"> <img src="VDASH.png"></a><li>
+    <li><a href="#">Home</a></li>
+	<li><a href="volunteer_event.php">User Portal</a></li>
+	<li><a href="addEvent.php">Add events</a></li>
+	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
+</ul>
 
 <div class="container-fluid mt-3 mb-3">
-	<h4>Volunteer Opportunities</h4>
+	<h2>Welcome to the Manager Portal</h2>
+	<p>View, add, and delete volunteer events for your organization below.</p>
 	
 	<div class="pb-3">
 		<button type="button" id="addEvent" class="btn btn-primary btn-sm">Add Event</button>

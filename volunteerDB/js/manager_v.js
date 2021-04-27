@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	var t_m_volunteer_event = $('#t_m_volunteer_events').DataTable({
+	var t_m_volunteer_event = $('#volunteer_events').DataTable({
 		"dom": 'Blfrtip',
 		"autoWidth": false,
 		"processing":true,
@@ -65,7 +65,6 @@ $(document).ready(function(){
 				available_spots: $('#available_spots').val(),
 				needed_skills: $('#needed_skills').val(),
 				age_minimum: $('#age_minimum').val(),
-				organizer: $('#organizer').val(),
 				approved_by: $('#approved_by').val(),
 				action: $('#action').val(),
 			},
@@ -78,37 +77,8 @@ $(document).ready(function(){
 		})
 	});		
 	
-	$("#t_m_volunteer_event").on('click', '.update', function(){
-		var eventID = $(this).attr("eventID");
-		var action = 'getEvent';
-		$.ajax({
-			url:'manager_v-action.php',
-			method:"POST",
-			data:{ID:eventID, action:action},
-			dataType:"json",
-			success:function(data){
-				
-				$('#event-modal').modal('show');
-				$('#eventID').val(eventID);
-				$('#title').val(data.title);
-				$('#description').val(data.description);
-				$('#type').val(data.email);
-				$('#startdate').val(data.salary);
-				$('#enddate').val(data.department_ID);
-				$('#link').val(data.manager_ID);
-				$('#available_spots').val(data.job_ID);
-				$('#needed_skills').val(data.job_ID);
-				$('#age_minimum').val(data.job_ID);
-				$('#organizer').val(data.job_ID);
-				$('#approved_by').val(data.job_ID);
-				$('.modal-title').html("Edit Event");
-				$('#action').val('updateEvent');
-				$('#save').val('Save');
-			}
-		})
-	});
 	
-	$("#t_m_volunteer_event").on('click', '.delete', function(){
+	$("#volunteer_events").on('click', '.delete', function(){
 		var eventID = $(this).attr("eventID");		
 		var action = "deleteEvent";
 		if(confirm("Are you sure you want to delete this event? This action cannot be undone.")) {
