@@ -1,14 +1,15 @@
 <!-- will allow ALL users to see volunteer opportunities and sign up if wanted -->
 <?php
 require_once ('connection.php');
+$this->userid = $_SESSION['userid']=$user->id;
 
-class VolunteerOpportunities
+class VolunteerSignup
 {
-    public function listVolunteerOpportunities()
+    public function listVolunteerSignup()
     {
         global $conn;
         
-        $sqlQuery = "SELECT v.eventID as `ID`,
+        $sqlQuery = "SELECT s.eventID as `ID`,
                             v.Title as `Title`,
                             v.description as `Description`,
                             v.link as 'Link',
@@ -16,8 +17,12 @@ class VolunteerOpportunities
                             v.DateRange as `Date`,
                             v.available_spots as 'Available Spots',
                             v.needed_skills as 'Skills Needed',
-                            v.age_minimum as 'Age Minimum'   
-                     FROM v_volunteer_ops v";
+                            v.age_minimum as 'Age Minimum',   
+                            v.organization as 'Organization',
+                            v.number as 'Contact Number',
+                            v.email as 'Contact Email'
+                     FROM volunteer_signup s where volunteerID = '$id' 
+                    LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID";
        
         // Search by title, description, or type 
         if (! empty($_POST["search"]["value"])) {
@@ -43,8 +48,10 @@ class VolunteerOpportunities
             $dataRow[] = $sqlRow['Available Spots'];
             $dataRow[] = $sqlRow['Skills Needed'];
             $dataRow[] = $sqlRow['Age Minimum'];
+            $dataRow[] = $sqlRow['Organization'];
+            $dataRow[] = $sqlRow['Contact Number'];
+            $dataRow[] = $sqlRow['Contact Email'];
             
-
             $dataTable[] = $dataRow;
         }
         
@@ -56,37 +63,16 @@ class VolunteerOpportunities
         
         echo json_encode($output);
     }
-
-
-public function signUp()
-{
-    global $conn;
-    
-    $sqlQuery = "INSERT INTO employees
-                     (first_name, last_name, manager_ID, department_ID, email, job_ID, salary, hire_date)
-                     VALUES
-                     (:first_name, :last_name, :manager_ID, :department_ID, :email, :job_ID, :salary, CURDATE())";
-    
-    $stmt = $conn->prepare($sqlQuery);
-    $stmt->bindValue(':first_name', $_POST["firstname"]);
-    $stmt->bindValue(':last_name', $_POST["lastname"]);
-    $stmt->bindValue(':manager_ID', $_POST["manager"]);
-    $stmt->bindValue(':department_ID', $_POST["department"]);
-    $stmt->bindValue(':email', $_POST["email"]);
-    $stmt->bindValue(':job_ID', $_POST["job"]);
-    $stmt->bindValue(':salary', $_POST["salary"]);
-    $stmt->execute();
-}
 }
 
-$volunteeropportunities = new VolunteerOpportunities();
+$volunteersignup = new VolunteerSignup(); 
 
-if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerOpportunities') {
-    $volunteeropportunities->listVolunteerOpportunities();
+if(!empty($_POST['action']) && $_POST['action'] == 'listVolunteerSignup') {
+    $volunteersignup->listVolunteerSignup();
 }
 
-if(!empty($_POST['action']) && $_POST['action'] == 'signUp') {
-    $volunteeropportunities->signUp();
+if(!empty($_POST['action']) && $_POST['action'] == 'deleteVolunteerSignup') {
+    $volunteersignup->deleteVolunteerSignup();
 }
 
 
