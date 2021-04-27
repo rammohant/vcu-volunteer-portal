@@ -63,6 +63,21 @@ class VolunteerSignup
         
         echo json_encode($output);
     }
+    
+    
+    public function deleteEmployee()
+    {
+        global $conn;
+        
+        if ($_POST["ID"]) {
+            
+            $sqlQuery = "DELETE FROM volunteer_signup WHERE userid = '$id'";
+            
+            $stmt = $conn->prepare($sqlQuery);
+            $stmt->execute();
+
+        }
+    }
 }
 
 $volunteersignup = new VolunteerSignup(); 

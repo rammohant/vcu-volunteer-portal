@@ -14,7 +14,7 @@
 <div class="container-fluid mt-3 mb-3">
 	<h4>Volunteer Opportunities</h4>
 	<div class="table-responsive">
-		<table id="t_volunteer_event" class="table table-bordered table-striped">
+		<table id="volunteer_events" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
