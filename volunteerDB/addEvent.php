@@ -23,7 +23,21 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->execute();
     
     while ($row = $stmt->fetch()) {
-        echo "<option value=$row[type]</option>";        
+        echo "<option value='$row[type]'>$row[type]</option>";        
+    }
+    
+    echo "</select>";
+    echo "</td></tr>";
+    
+    echo "<tr><td>Organizer</td><td>";
+    // Retrieve list of organizer
+    $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
+    $stmt->execute();
+    
+    echo "<select name='organizerID'>";
+    
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[organizerID]'>$row[name]</option>";
     }
     
     echo "</select>";
@@ -31,17 +45,20 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<tr><td>Approved by</td><td>";
     // Retrieve list of admin 
-    $stmt = $conn->prepare("SELECT userID, name FROM allusers where type like 'admin'");
+    $stmt = $conn->prepare("SELECT userID as adminID, name FROM allusers where type like 'admin'");
     $stmt->execute();
     
-    echo "<select name='userID'>";
+    echo "<select name='adminID'>";
         
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[userID]'>$row[name]</option>";
+        echo "<option value='$row[adminID]'>$row[name]</option>";
     }
     
     echo "</select>";
     echo "</td></tr>";
+    
+    
+    
     
  
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
@@ -53,24 +70,26 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
     echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-    echo "<tr><td>Start Date (dd-mm-yyyy)</td><td><input name='start_date' type='date'></td></tr>";
-    echo "<tr><td>End Date (dd-mm-yyyy)</td><td><input name='end_date' type='date'></td></tr>";
+    echo "<tr><td>Start Date (dd-mm-yyyy)</td><td><input name='startdate' type='date'></td></tr>";
+    echo "<tr><td>End Date (dd-mm-yyyy)</td><td><input name='enddate' type='date'></td></tr>";
     echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
     echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
     
     try {
-        $stmt = $conn->prepare("INSERT INTO employees (title, description, start_date, end_date, link, age_minimum, needed_skills, available_spots,type, userid)
-                                VALUES (:title, :description, :start_date, :end_date, :link, :age_minimum, :needed_skills, :available_spots,:type, :userid)");
+        $stmt = $conn->prepare("INSERT INTO employees (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, adminID)
+                                VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :adminID)");
 
         $stmt->bindValue(':title', $_POST['title']);
         $stmt->bindValue(':description', $_POST['description']);
-        $stmt->bindValue(':start_date', $_POST['start_date']);
-        $stmt->bindValue(':end_date', $_POST['end_date']);
+        $stmt->bindValue(':start_date', $_POST['startdate']);
+        $stmt->bindValue(':end_date', $_POST['enddate']);
         $stmt->bindValue(':link', $_POST['link']);
         $stmt->bindValue(':age_minimum', $_POST['age_minimum']);
         $stmt->bindValue(':needed_skills', $_POST['needed_skills']);
+        $stmt->bindValue(':needed_skills', $_POST['age_minimum']);
+        
         
         if($_POST['type'] != -1) {
             $stmt->bindValue(':type', $_POST['type']); }

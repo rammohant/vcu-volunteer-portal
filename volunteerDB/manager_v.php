@@ -60,16 +60,10 @@ li a:hover {
 
 <body>
 
-<a class="navbar-brand" href="/">
-      <div class="logo-image">
-            <img src="image" class="img-fluid">
-      </div>
-</a>
-
 <ul>
 	<li><a href="#" class="pull-left" style="height:100%"> <img src="VDASH.png"></a><li>
     <li><a href="#">Home</a></li>
-	<li><a href="volunteer_event.php">User Portal</a></li>
+	<li><a href="volunteer_event.php">Volunteer Portal</a></li>
 	<li><a href="addEvent.php">Add events</a></li>
 	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
 </ul>

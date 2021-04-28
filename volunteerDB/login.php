@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>VDASH Login Page</title>
 <style type="text/css">
 
 h2 {
@@ -19,13 +20,19 @@ p {
 div {
     font-family: "Verdana"; 
 }
+
 body {
  background-image:url('bg1.png');
 }
 
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
 </style>
 
-<title>Login Page</title>
 <?php require_once('header.php'); ?>
 </head>
 <?php require_once('connection.php'); ?>
