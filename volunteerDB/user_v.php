@@ -5,9 +5,12 @@
 <style type="text/css">
 h2 {
     text-align: center;
+    font-family: Verdana;
+    font-size: 25px; 
 }
 p {
     text-align: center;
+    font-family: ;
 }
 div {
     text-align: center;
@@ -36,12 +39,17 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 16px 0px 0px;
   text-decoration: none;
 }
 
 li a:hover {
   background-color: #111;
+}
+
+table {
+  background-color: #111;
+  opacity: 0.90;
 }
 </style>
 

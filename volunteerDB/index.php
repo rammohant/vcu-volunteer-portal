@@ -7,9 +7,17 @@
 
 h2 {
     text-align: center;
+    font-size: 30px; 
+    padding-top: 25px; 
+    font-family: "Andale Mono";
+    font-weight: bold; 
 }
+
 p {
     text-align: center;
+    font-size: 13px;
+    font-family: "Verdana"; 
+    
 }
 div {
     text-align: center;
@@ -38,7 +46,7 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 16px 0px 0px;
   text-decoration: none;
 }
 
@@ -48,7 +56,7 @@ li a:hover {
 
 table {
   background-color: #111;
-  opacity: 0.5;
+  opacity: 0.90;
 }
 
 </style>
@@ -63,27 +71,13 @@ table {
 
 <body>
 
-<!-- <nav class="navbar navbar-inverse"> -->
-<!--   <div class="container-fluid"> -->
-<!--     <div class="navbar-header"> -->
-<!--       <a class="navbar-brand" href="#">VDash</a> -->
-<!--     </div> -->
-<!--     <ul class="topnav"> -->
-<!--         <li class="active"><a href="#">Home</a></li> -->
-<!--     	<li><a href="volunteer_event.php">Volunteer Events</a></li> -->
-<!--     	<li><a href="addEvent.php">Add events</a></li> -->
-<!--     	<li><a href="manager_v.php">Manager Portal</a></li> -->
-<!--     </ul> -->
-<!--   </div> -->
-<!-- </nav> -->
-
-
 <ul>
-	<li><a href="#" class="pull-left"><img src="VDASH.png"></a><li>
+	<li><a href="#" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
     <li class="active"><a href="#">Home</a></li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
-	<li><a href="addEvent.php">Add events</a></li>
+	<li><a href="signup.php">Sign up</a></li>
+	
 </ul>
 
 <div class="container-fluid mt-3 mb-3">
