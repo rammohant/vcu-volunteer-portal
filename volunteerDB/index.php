@@ -56,7 +56,7 @@ li a:hover {
 
 table {
   background-color: #111;
-  opacity: 0.90;
+  opacity: 0.80;
 }
 
 </style>
@@ -67,7 +67,7 @@ table {
 
 </head>
 
-<?php require_once('connection.php'); ?> <!-- comment this out once file is done -->
+<?php require_once('connection.php'); ?> 
 
 <body>
 

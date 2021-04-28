@@ -7,6 +7,8 @@ $username = "rammohant";
 $password = "V00854777";
 $database = "project_rammohant";
 
+$link = mysqli_connect($servername, $username, $password, $database);
+
 try {
     // Establish a connection with the MySQL server
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
