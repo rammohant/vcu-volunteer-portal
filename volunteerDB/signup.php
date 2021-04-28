@@ -76,19 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check input errors before inserting in database
-    if (empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
+    if (empty($email_err) && empty($password_err) && empty($confirm_password_err && empty($firstname_err) && empty($lastname_err))) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, 'volunteer')";
+        $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password);
+            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password, $param_firstname, $param_type);
 
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-
+            $param_firstname = $first_name;
+            $param_lastname = $last_name;
+            $param_type = 'volunteer'; 
+            
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to login page
@@ -151,7 +154,7 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333;
+/* 	background-color: #333; */
 	/*   float: right; */
 }
 
@@ -161,14 +164,16 @@ li {
 
 li a {
 	display: block;
-	color: white;
+	color: black;
 	text-align: center;
-	padding: 14px 16px 0px 0px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 15px; 
 	text-decoration: none;
 }
 
 li a:hover {
-	background-color: #111;
+/* 	background-color: #111; */
 }
 
 table {
@@ -181,20 +186,17 @@ table {
 
 	<ul>
     	<li><a href="#" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="index.php">Home</a></li>
     	<li><a href="user_v.php">Volunteer Portal</a></li>
     	<li><a href="manager_v.php">Manager Portal</a></li>
-    	<li><a href="signup.php">Sign up</a></li>
+    	<li class="active"><a href="signup.php">Sign up</a></li>
 	</ul>
 
 	<div class="wrapper">
 		<h2>Sign Up</h2>
 		<p>Create a VDASH volunteer account by completing this form:</p>
-		<div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
-				<div class="row justify-content-center">
-					<div class="col-4">
 						<div class="form-group">
 							<label>email</label> <input type="text" name="email"
 								class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
@@ -204,13 +206,13 @@ table {
 							<label>first_name</label> <input type="text" name="first_name"
 								class="form-control <?php echo (!empty($firstname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $first_name; ?>"> <span
-								class="invalid-feedback"><?php echo $email_err; ?></span>
+								class="invalid-feedback"><?php echo $firstname_err; ?></span>
 						</div>
 						<div class="form-group">
 							<label>last_name</label> <input type="text" name="last_name"
 								class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $last_name; ?>"> <span
-								class="invalid-feedback"><?php echo $email_err; ?></span>
+								class="invalid-feedback"><?php echo $lastname_err; ?></span>
 						</div>
 						<div class="form-group">
 							<label>Password</label> <input type="password" name="password"
@@ -231,10 +233,7 @@ table {
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.
 						</p>
-					</div>
-				</div>
 			</form>
 		</div>
-	</div>
 </body>
 </html>

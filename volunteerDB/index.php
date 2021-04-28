@@ -34,7 +34,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+/*   background-color: #333; */
 /*   float: right; */
 }
 
@@ -44,14 +44,17 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: black;
   text-align: center;
-  padding: 14px 16px 0px 0px;
+  font-family: "Verdana"; 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px; 
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: #111;
+/*   background-color: #111; */
 }
 
 table {
@@ -72,7 +75,7 @@ table {
 <body>
 
 <ul>
-	<li><a href="#" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li><a href="#" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
     <li class="active"><a href="#">Home</a></li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
