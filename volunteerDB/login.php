@@ -22,7 +22,7 @@ div {
 }
 
 body {
- background-image:url('bg1.png');
+ background-image:url('bg.png');
 }
 
 button {
@@ -34,6 +34,7 @@ button {
 </style>
 
 <?php require_once('header.php'); ?>
+
 </head>
 <?php require_once('connection.php'); ?>
 
