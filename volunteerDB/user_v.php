@@ -61,11 +61,11 @@ table {
 <body>
 
 <ul>
-	<li><a href="#" class="pull-left" style="height:100%"> <img src="VDASH.png"></a><li>
-    <li><a href="#">Home</a></li>
-	<li><a href="volunteer_event.php">Volunteer Portal</a></li>
-	<li><a href="addEvent.php">Add events</a></li>
-	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
+	<li><a href="#" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
+    <li class="active"><a href="#">Home</a></li>
+	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li><a href="manager_v.php">Manager Portal</a></li>
+	<li><a href="signup.php">Sign up</a></li>
 </ul>
 
 <div class="container-fluid mt-3 mb-3">
