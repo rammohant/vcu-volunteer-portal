@@ -84,7 +84,6 @@ li a:hover {
 <?php 
 
 global $conn;
-$this->userID = $_SESSION['userID']=$user->id;
 
 $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
                      FROM v_volunteer_ops v where organizer=$userID";

@@ -84,7 +84,6 @@ tr{
 <?php 
 
 global $conn;
-$this->userID = $_SESSION['userID']=$user->id;
 
 $sql = "SELECT s.eventID, v.Title, v.description,v.link, v.type, v.DateRange, v.available_spots, v.needed_skills,v.age_minimum, v.organization, v.number, v.email
 FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID where volunteerID=$userID";
