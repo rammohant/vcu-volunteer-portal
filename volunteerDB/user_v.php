@@ -81,6 +81,55 @@ tr{
 	<li><a href="signup.php">Sign up</a></li>
 </ul>
 
+<?php 
+
+global $conn;
+$this->userID = $_SESSION['userID']=$user->id;
+
+$sql = "SELECT s.eventID, v.Title, v.description,v.link, v.type, v.DateRange, v.available_spots, v.needed_skills,v.age_minimum, v.organization, v.number, v.email
+FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID where volunteerID=$userID";
+                     
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        echo "<h2>Welcome to the Manager Portal</h2>";
+        echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+        echo "<tr>";
+        echo "<th>Title</th>";
+        echo "<th>Description</th>";
+        echo "<th>Link</th>";
+        echo "<th>Type</th>";
+        echo "<th>Date</th>";
+        echo "<th>Available Spots</th>";
+        echo "<th>Skills Needed</th>";
+        echo "<th>Age Minimum</th>";
+        echo "<th>Approver</th>";
+        
+        echo "</tr>";
+        while($row = mysqli_fetch_array($result)){
+            echo "<tr>";
+            echo "<td>" . $row['Title'] . "</td>";
+            echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['link'] . "</td>";
+            echo "<td>" . $row['type'] . "</td>";
+            echo "<td>" . $row['DateRange'] . "</td>";
+            echo "<td>" . $row['available_spots'] . "</td>";
+            echo "<td>" . $row['needed_skills'] . "</td>";
+            echo "<td>" . $row['age_minimum'] . "</td>";
+            echo "<td>" . $row['approver'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Free result set
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+?>
+
 <div class="container-fluid mt-3 mb-3">
 	<h4>Welcome to the Volunteer Portal</h4>
     <p>Check out all the events you've signed up for!</p>
