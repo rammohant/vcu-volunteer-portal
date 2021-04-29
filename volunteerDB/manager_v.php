@@ -87,7 +87,8 @@ global $conn;
 $this->userID = $_SESSION['userID']=$user->id;
 
 $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
-                     FROM v_volunteer_ops v where organizer=$id";
+                     FROM v_volunteer_ops v where organizer=$userID";
+                     
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<h2>Welcome to the Manager Portal</h2>";
