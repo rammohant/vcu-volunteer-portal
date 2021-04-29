@@ -7,7 +7,7 @@
 
 h2 {
     text-align: center;
-    font-size: 30px; 
+    font-size: 25px; 
     padding-top: 25px; 
     font-family: "Verdana";
 }
@@ -97,7 +97,7 @@ $sql = "SELECT orgID, org_name, phone_number, email, website FROM v_allorgs wher
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<h2>Off Campus Organizations</h2>";
-        echo "<table class='table table-dark table-stripped'>";
+        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>Organization</th>";
         echo "<th>Contact Number</th>";
@@ -131,7 +131,7 @@ $sql = "SELECT orgID, org_name, email, university_name, school_address FROM v_al
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<h2>Student Organizations</h2>";
-        echo "<table class='table table-dark table-stripped'>";
+        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>Club</th>";
         echo "<th>University</th>";

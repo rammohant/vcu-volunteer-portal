@@ -5,7 +5,7 @@
 <style type="text/css">
 h2 {
     text-align: center;
-    font-size: 30px; 
+    font-size: 25px; 
     padding-top: 25px; 
     font-family: "Verdana";
     font-weight: bold; 
@@ -47,7 +47,7 @@ li a {
   font-family: "Verdana"; 
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-right: 15px; 
+  padding-right: 20px; 
   text-decoration: none;
 }
 
