@@ -2,7 +2,7 @@
 require_once ('connection.php');
 $this->userID = $_SESSION['userID']=$user->id;
 
-class VolunteerEventsM
+class VolunteerEvents
 {
     public function listEvent()
     {
@@ -46,11 +46,9 @@ class VolunteerEventsM
             $dataRow[] = $sqlRow['Age Minimum'];
             $dataRow[] = $sqlRow['Approver'];
             
+//             $dataRow[] = '<button type="button" name="update" eventID="' . $sqlRow["eventID"] . '" class="btn btn-warning btn-sm update">Update</button>                           <button type="button" name="delete" eventID="' . $sqlRow["eventID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
             
-//             $dataRow[] = '<button type="button" name="update" eventID="' . $sqlRow["eventID"] . '" class="btn btn-warning btn-sm update">Update</button>
-//                           <button type="button" name="delete" eventID="' . $sqlRow["eventID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
-            
-            $dataRow[] = '<button type="button" name="delete" eventID="' . $sqlRow["eventID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
+    //  $dataRow[] = '<button type="button" name="delete" eventID="' . $sqlRow["eventID"] . '" class="btn btn-danger btn-sm delete" >Delete</button>';
             
             
             $dataTable[] = $dataRow;
@@ -93,43 +91,44 @@ class VolunteerEventsM
         }
     }
     
-//     public function updateEvent()
-//     {
-//         global $conn;
-        
-//         if ($_POST['eventID']) {
-            
-//             $sqlQuery = "UPDATE volunteer_events
-//                             SET
-//                             title = :title,
-//                             description = :description,
-//                             type = :type,
-//                             startdate = :startdate,
-//                             enddate = :enddate,
-//                             link = :link,
-//                             available_spots = :available_spots,
-//                             needed_skills = :needed_skills,
-//                             age_minumum = :age_minumum,
-//                             needed_skills = :needed_skills,
-//                             organizer = :organizer,
-//                             approved_by = :approved_by
-//                             WHERE eventID = :eventID";
-//             $stmt = $conn->prepare($sqlQuery);
-//             $stmt->bindValue(':title', $_POST["title"]);
-//             $stmt->bindValue(':description', $_POST["description"]);
-//             $stmt->bindValue(':type', $_POST["type"]);
-//             $stmt->bindValue(':startdate', $_POST["startdate"]);
-//             $stmt->bindValue(':enddate', $_POST["enddate"]);
-//             $stmt->bindValue(':link', $_POST["link"]);
-//             $stmt->bindValue(':available_spots', $_POST["available_spots"]);
-//             $stmt->bindValue(':needed_skills', $_POST["needed_skills"]);
-//             $stmt->bindValue(':age_minumum', $_POST["age_minumum"]);
-//             $stmt->bindValue(':organizer', $_POST["organizer"]);
-//             $stmt->bindValue(':approved_by', $_POST["approved_by"]);
-//             $stmt->bindValue(':eventID', $_POST["eventID"]);
-//             $stmt->execute();
-//         }
-//     }
+    public function updateEvent()
+        {
+            global $conn;
+    
+            if ($_POST['eventID']) {
+    
+                $sqlQuery = "UPDATE volunteer_events
+                                SET
+                                title = :title,
+                                description = :description,
+                                type = :type,
+                                startdate = :startdate,
+                                enddate = :enddate,
+                                link = :link,
+                                available_spots = :available_spots,
+                                needed_skills = :needed_skills,
+                                age_minumum = :age_minumum,
+                                needed_skills = :needed_skills,
+                                organizer = :organizer,
+                                approved_by = :approved_by
+                                WHERE eventID = :eventID";
+                $stmt = $conn->prepare($sqlQuery);
+                $stmt->bindValue(':title', $_POST["title"]);
+                $stmt->bindValue(':description', $_POST["description"]);
+                $stmt->bindValue(':type', $_POST["type"]);
+                $stmt->bindValue(':startdate', $_POST["startdate"]);
+                $stmt->bindValue(':enddate', $_POST["enddate"]);
+                $stmt->bindValue(':link', $_POST["link"]);
+                $stmt->bindValue(':available_spots', $_POST["available_spots"]);
+                $stmt->bindValue(':needed_skills', $_POST["needed_skills"]);
+                $stmt->bindValue(':age_minumum', $_POST["age_minumum"]);
+                $stmt->bindValue(':organizer', $_POST["organizer"]);
+                $stmt->bindValue(':approved_by', $_POST["approved_by"]);
+                $stmt->bindValue(':eventID', $_POST["eventID"]);
+                $stmt->execute();
+            }
+        }
+    
     
     public function addEvent()
     {
@@ -173,7 +172,7 @@ class VolunteerEventsM
 
 
 
-$event = new VolunteerEventsM();
+$event = new VolunteerEvents();
 
 if(!empty($_POST['action']) && $_POST['action'] == 'listEvent') {
     $event->listEvent();
@@ -190,3 +189,4 @@ if(!empty($_POST['action']) && $_POST['action'] == 'deleteEvent') {
 
 
 ?>
+
