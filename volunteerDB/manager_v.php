@@ -47,7 +47,7 @@ li {
 
 li a {
   display: block;
-  color: black;
+  color: white;
   font-family: "Verdana";
   text-align: center;
   padding-top: 15px;

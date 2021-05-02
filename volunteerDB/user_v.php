@@ -37,7 +37,7 @@ li {
 
 li a {
   display: block;
-  color: black;
+  color: white;
   text-align: center;
   font-family: "Verdana"; 
   padding-top: 15px;
