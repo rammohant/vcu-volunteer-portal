@@ -47,7 +47,7 @@ li a {
 }
 
 li a:hover {
-/*   background-color: #111; */
+ background-color: #111;
 }
 
 table {

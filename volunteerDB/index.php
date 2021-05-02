@@ -34,7 +34,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-/*   background-color: #333; */
+  background-color: #333;
 /*   float: right; */
 }
 
@@ -54,12 +54,17 @@ li a {
 }
 
 li a:hover {
-/*   background-color: #111; */
+    background-color: #111;
 }
 
 table {
-  background-color: #111;
+  width: 100%; 
+  background-color: #615F5F;
   opacity: 0.80;
+}
+
+tr{
+    color: #EEEAE9;
 }
 
 </style>
