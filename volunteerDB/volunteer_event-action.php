@@ -1,4 +1,3 @@
-<!-- will allow ALL users to see volunteer opportunities and sign up if wanted -->
 <?php
 require_once ('connection.php');
 
@@ -17,7 +16,7 @@ class VolunteerEvent
                             v.available_spots as 'Available Spots',
                             v.needed_skills as 'Skills Needed',
                             v.age_minimum as 'Age Minimum'   
-                     FROM  v_volunteer_opps v";
+                     FROM  v_volunteer_ops v";
        
 
         $stmt = $conn->prepare($sqlQuery);

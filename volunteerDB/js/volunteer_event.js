@@ -13,6 +13,7 @@ $(document).ready(function(){
 					action:'listVolunteerEvent'
 				 },
 			dataType:"json"
+		
 		}
 	});
 	
