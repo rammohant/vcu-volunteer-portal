@@ -10,7 +10,6 @@ h2 {
     font-size: 30px; 
     padding-top: 25px; 
     font-family: "Verdana";
-    font-weight: bold; 
 }
 
 p {
@@ -19,9 +18,11 @@ p {
     font-family: "Verdana"; 
     
 }
+
 div {
     text-align: center;
 }
+
 body {
     background-image:url('bg.png'); 
     height: 100%;
@@ -29,6 +30,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -57,16 +59,16 @@ li a:hover {
     background-color: #111;
 }
 
-table {
-  width: 100%; 
-  background-color: #615F5F;
-  opacity: 0.80;
-}
+/* table { */
+/*   width: 100%;  */
+/*   background-color: #615F5F; */
+/*   opacity: 0.80; */
+/* } */
 
-tr{
-    color: #EEEAE9;
-    font-family: "Verdana";
-}
+/* tr{ */
+/*     color: #EEEAE9; */
+/*     font-family: "Verdana"; */
+/* } */
 
 </style>
 
@@ -81,8 +83,7 @@ tr{
 <body>
 
 <ul>
-	<li><a href="#" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-    <li class="active"><a href="#">Home</a></li>
+	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
 	<li><a href="signup.php">Sign up</a></li>
@@ -92,7 +93,7 @@ tr{
 <!-- <div class="container-fluid mt-3 mb-3"> -->
 	<h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
-		<table id="volunteer_events" class="table-dark">
+		<table id="volunteer_events" class="table table-dark table-stripped">
 			<thead>
 				<tr>
 					<th>ID</th>

@@ -86,8 +86,7 @@ tr{
 <body>
 
 <ul>
-	<li><a href="#" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-    <li><a href="index.php">Home</a></li>
+	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
 	<li><a href="signup.php">Sign up</a></li>
