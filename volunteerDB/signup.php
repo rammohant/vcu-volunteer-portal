@@ -82,16 +82,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password, $param_firstname, $param_type);
-
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_firstname = $first_name;
             $param_lastname = $last_name;
-            $param_type = 'volunteer'; 
+            $param_type = 'volunteer';
             
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
+
+
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to login page
@@ -180,6 +181,11 @@ table {
 	background-color: #111;
 	opacity: 0.80;
 }
+
+div { 
+
+}
+
 </style>
 </head>
 <body>

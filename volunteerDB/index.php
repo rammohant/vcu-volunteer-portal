@@ -9,7 +9,7 @@ h2 {
     text-align: center;
     font-size: 30px; 
     padding-top: 25px; 
-    font-family: "Andale Mono";
+    font-family: "Verdana";
     font-weight: bold; 
 }
 
@@ -65,6 +65,7 @@ table {
 
 tr{
     color: #EEEAE9;
+    font-family: "Verdana";
 }
 
 </style>

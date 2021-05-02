@@ -64,6 +64,8 @@ table {
   background-color: #111;
   opacity: 0.80;
 }
+
+
 </style>
 <?php require_once('header.php'); ?>
 
