@@ -5,12 +5,17 @@
 <style type="text/css">
 h2 {
     text-align: center;
-    font-family: Verdana;
-    font-size: 25px; 
+    font-size: 30px; 
+    padding-top: 25px; 
+    font-family: "Verdana";
+    font-weight: bold; 
 }
+
 p {
     text-align: center;
-    font-family: ;
+    font-size: 13px;
+    font-family: "Verdana"; 
+    
 }
 div {
     text-align: center;
@@ -27,7 +32,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-/*   background-color: #333; */
+  background-color: #333;
 /*   float: right; */
 }
 
@@ -47,12 +52,18 @@ li a {
 }
 
 li a:hover {
- background-color: #111;
+    background-color: #111;
 }
 
 table {
-  background-color: #111;
-  opacity: 0.90;
+  width: 100%; 
+  background-color: #615F5F;
+  opacity: 0.80;
+}
+
+tr{
+    color: #EEEAE9;
+    font-family: "Verdana";
 }
 </style>
 
@@ -76,7 +87,7 @@ table {
     <p>Check out all the events you've signed up for!</p>
         	
 	<div class="table-responsive">
-		<table id="t_v_volunteer_events" class="table table-bordered table-striped">
+		<table id="t_v_volunteer_events" class="table table-bordered">
 			<thead>
 				<tr>
 					<th>ID</th>

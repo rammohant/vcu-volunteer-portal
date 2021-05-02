@@ -17,7 +17,11 @@ class VolunteerEvent
                             v.needed_skills as 'Skills Needed',
                             v.age_minimum as 'Age Minimum'   
                      FROM  v_volunteer_ops v";
-       
+        
+        // Search by title, description, or type
+        if (! empty($_POST["search"]["value"])) {
+            $sqlQuery .= 'WHERE (v.Title LIKE "%' . $_POST["search"]["value"] . '%" OR v.Description LIKE "%' . $_POST["search"]["value"] . '%") ';
+        }
 
         $stmt = $conn->prepare($sqlQuery);
         $stmt->execute();
@@ -39,16 +43,7 @@ class VolunteerEvent
             $dataRow[] = $sqlRow['Available Spots'];
             $dataRow[] = $sqlRow['Skills Needed'];
             $dataRow[] = $sqlRow['Age Minimum'];
-
-            //             $dataRow[] = $sqlRow['eventID'];
-            //             $dataRow[] = $sqlRow['title'];
-            //             $dataRow[] = $sqlRow['description'];
-            //             $dataRow[] = $sqlRow['link'];
-            //             $dataRow[] = $sqlRow['type'];
-            //             $dataRow[] = $sqlRow['startdate'];
-            //             $dataRow[] = $sqlRow['available_spots'];
-            //             $dataRow[] = $sqlRow['needed_skills'];
-            //             $dataRow[] = $sqlRow['age_minimum'];
+            
             $dataTable[] = $dataRow;
         }
         

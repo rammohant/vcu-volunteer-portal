@@ -3,8 +3,8 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$email = $password = $confirm_password = "";
-$email_err = $password_err = $confirm_password_err = "";
+$email = $password = $first_name = $last_name = $confirm_password = "";
+$email_err = $password_err = $firstname_err = $lastname_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -125,67 +125,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 h2 {
-	text-align: center;
-	font-size: 30px;
-	padding-top: 25px;
-	font-family: "Andale Mono";
-	font-weight: bold;
+    text-align: center;
+    font-size: 30px; 
+    padding-top: 25px; 
+    font-family: "Verdana";
+    font-weight: bold; 
 }
 
 p {
-	text-align: center;
-	font-size: 13px;
-	font-family: "Verdana";
+    text-align: center;
+    font-size: 13px;
+    font-family: "Verdana"; 
+    
 }
-
 div {
-	text-align: center;
+    text-align: center;
 }
-
 body {
-	background-image: url('bg.png');
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+    background-image:url('bg.png'); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
 ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-	/*   float: right; */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+/*   float: right; */
 }
 
 li {
-	float: left;
+  float: left;
 }
 
 li a {
-	display: block;
-	color: black;
-	text-align: center;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      padding-right: 15px; 
-	text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "Verdana"; 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px; 
+  text-decoration: none;
 }
 
 li a:hover {
-	background-color: #111; 
+    background-color: #111;
 }
 
 table {
-	background-color: #111;
-	opacity: 0.80;
+  width: 100%; 
+  background-color: #615F5F;
+  opacity: 0.80;
 }
 
-div { 
-
+tr{
+    color: #EEEAE9;
+    font-family: "Verdana";
 }
 
+
+ #wrapper {
+     margin: 0 auto;
+ }
+ 
 </style>
 </head>
 <body>
@@ -204,18 +210,18 @@ div {
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
 						<div class="form-group">
-							<label>email</label> <input type="text" name="email"
+							<label>Email</label> <input type="text" name="email"
 								class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $email; ?>"> <span class="invalid-feedback"><?php echo $email_err; ?></span>
 						</div>
 						<div class="form-group">
-							<label>first_name</label> <input type="text" name="first_name"
+							<label>First Name</label> <input type="text" name="first_name"
 								class="form-control <?php echo (!empty($firstname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $first_name; ?>"> <span
 								class="invalid-feedback"><?php echo $firstname_err; ?></span>
 						</div>
 						<div class="form-group">
-							<label>last_name</label> <input type="text" name="last_name"
+							<label>Last Name</label> <input type="text" name="last_name"
 								class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $last_name; ?>"> <span
 								class="invalid-feedback"><?php echo $lastname_err; ?></span>

@@ -92,7 +92,7 @@ tr{
 <div class="container-fluid mt-3 mb-3">
 	<h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
-		<table id="volunteer_events" class="table table-bordered table-striped">
+		<table id="volunteer_events" class="table table-bordered">
 			<thead>
 				<tr>
 					<th>ID</th>

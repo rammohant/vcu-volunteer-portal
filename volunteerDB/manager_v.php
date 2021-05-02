@@ -12,9 +12,11 @@
 h2 {
     text-align: center;
     font-size: 30px; 
-    font-family: "Andale Mono";
+    padding-top: 25px; 
+    font-family: "Verdana";
     font-weight: bold; 
 }
+
 p {
     text-align: center;
     font-size: 13px;
@@ -37,7 +39,6 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  
 /*   float: right; */
 }
 
@@ -48,8 +49,8 @@ li {
 li a {
   display: block;
   color: white;
-  font-family: "Verdana";
   text-align: center;
+  font-family: "Verdana"; 
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 15px; 
@@ -61,8 +62,14 @@ li a:hover {
 }
 
 table {
-  background-color: #111;
+  width: 100%; 
+  background-color: #615F5F;
   opacity: 0.80;
+}
+
+tr{
+    color: #EEEAE9;
+    font-family: "Verdana";
 }
 
 
@@ -94,7 +101,7 @@ table {
 	</div> 
         	
 	<div class="table-responsive">
-		<table id="t_m_volunteer_event" class="table table-bordered table-striped">
+		<table id="t_m_volunteer_event" class="table table-bordered">
 			<thead>
 				<tr>
 					<th>eventID</th>
@@ -114,79 +121,6 @@ table {
 		</table>
 	</div>
 </div>
-
-<!-- <div id="event-modal" class="modal fade"> -->
-<!-- 	<div class="modal-dialog"> -->
-<!-- 		<form method="post" id="event-form"> -->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<h4 class="modal-title">Edit Event</h4> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body"> -->
-<!-- 					<div class="form-group"> -->
-
-<!-- 						<label>Title</label><input type="text" class="form-control" id="title" placeholder="Enter title" required> -->
-						
-<!-- 						<label>Description</label> <input type="text" class="form-control" id="description" placeholder="Enter description"> -->
-						
-<!-- 						<label>Start Date</label> <input type="text" class="form-control" id="startdate" placeholder="Enter start date" required> -->
-						
-<!-- 						<label>End Date</label> <input type="text" class="form-control" id="enddate" placeholder="Enter end date"> -->
-						
-<!-- 						<label>Link</label> <input type="text" class="form-control" id="startdate" placeholder="Enter link"> -->
-						
-<!-- 						<label>Available Spots</label> <input type="number" class="form-control" id="available_spots"> -->
-						
-<!-- 						<label>Skills Needed</label> <input type="text" class="form-control" id="needed_skills" placeholder="Enter skills needed"> -->
-																							
-<!-- 						<label>Type</label> -->
-<!-- 						<select class="form-control" id="department" required> -->
-            			    <?php
-//             			        $sqlQuery = "SELECT DISTINCT type from volunteer_events";
-//             			        $stmt = $conn->prepare($sqlQuery);
-//             			        $stmt->execute();
-//             			        while ($row = $stmt->fetch()) {
-//             			            echo "<option value=\"" . $row["type"] . "\">" . $row["type"] . "</option>";
-//             			        }
-//                             ?>
-<!--             			</select> -->
-            			
-<!--             			<label>Organizer</label> -->
-<!-- 						<select class="form-control" id="manager" required> -->
-            			    <?php
-//             			        $sqlQuery = "SELECT userID, CONCAT(first_name, ' ', last_name) as 'name' from users where type like 'organizer'";
-//             			        $stmt = $conn->prepare($sqlQuery);
-//             			        $stmt->execute();
-//             			        while ($row = $stmt->fetch()) {
-//             			            echo "<option value=\"" . $row["userID"] . "\">" . $row["name"] . "</option>";
-//             			        }
-//                             ?>
-<!--             			</select> -->
-            			
-<!--             			<label>Approved By</label> -->
-<!-- 						<select class="form-control" id="job" required> -->
-            			    <?php
-//             			        $sqlQuery = "SELECT userID, CONCAT(first_name, ' ', last_name) as 'name' from users where type like 'admin'";
-//             			        $stmt = $conn->prepare($sqlQuery);
-//             			        $stmt->execute();
-//             			        while ($row = $stmt->fetch()) {
-//             			            echo "<option value=\"" . $row["userID"] . "\">" . $row["name"] . "</option>";
-//             			        }
-//                             ?>
-<!--             			</select> -->
-
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<input type="hidden" name="ID" id="ID"/> -->
-<!-- 					<input type="hidden" name="action" id="action" value=""/> -->
-<!-- 					<input type="submit" name="save" id="save" class="btn btn-info" value="Save" /> -->
-<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</form> -->
-<!-- 	</div> -->
-<!-- </div> -->
 
 </body>
 </html>
