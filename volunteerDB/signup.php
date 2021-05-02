@@ -27,33 +27,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter a email.";
     } else {
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE email = ?";
+        $email = trim($_POST["email"]);
+        
+//         // Prepare a select statement
+//         $sql = "SELECT id FROM users WHERE email = ?";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
+//         if ($stmt = mysqli_prepare($link, $sql)) {
+//             // Bind variables to the prepared statement as parameters
+//             mysqli_stmt_bind_param($stmt, "s", $param_email);
 
-            // Set parameters
-            $param_email = trim($_POST["email"]);
+//             // Set parameters
+//             $param_email = trim($_POST["email"]);
 
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                /* store result */
-                mysqli_stmt_store_result($stmt);
+//             // Attempt to execute the prepared statement
+//             if (mysqli_stmt_execute($stmt)) {
+//                 /* store result */
+//                 mysqli_stmt_store_result($stmt);
 
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    $email_err = "This email is already taken.";
-                } else {
-                    $email = trim($_POST["email"]);
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+//                 if (mysqli_stmt_num_rows($stmt) == 1) {
+//                     $email_err = "This email is already taken.";
+//                 } else {
+//                     $email = trim($_POST["email"]);
+//                 }
+//             } else {
+//                 echo "Oops! Something went wrong. Please try again later.";
+//             }
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
+//             // Close statement
+//             mysqli_stmt_close($stmt);
+//         }
     }
 
     // Validate password
@@ -82,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
+
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
@@ -90,15 +93,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_type = 'volunteer';
             
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
-
+            mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to login page
                 header("location: login.php");
             } else {
-                echo "Uh oh! Something went wrong. Please try again later.";
+                $result = '<div style="position:absolute; bottom:2px;">Uh oh, something went wrong!</div>';
+                echo $result;
             }
 
             // Close statement
