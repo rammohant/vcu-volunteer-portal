@@ -97,11 +97,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: login.php");
+                // Redirect to home page
+                header("location: index.php");
+                echo '<script>alert("You have successfully created a VDASH account!")</script>';
+                 
             } else {
-                $result = '<div style="position:absolute; bottom:2px;">Uh oh, something went wrong!</div>';
-                echo $result;
+                echo '<script>alert("You have successfully created a VDASH account!")</script>';
             }
 
             // Close statement
@@ -200,8 +201,7 @@ tr{
 <body>
 
 	<ul>
-    	<li><a href="#" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
-        <li><a href="index.php">Home</a></li>
+    	<li><a href="index.php" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
     	<li><a href="user_v.php">Volunteer Portal</a></li>
     	<li><a href="manager_v.php">Manager Portal</a></li>
     	<li class="active"><a href="signup.php">Sign up</a></li>
@@ -210,8 +210,11 @@ tr{
 	<div class="wrapper">
 		<h2>Sign Up</h2>
 		<p>Create a VDASH volunteer account by completing this form:</p>
+			<div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
+				<div class="row justify-content-center">
+				<div class="col-4">
 						<div class="form-group">
 							<label>Email</label> <input type="text" name="email"
 								class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
@@ -248,7 +251,10 @@ tr{
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.
 						</p>
+					</div>
+					</div>
 			</form>
+			</div>
 		</div>
 </body>
 </html>
