@@ -51,6 +51,7 @@ li a {
   color: white;
   text-align: center;
   font-family: "Verdana"; 
+  font-size: 15px; 
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 15px; 
@@ -101,7 +102,7 @@ tr{
 	</div> 
         	
 	<div class="table-responsive">
-		<table id="t_m_volunteer_event" class="table table-bordered">
+		<table id="t_m_volunteer_event" class="table table-bordered table-inverse">
 			<thead>
 				<tr>
 					<th>eventID</th>

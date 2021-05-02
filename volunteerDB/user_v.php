@@ -87,7 +87,7 @@ tr{
     <p>Check out all the events you've signed up for!</p>
         	
 	<div class="table-responsive">
-		<table id="t_v_volunteer_events" class="table table-bordered">
+		<table id="t_v_volunteer_events" class="table table-bordered table-inverse">
 			<thead>
 				<tr>
 					<th>ID</th>

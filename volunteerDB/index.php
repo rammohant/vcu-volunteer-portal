@@ -89,10 +89,10 @@ tr{
 	
 </ul>
 
-<div class="container-fluid mt-3 mb-3">
+<!-- <div class="container-fluid mt-3 mb-3"> -->
 	<h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
-		<table id="volunteer_events" class="table table-bordered">
+		<table id="volunteer_events" class="table-dark">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -108,7 +108,7 @@ tr{
 			</thead>
 		</table>
 	</div>
-</div>
+<!-- </div> -->
 
 </body>
 </html>
