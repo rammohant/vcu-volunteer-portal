@@ -85,7 +85,7 @@ tr{
 
 global $conn;
 
-$sql = "SELECT s.eventID, v.title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills,v.age_minimum, v.organization, v.number, v.email
+$sql = "SELECT s.eventID, title, description, link, type, DateRange, available_spots, needed_skills,age_minimum, organization, number, email
 FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID";
                      
 if($result = mysqli_query($link, $sql)){
@@ -107,16 +107,16 @@ if($result = mysqli_query($link, $sql)){
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-            echo "<td>" . $row['v.title'] . "</td>";
-            echo "<td>" . $row['v.description'] . "</td>";
-            echo "<td>" . $row['v.organization'] . "</td>";
-            echo "<td>" . $row['v.email'] . "</td>";
-            echo "<td>" . $row['v.link'] . "</td>";
-            echo "<td>" . $row['v.type'] . "</td>";
-            echo "<td>" . $row['v.DateRange'] . "</td>";
-            echo "<td>" . $row['v.available_spots'] . "</td>";
-            echo "<td>" . $row['v.needed_skills'] . "</td>";
-            echo "<td>" . $row['v.age_minimum'] . "</td>";
+            echo "<td>" . $row['title'] . "</td>";
+            echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['organization'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['link'] . "</td>";
+            echo "<td>" . $row['type'] . "</td>";
+            echo "<td>" . $row['DateRange'] . "</td>";
+            echo "<td>" . $row['available_spots'] . "</td>";
+            echo "<td>" . $row['needed_skills'] . "</td>";
+            echo "<td>" . $row['age_minimum'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
