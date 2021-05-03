@@ -2,14 +2,14 @@
 require_once 'connection.php'; // Using database connection file here
 global $conn;
 
-$eventID = $_GET['ID']; // get id through query string
+$eventID = $_GET['eventID']; // get id through query string
 $userID = $_SESSION['userID']; 
 
-$insert = mysqli_query($db,"INSERT INTO volunteer_signup(eventID,volunteerID) VALUES('$eventID','$userID')"); // insert query
+$insert = mysqli_query($link,"INSERT INTO volunteer_signup(eventID,volunteerID) VALUES('$eventID','$userID')"); // insert query
 
-if($del)
+if($insert)
 {
-    mysqli_close($conn); // Close connection
+    mysqli_close($link); // Close connection
     header("location:index.php"); // redirects to all records page
     exit;	
 }
