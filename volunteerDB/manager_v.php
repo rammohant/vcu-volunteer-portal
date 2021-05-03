@@ -85,10 +85,10 @@ li a:hover {
 
 global $conn;
 
-$username = $_SESSION['username'];
+$username = $_SESSION['userID'];
 
 $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
-                     FROM v_volunteer_ops";
+                     FROM v_volunteer_ops v";
 
 // $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
 //                      FROM v_volunteer_ops v where organizer=$userID";
