@@ -127,10 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
-.wrapper {
-	width: 350px;
-	padding: 20px;
-}
 
 h2 {
     text-align: center;
@@ -183,22 +179,6 @@ li a {
 li a:hover {
     background-color: #111;
 }
-
-div.wrapper
-{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-
-form 
-{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
  
 </style>
 </head>
@@ -214,6 +194,7 @@ form
 	<div class="wrapper">
 		<h2>Sign Up</h2>
 		<p>Create a VDASH volunteer account by completing this form:</p>
+        <div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
 						<div class="form-group">
@@ -254,5 +235,6 @@ form
 						</p>
 			</form>
 		</div>
+        </div>
 </body>
 </html>

@@ -86,8 +86,8 @@ li a:hover {
 	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
+  <li><a href="orgs.php">Organizations</a></li>
 	<li><a href="register.php">Register</a></li>
-  <li><a href="signup.php">Sign Up</a></li>
 	
 </ul>
 
@@ -117,7 +117,6 @@ li a:hover {
 	<div class="table-responsive">
 		<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>
 				<tr>
-					<td>ID</td>
 					<td>Title</td>
 					<td>Description</td>
 					<td>Link</td>
@@ -126,11 +125,12 @@ li a:hover {
 					<td>Available Spots</td>
 					<td>Skills Needed</td>
 					<td>Age Minimum</td>
+          <td></td>
 				</tr>
 
       <?php
 
-        $records = mysqli_query($link,"SELECT v.eventID as `ID`,
+        $records = mysqli_query($link,"SELECT v.eventID,
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -145,15 +145,15 @@ li a:hover {
         {
         ?>
           <tr>
-            <td><?php echo $data['ID']; ?></td>
             <td><?php echo $data['Title']; ?></td>
+            <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    
             <td><?php echo $data['Type']; ?></td>   
             <td><?php echo $data['Date']; ?></td>     
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['ID']; ?>">Sign Up</a></td>
+            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
           </tr>	
         <?php
         }
