@@ -78,15 +78,20 @@ li a:hover {
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
-	<li><a href="signup.php">Sign up</a></li>
+	<li><a href="register.php">Register</a></li>
 </ul>
 
 <?php 
 
 global $conn;
 
+$username = $_SESSION['username'];
+
 $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
-                     FROM v_volunteer_ops v where organizer=$userID";
+                     FROM v_volunteer_ops";
+
+// $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
+//                      FROM v_volunteer_ops v where organizer=$userID";
                      
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
@@ -116,6 +121,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['needed_skills'] . "</td>";
             echo "<td>" . $row['age_minimum'] . "</td>";
             echo "<td>" . $row['approver'] . "</td>";
+            echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

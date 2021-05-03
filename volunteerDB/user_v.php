@@ -78,7 +78,7 @@ tr{
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li class="active"><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
-	<li><a href="signup.php">Sign up</a></li>
+	<li><a href="register.php">Register</a></li>
 </ul>
 
 <?php 
@@ -86,7 +86,7 @@ tr{
 global $conn;
 
 $sql = "SELECT s.eventID, v.Title, v.description,v.link, v.type, v.DateRange, v.available_spots, v.needed_skills,v.age_minimum, v.organization, v.number, v.email
-FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID where volunteerID=$userID";
+FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID";
                      
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){

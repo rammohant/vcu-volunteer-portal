@@ -86,11 +86,12 @@ li a:hover {
 	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
-	<li><a href="signup.php">Sign up</a></li>
+	<li><a href="register.php">Register</a></li>
+  <li><a href="signup.php">Sign Up</a></li>
 	
 </ul>
 
-<!-- <div class="container-fluid mt-3 mb-3"> -->
+<!-- <div class="container-fluid mt-3 mb-3"> 
 	<h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
 		<table id="volunteer_events" class="table table-dark table-stripped">
@@ -109,7 +110,56 @@ li a:hover {
 			</thead>
 		</table>
 	</div>
-<!-- </div> -->
+</div>
+<div class="container-fluid mt-3 mb-3"> -->
+
+<h2>Volunteer Opportunities</h2>
+	<div class="table-responsive">
+		<table class="table table-dark table-stripped">
+				<tr>
+					<td>ID</td>
+					<td>Title</td>
+					<td>Description</td>
+					<td>Link</td>
+					<td>Type</td>
+					<td>Date</td>
+					<td>Available Spots</td>
+					<td>Skills Needed</td>
+					<td>Age Minimum</td>
+				</tr>
+
+      <?php
+
+        $records = mysqli_query($conn,"SELECT v.eventID as `ID`,
+        v.Title as `Title`,
+        v.description as `Description`,
+        v.link as 'Link',
+        v.type as 'Type',
+        v.DateRange as `Date`,
+        v.available_spots as 'Available Spots',
+        v.needed_skills as 'Skills Needed',
+        v.age_minimum as 'Age Minimum'   
+ FROM  v_volunteer_ops v"); // fetch data from database
+
+        while($data = mysqli_fetch_array($records))
+        {
+        ?>
+          <tr>
+            <td><?php echo $data['ID']; ?></td>
+            <td><?php echo $data['Title']; ?></td>
+            <td><?php echo $data['Link']; ?></td>    
+            <td><?php echo $data['Type']; ?></td>   
+            <td><?php echo $data['Date']; ?></td>     
+            <td><?php echo $data['Available Spots']; ?></td>    
+            <td><?php echo $data['Skills Needed']; ?></td>    
+            <td><?php echo $data['Age Minimum']; ?></td>    
+            <td><a href="signup.php?id=<?php echo $data['ID']; ?>">Sign Up</a></td>
+          </tr>	
+        <?php
+        }
+        ?>
+		</table>
+	</div>
 
 </body>
 </html>
