@@ -98,9 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to home page
+                echo '<script type="text/javascript">';
+                echo ' alert("You have successfully created a VDASH account")';  //not showing an alert box.
+                echo '</script>';
                 header("location: index.php");
-                echo '<script>alert("You have successfully created a VDASH account!")</script>';
-                 
+                echo '<script type="text/javascript">';
+                echo ' alert("You have successfully created a VDASH account UH OH")';  //not showing an alert box.
+                echo '</script>';
             } else {
                 echo '<script>alert("You have successfully created a VDASH account!")</script>';
             }
@@ -180,7 +184,15 @@ li a:hover {
     background-color: #111;
 }
 
-.wrapper
+div.wrapper
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+form 
 {
     display: inline-block;
     margin-left: auto;
