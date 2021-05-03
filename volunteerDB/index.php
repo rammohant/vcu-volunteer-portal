@@ -117,6 +117,7 @@ li a:hover {
 	<div class="table-responsive">
 		<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>
 				<tr>
+          <td>ID</td>
 					<td>Title</td>
 					<td>Description</td>
 					<td>Link</td>
@@ -130,7 +131,7 @@ li a:hover {
 
       <?php
 
-        $records = mysqli_query($link,"SELECT v.eventID,
+        $records = mysqli_query($link,"SELECT v.eventID as 'ID',
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -145,6 +146,7 @@ li a:hover {
         {
         ?>
           <tr>
+            <td><?php echo $data['ID']; ?></td>
             <td><?php echo $data['Title']; ?></td>
             <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    
@@ -153,7 +155,7 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
+            <td><a href="signup.php?id=<?php echo $data['ID']; ?>">Sign Up</a></td>
           </tr>	
         <?php
         }

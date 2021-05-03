@@ -98,15 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to home page
-                echo '<script type="text/javascript">';
-                echo ' alert("You have successfully created a VDASH account")';  //not showing an alert box.
-                echo '</script>';
+                echo "You have successfully created a VDASH account!";
                 header("location: index.php");
-                echo '<script type="text/javascript">';
-                echo ' alert("You have successfully created a VDASH account UH OH")';  //not showing an alert box.
-                echo '</script>';
             } else {
-                echo '<script>alert("You have successfully created a VDASH account!")</script>';
+                echo 'You have successfully created a VDASH account!';
             }
 
             // Close statement
@@ -197,6 +192,8 @@ li a:hover {
         <div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
+                <div class="row justify-content-center">
+				<div class="col-4">
 						<div class="form-group">
 							<label>Email</label> <input type="text" name="email"
 								class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
@@ -233,6 +230,8 @@ li a:hover {
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.
 						</p>
+                    </div> 
+                    </div>
 			</form>
 		</div>
         </div>

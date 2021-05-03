@@ -2,19 +2,28 @@
 require_once 'connection.php'; // Using database connection file here
 global $conn;
 
-$eventID = $_GET['eventID']; // get id through query string
-$userID = $_SESSION['userID']; 
+$eventID = $userID = ""; 
+// Prepare an insert statement
+$sql = "INSERT INTO volunteer_signup(eventID,volunteerID) VALUES (?, ?)";
 
-$insert = mysqli_query($link,"INSERT INTO volunteer_signup(eventID,volunteerID) VALUES('$eventID','$userID')"); // insert query
+if ($stmt = mysqli_prepare($link, $sql)) {
 
-if($insert)
-{
-    mysqli_close($link); // Close connection
-    header("location:index.php"); // redirects to all records page
-    exit;	
-}
-else
-{
-    echo "Error signing up for volunteer event"; // display error message if not delete
+    // Set parameters
+    $eventID = $_GET['ID']; // get id through query string
+    $userID = $_SESSION['userID']; 
+    
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($stmt,'ss', $ID, $userID);
+
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Redirect to home page
+        header("location: index.php");
+    } else {
+        echo 'You have successfully created a VDASH account!';
+    }
+
+    // Close statement
+    mysqli_stmt_close($stmt);
 }
 ?>
