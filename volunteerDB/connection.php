@@ -38,6 +38,7 @@ if (!isset($_SESSION['userID']))
         {
             // Create session variable
             $_SESSION['userID'] = $queryResult['userID'];
+            $username = $_SESSION['userID'];
             
             // Redirect to URL 
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
