@@ -115,7 +115,7 @@ li a:hover {
 
 <h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
-		<table class="table table-dark table-stripped">
+		<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>
 				<tr>
 					<td>ID</td>
 					<td>Title</td>
@@ -130,7 +130,7 @@ li a:hover {
 
       <?php
 
-        $records = mysqli_query($conn,"SELECT v.eventID as `ID`,
+        $records = mysqli_query($link,"SELECT v.eventID as `ID`,
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -139,7 +139,7 @@ li a:hover {
         v.available_spots as 'Available Spots',
         v.needed_skills as 'Skills Needed',
         v.age_minimum as 'Age Minimum'   
- FROM  v_volunteer_ops v"); // fetch data from database
+ FROM  v_volunteer_ops v"); 
 
         while($data = mysqli_fetch_array($records))
         {
