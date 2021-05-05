@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
     echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
-    echo "<tr><td>Link</td><td><input name='description' type='text'></td></tr>";
+    echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
     echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='int'></td></tr>";
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='int'></td></tr>";
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     
     try {
-        $stmt = $conn->prepare("INSERT INTO employees (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, adminID)
+        $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, adminID)
                                 VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :adminID)");
 
         $stmt->bindValue(':title', trim($_POST['title']));

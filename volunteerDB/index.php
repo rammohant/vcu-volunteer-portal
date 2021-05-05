@@ -120,7 +120,7 @@ li a:hover {
 
       <?php
 
-        $records = mysqli_query($link,"SELECT v.eventID,
+        $records = mysqli_query($link,"SELECT v.eventID as 'id',
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -135,7 +135,7 @@ li a:hover {
         {
         ?>
           <tr>
-            <td><?php echo $data['eventID']; ?></td>
+            <td><?php echo $data['id']; ?></td>
             <td><?php echo $data['Title']; ?></td>
             <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    
@@ -144,7 +144,7 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
+            <td><a href="signup.php?id=<?php echo $data['id']; ?>">Sign Up</a></td>
           </tr>	
         <?php
         }
@@ -173,7 +173,7 @@ li a:hover {
 
       <?php
 
-        $records = mysqli_query($link,"SELECT s.eventID, 
+        $records = mysqli_query($link,"SELECT v.eventID, 
         v.title as 'Title', 
         v.description as 'Description', 
         Link, 
@@ -185,7 +185,7 @@ li a:hover {
         v.organization as 'Organization', 
         v.number as 'Contact Number', 
         v.email as 'Contact Email'
-        FROM v_all_volunteer_signups"); 
+        FROM v_all_volunteer_signups v"); 
 
         while($data = mysqli_fetch_array($records))
         {
@@ -206,7 +206,7 @@ li a:hover {
             <td><a href="delete.php?id=<?php echo $data['eventID']; ?>">Delete</a></td>
           </tr>	
         <?php
-        }
+        } 
         ?>
 		</table>
 	</div>

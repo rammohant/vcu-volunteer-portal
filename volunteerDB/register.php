@@ -3,7 +3,7 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$email = $password = $first_name = $last_name = $confirm_password = $languages = $skills = $vaccinated = "";
+$email = $password = $first_name = $last_name = $confirm_password = $university = $languages = $skills = $vaccinated = "";
 $email_err = $password_err = $firstname_err = $lastname_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $last_name = trim($_POST["last_name"]);
     }
 
+    $university = trim($_POST["university"]);
     $languages = trim($_POST["languages"]);
     $skills = trim($_POST["skills"]);
     $vaccinated = trim($_POST["vaccinated"]);
