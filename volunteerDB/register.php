@@ -3,7 +3,7 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$email = $password = $first_name = $last_name = $confirm_password = "";
+$email = $password = $first_name = $last_name = $confirm_password = $languages = $skills = $vaccinated = "";
 $email_err = $password_err = $firstname_err = $lastname_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
@@ -22,6 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $last_name = trim($_POST["last_name"]);
     }
+
+    if (empty(trim($_POST["last_name"]))) {
+        $lastname_err = "Please enter your last name.";
+    } else {
+        $last_name = trim($_POST["last_name"]);
+    }
+
+    $languages = trim($_POST["languages"]);
+    $skills = trim($_POST["skills"]);
+    $vaccinated = trim($_POST["vaccinated"]);
 
     // Validate email
     if (empty(trim($_POST["email"]))) {
@@ -210,6 +220,11 @@ li a:hover {
 								class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $last_name; ?>"> <span
 								class="invalid-feedback"><?php echo $lastname_err; ?></span>
+						</div>
+                        <div class="form-group">
+							<label>University</label> <input type="text" name="university"
+								class="form-control"
+								value="<?php echo $university;?>"> 
 						</div>
 						<div class="form-group">
 							<label>Password</label> <input type="password" name="password"

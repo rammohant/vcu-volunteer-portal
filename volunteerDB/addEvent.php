@@ -162,14 +162,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt = $conn->prepare("INSERT INTO employees (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, adminID)
                                 VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :adminID)");
 
-        $stmt->bindValue(':title', $_POST['title']);
-        $stmt->bindValue(':description', $_POST['description']);
-        $stmt->bindValue(':startdate', $_POST['startdate']);
-        $stmt->bindValue(':enddate', $_POST['enddate']);
-        $stmt->bindValue(':link', $_POST['link']);
-        $stmt->bindValue(':age_minimum', $_POST['age_minimum']);
-        $stmt->bindValue(':needed_skills', $_POST['needed_skills']);
-        $stmt->bindValue(':available_spots', $_POST['available_spots']);
+        $stmt->bindValue(':title', trim($_POST['title']));
+        $stmt->bindValue(':description', trim($_POST['description']));
+        $stmt->bindValue(':startdate', trim($_POST['startdate']));
+        $stmt->bindValue(':enddate', trim($_POST['enddate']));
+        $stmt->bindValue(':link', trim($_POST['link']));
+        $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
+        $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
+        $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
         
         
         if($_POST['type'] != -1) {

@@ -108,7 +108,6 @@ if($result = mysqli_query($link, $sql)){
         echo "<th>Skills Needed</th>";
         echo "<th>Age Minimum</th>";
         echo "<th>Approver</th>";
-        
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";

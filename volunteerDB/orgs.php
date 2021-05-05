@@ -156,5 +156,102 @@ if($result = mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 ?>
+
+<?php 
+
+global $conn;
+
+$sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
+                     FROM v_volunteer_ops v";
+                     
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        echo "<h2>Welcome to the Manager Portal</h2>";
+        echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+        echo "<tr>";
+        echo "<th>Title</th>";
+        echo "<th>Description</th>";
+        echo "<th>Link</th>";
+        echo "<th>Type</th>";
+        echo "<th>Date</th>";
+        echo "<th>Available Spots</th>";
+        echo "<th>Skills Needed</th>";
+        echo "<th>Age Minimum</th>";
+        echo "<th>Approver</th>";
+        echo "<th></th>";
+        echo "</tr>";
+        while($row = mysqli_fetch_array($result)){
+            echo "<tr>";
+            echo "<td>" . $row['Title'] . "</td>";
+            echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['link'] . "</td>";
+            echo "<td>" . $row['type'] . "</td>";
+            echo "<td>" . $row['DateRange'] . "</td>";
+            echo "<td>" . $row['available_spots'] . "</td>";
+            echo "<td>" . $row['needed_skills'] . "</td>";
+            echo "<td>" . $row['age_minimum'] . "</td>";
+            echo "<td>" . $row['approver'] . "</td>";
+            echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+?>
+
+<?php 
+
+global $conn;
+
+$sql = "SELECT s.eventID, title, description, link, type, DateRange, available_spots, needed_skills,age_minimum, organization, number, email
+FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID";
+                     
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        echo "<h2>Welcome to the Manager Portal</h2>";
+        echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+        echo "<tr>";
+        echo "<th>Title</th>";
+        echo "<th>Description</th>";
+        echo "<th>Organization</th>";
+        echo "<th>Email</th>";
+        echo "<th>Link</th>";
+        echo "<th>Type</th>";
+        echo "<th>Date</th>";
+        echo "<th>Available Spots</th>";
+        echo "<th>Skills Needed</th>";
+        echo "<th>Age Minimum</th>";
+        echo "</tr>";
+        while($row = mysqli_fetch_array($result)){
+            echo "<tr>";
+            echo "<td>" . $row['title'] . "</td>";
+            echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['organization'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['link'] . "</td>";
+            echo "<td>" . $row['type'] . "</td>";
+            echo "<td>" . $row['DateRange'] . "</td>";
+            echo "<td>" . $row['available_spots'] . "</td>";
+            echo "<td>" . $row['needed_skills'] . "</td>";
+            echo "<td>" . $row['age_minimum'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+?>
+
 </body>
 </html>

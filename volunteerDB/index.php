@@ -120,18 +120,18 @@ li a:hover {
           <td>ID</td>
 					<td>Title</td>
 					<td>Description</td>
-					<td>Link</td>
+					<td style='word-wrap: break-word'>Link</td>
 					<td>Type</td>
 					<td>Date</td>
 					<td>Available Spots</td>
 					<td>Skills Needed</td>
-					<td>Age Minimum</td>
+					<td>Age Min</td>
           <td></td>
 				</tr>
 
       <?php
 
-        $records = mysqli_query($link,"SELECT v.eventID as 'ID',
+        $records = mysqli_query($link,"SELECT v.eventID as 'id',
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -146,7 +146,7 @@ li a:hover {
         {
         ?>
           <tr>
-            <td><?php echo $data['ID']; ?></td>
+            <td><?php echo $data['id']; ?></td>
             <td><?php echo $data['Title']; ?></td>
             <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    
@@ -155,7 +155,7 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['ID']; ?>">Sign Up</a></td>
+            <td><a href="signup.php?id=<?php echo $data['id']; ?>">Sign Up</a></td>
           </tr>	
         <?php
         }
