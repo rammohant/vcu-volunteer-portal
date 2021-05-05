@@ -104,7 +104,7 @@ li a:hover {
 
 <h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
-		<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>
+		<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
 				<tr>
           <td>ID</td>
 					<td>Title</td>
@@ -135,7 +135,7 @@ li a:hover {
         {
         ?>
           <tr>
-            <td><?php echo $data['id']; ?></td>
+            <td><?php echo $data['eventID']; ?></td>
             <td><?php echo $data['Title']; ?></td>
             <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    

@@ -3,7 +3,7 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$email = $password = $first_name = $last_name = $confirm_password = $university = $languages = $skills = $vaccinated = "";
+$email = $password = $first_name = $last_name = $confirm_password = $university = $birthdate = $languages = $skills = $vaccinated = "";
 $email_err = $password_err = $firstname_err = $lastname_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $last_name = trim($_POST["last_name"]);
     }
 
+    $birthdate = trim($_POST["birthdate"]);
     $university = trim($_POST["university"]);
     $languages = trim($_POST["languages"]);
     $skills = trim($_POST["skills"]);
@@ -101,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_firstname = $first_name;
             $param_lastname = $last_name;
+            $param_university = $university;
             $param_type = 'volunteer';
             
             // Bind variables to the prepared statement as parameters
@@ -110,15 +112,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
-                header("location: index.php");
+                header("location: login.php");
             } else {
-                echo 'You have successfully created a VDASH account!';
+                echo 'You have not successfully created a VDASH account!';
             }
+
+            // //Insert into volunteers table now 
+            // $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
+            // $row = mysql_fetch_assoc($result); 
+            // $param_userID = ++$row['maximum'];
+
+            // $sql2 = "INSERT INTO users (userID, universityID) VALUES (?, ?)";
+
+            // if ($stmt2 = mysqli_prepare($link, $sql2)) {
+            //     // Bind variables to the prepared statement as parameters
+            //     mysqli_stmt_bind_param($stmt2,'ss', $param_userID, $param_university);
+
+            //     // Attempt to execute the prepared statement
+            //     if (mysqli_stmt_execute($stmt2)) {
+            //         // Redirect to home page
+            //         echo "You have successfully created a VDASH account!";
+            //         header("location: login.php");
+            //     } else {
+            //         echo 'You have not successfully created a VDASH account!';
+            //     }
+            // }
 
             // Close statement
             mysqli_stmt_close($stmt);
         }
     }
+
+    $newID = 
+
+    $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills) VALUES (?, ?, ?, ?, ?)";
 
     // Close connection
     mysqli_close($link);
@@ -221,6 +248,11 @@ li a:hover {
 								class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>"
 								value="<?php echo $last_name; ?>"> <span
 								class="invalid-feedback"><?php echo $lastname_err; ?></span>
+						</div>
+                        <div class="form-group">
+                            <label>Birthday</label> <input type="date" name="birthdate"
+                                    class="form-control"
+                                    value="<?php echo $birthdate;?>"> 
 						</div>
                         <div class="form-group">
 							<label>University</label> <input type="text" name="university"

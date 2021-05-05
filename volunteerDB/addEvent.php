@@ -56,7 +56,9 @@ li a:hover {
 }
 
 table {
-  width: 100%; 
+  width: 60%; 
+  margin-left: auto; 
+  margin-right: auto;
   background-color: #615F5F;
   opacity: 0.80;
 }
@@ -88,16 +90,16 @@ require_once('connection.php');
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     echo "<form method='post' action='addEvent.php'>";
-    echo "<table style='border: solid 1px black;'>";
+    echo "<table>";
     echo "<tbody>";
     echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
     echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
     echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
     echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='int'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='int'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
 
     // echo "<tr><td>Type</td><td>";
@@ -198,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         die();
     }
 
-    header("location:manager.php"); 
+    header("location:manager_v.php"); 
     echo "Success";    
 }
 
