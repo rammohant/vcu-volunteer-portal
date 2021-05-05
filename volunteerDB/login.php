@@ -60,6 +60,9 @@ button {
 						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
+					<p>
+						Don't have an account? <a href="register.php">Register here!</a>.
+					</p>
 				</div>
 			</div>
 		</form>

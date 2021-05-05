@@ -8,12 +8,12 @@ global $conn;
 
 // $del = mysqli_query($link,"DELETE FROM volunteer_events WHERE eventID = '$id'"); // delete query
 
-if ($_POST["eventID"]) {
+if ($_POST['ID']) {
             
-    $sqlQuery = "DELETE FROM volunteer_events WHERE eventID = ':eventID'";
+    $sqlQuery = "DELETE FROM volunteer_events WHERE eventID = ':ID'";
     
     $stmt = $conn->prepare($sqlQuery);
-    $stmt->bindValue(':eventID', $_POST["eventID"]);
+    $stmt->bindValue(':ID', $_POST["eventID"]);
     $stmt->execute();
 
 }

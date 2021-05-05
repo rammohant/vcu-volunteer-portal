@@ -77,6 +77,7 @@ li a:hover {
 	<li><a href="manager_v.php">Manager Portal</a></li>
   <li><a href="orgs.php">Organizations</a></li>
 	<li><a href="register.php">Register</a></li>
+  <li><a href="logout.php">Log Out</a></li>
 	
 </ul>
 

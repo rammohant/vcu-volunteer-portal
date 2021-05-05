@@ -59,6 +59,7 @@ table {
   width: 60%; 
   margin-left: auto; 
   margin-right: auto;
+  padding: 10px 20px 10px 20px; 
   background-color: #615F5F;
   opacity: 0.80;
 }
@@ -101,6 +102,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+
+    // echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
+
+    // echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
+    // echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
+    // echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
+
+    // echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
+    // echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
+    // echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
 
     // echo "<tr><td>Type</td><td>";
 

@@ -35,6 +35,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $skills = trim($_POST["skills"]);
     $vaccinated = trim($_POST["vaccinated"]);
 
+    echo "<tr><td>Organizer</td><td>";
+    // Retrieve list of organizer
+    $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
+    $stmt->execute();
+    
+    echo "<select name='organizerID'>";
+    
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[organizerID]'>$row[name]</option>";
+    }
+    
+    echo "</select>";
+    echo "</td></tr>";
+    
+
     // Validate email
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter a email.";
@@ -74,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Password must have at least 6 characters.";
     } else {
         $password = trim($_POST["password"]);
     }
@@ -117,12 +132,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo 'You have not successfully created a VDASH account!';
             }
 
-            // //Insert into volunteers table now 
+            // //Insert into volunteers table  
             // $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
             // $row = mysql_fetch_assoc($result); 
             // $param_userID = ++$row['maximum'];
 
-            // $sql2 = "INSERT INTO users (userID, universityID) VALUES (?, ?)";
+            // $sql2 = "INSERT INTO volunteers (userID, universityID) VALUES (?, ?)";
 
             // if ($stmt2 = mysqli_prepare($link, $sql2)) {
             //     // Bind variables to the prepared statement as parameters
