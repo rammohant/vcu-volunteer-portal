@@ -85,7 +85,7 @@ li a:hover {
 
 global $conn;
 
-$username = $_SESSION['userID'];
+$organizer = $_SESSION['userID'];
 
 $sql = "SELECT v.eventID, 
 v.title as 'Title', 
@@ -97,7 +97,7 @@ v.available_spots as 'Available Spots',
 v.needed_skills as 'Skills Needed',
 v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
-FROM v_volunteer_ops v";
+FROM v_volunteer_ops v where v.organizer='$organizer'";
     
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
@@ -126,7 +126,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
+            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";
@@ -140,34 +140,5 @@ if($result = mysqli_query($link, $sql)){
 }
 ?>
 
-<div class="container-fluid mt-3 mb-3">
-	<h2>Welcome to the Manager Portal</h2>
-	<p>View, add, and delete volunteer events for your organization below.</p>
-
-	<div class="pb-3">
-		<button type="button" id="addEvent" class="btn btn-primary btn-sm">Add Event</button>
-	</div> 
-        	
-	<div class="table-responsive">
-		<table id="t_m_volunteer_event" class="table table-bordered table-inverse">
-			<thead>
-				<tr>
-					<th>eventID</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Type</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Link</th>
-					<th>Available Spots</th>
-					<th>Skills Needed</th>
-					<th>Age Minimum</th>
-					<th>Organizer</th>
-					<th>Approved By</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-</div>
 </body>
 </html>

@@ -129,7 +129,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Available Spots'] . "</td>";
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
-            echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
+            echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";
@@ -141,32 +141,6 @@ if($result = mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 ?>
-
-<div class="container-fluid mt-3 mb-3">
-	<h4>Welcome to the Volunteer Portal</h4>
-    <p>Check out all the events you've signed up for!</p>
-        	
-	<div class="table-responsive">
-		<table id="t_v_volunteer_events" class="table table-bordered table-inverse">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Link</th>
-					<th>Type</th>
-					<th>Date</th>
-					<th>Available Spots</th>
-					<th>Skills Needed</th>
-					<th>Age Minimum</th>
-					<th>Organization</th>
-                    <th>Contact Number</th>
-                    <th>Contact Email</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-</div>
 
 </body>
 </html>
