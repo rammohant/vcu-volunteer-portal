@@ -85,8 +85,19 @@ tr{
 
 global $conn;
 
-$sql = "SELECT s.eventID, title, description, link, type, DateRange, available_spots, needed_skills,age_minimum, organization, number, email
-FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID";
+$sql = "SELECT v.eventID, 
+v.title as 'Title', 
+v.description as 'Description', 
+v.link as 'Link', 
+v.type as 'Type', 
+v.DateRange as 'Date', 
+v.available_spots as 'Available Spots',
+v.needed_skills as 'Skills Needed',
+v.age_minimum as 'Age Minimum',
+v.organization as 'Organization', 
+v.number as 'Contact Number', 
+v.email as 'Contact Email'
+FROM v_all_volunteer_signups v";
                      
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
@@ -107,16 +118,16 @@ if($result = mysqli_query($link, $sql)){
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-            echo "<td>" . $row['title'] . "</td>";
-            echo "<td>" . $row['description'] . "</td>";
-            echo "<td>" . $row['organization'] . "</td>";
-            echo "<td>" . $row['email'] . "</td>";
-            echo "<td>" . $row['link'] . "</td>";
-            echo "<td>" . $row['type'] . "</td>";
-            echo "<td>" . $row['DateRange'] . "</td>";
-            echo "<td>" . $row['available_spots'] . "</td>";
-            echo "<td>" . $row['needed_skills'] . "</td>";
-            echo "<td>" . $row['age_minimum'] . "</td>";
+            echo "<td>" . $row['Title'] . "</td>";
+            echo "<td>" . $row['Description'] . "</td>";
+            echo "<td>" . $row['Organization'] . "</td>";
+            echo "<td>" . $row['Contact Email'] . "</td>";
+            echo "<td>" . $row['Link'] . "</td>";
+            echo "<td>" . $row['Type'] . "</td>";
+            echo "<td>" . $row['Date'] . "</td>";
+            echo "<td>" . $row['Available Spots'] . "</td>";
+            echo "<td>" . $row['Skills Needed'] . "</td>";
+            echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";

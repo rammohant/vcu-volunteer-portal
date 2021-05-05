@@ -129,13 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<tr><td>Approved by</td><td>";
     // Retrieve list of admin 
-    $stmt = $conn->prepare("SELECT userID as adminID, name FROM allusers where type like 'admin'");
+    $stmt = $conn->prepare("SELECT userID as approverID, name FROM allusers where type like 'admin'");
     $stmt->execute();
     
-    echo "<select name='adminID'>";
+    echo "<select name='approverID'>";
         
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[adminID]'>$row[name]</option>";
+        echo "<option value='$row[approverID]'>$row[name]</option>";
     }
     
     echo "</select>";
@@ -159,8 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     
     try {
-        $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, adminID)
-                                VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :adminID)");
+        $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
+                                VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
 
         $stmt->bindValue(':title', trim($_POST['title']));
         $stmt->bindValue(':description', trim($_POST['description']));
@@ -182,13 +182,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         if($_POST['organizerID'] != -1) {
             $stmt->bindValue(':organizerID', $_POST['organizerID']);
         } else {
-            $stmt->bindValue(':organizerID', 'Jared Dunn', PDO::PARAM_INT);
+            $stmt->bindValue(':organizerID', '2', PDO::PARAM_INT);
         }
 
-        if($_POST['adminID'] != -1) {
-            $stmt->bindValue(':adminID', $_POST['adminID']);
+        if($_POST['approverID'] != -1) {
+            $stmt->bindValue(':approverID', $_POST['approverID']);
         } else {
-            $stmt->bindValue(':adminID', 'Tara Ram Mohan', PDO::PARAM_INT);
+            $stmt->bindValue(':approverID', '1', PDO::PARAM_INT);
         }
 
         

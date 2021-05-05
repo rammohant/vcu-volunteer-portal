@@ -2,10 +2,10 @@
 require_once 'connection.php'; // Using database connection file here
 global $conn;
 
-$eventID = $_POST['eventID']; // get id through query string
+$id = $_GET['eventID']; // get id through query string
 $volunteerID = $_SESSION['userID']; 
 
-$insert = mysqli_query($link,"INSERT INTO volunteer_signup(eventID,volunteerID) VALUES('$eventID','$volunteerID')"); // insert query
+$insert = mysqli_query($link,"INSERT INTO volunteer_signup(eventID,volunteerID) VALUES('$id','$volunteerID')"); // insert query
 
 if($insert)
 {
