@@ -84,6 +84,7 @@ tr{
 <?php 
 
 global $conn;
+$volunteerID = $_SESSION['userID']; 
 
 $sql = "SELECT v.eventID, 
 v.title as 'Title', 
@@ -97,7 +98,7 @@ v.age_minimum as 'Age Minimum',
 v.organization as 'Organization', 
 v.number as 'Contact Number', 
 v.email as 'Contact Email'
-FROM v_all_volunteer_signups v";
+FROM v_all_volunteer_signups v where v.volunteerID = '$volunteerID'";
                      
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
@@ -128,6 +129,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Available Spots'] . "</td>";
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
+            echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

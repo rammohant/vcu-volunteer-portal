@@ -198,6 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         die();
     }
 
+    header("location:manager.php"); 
     echo "Success";    
 }
 

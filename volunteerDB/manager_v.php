@@ -87,12 +87,18 @@ global $conn;
 
 $username = $_SESSION['userID'];
 
-$sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
-                     FROM v_volunteer_ops v";
-
-// $sql = "SELECT v.eventID, v.Title, v.description, v.link, v.type, v.DateRange, v.available_spots, v.needed_skills, v.age_minimum,  v.approver
-//                      FROM v_volunteer_ops v where organizer=$userID";
-                     
+$sql = "SELECT v.eventID, 
+v.title as 'Title', 
+v.description as 'Description', 
+v.link as 'Link', 
+v.type as 'Type', 
+v.DateRange as 'Date', 
+v.available_spots as 'Available Spots',
+v.needed_skills as 'Skills Needed',
+v.age_minimum as 'Age Minimum',
+v.approved_by as 'Approver'
+FROM v_volunteer_ops v";
+    
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<h2>Welcome to the Manager Portal</h2>";
@@ -112,14 +118,14 @@ if($result = mysqli_query($link, $sql)){
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
             echo "<td>" . $row['Title'] . "</td>";
-            echo "<td>" . $row['description'] . "</td>";
-            echo "<td>" . $row['link'] . "</td>";
-            echo "<td>" . $row['type'] . "</td>";
-            echo "<td>" . $row['DateRange'] . "</td>";
-            echo "<td>" . $row['available_spots'] . "</td>";
-            echo "<td>" . $row['needed_skills'] . "</td>";
-            echo "<td>" . $row['age_minimum'] . "</td>";
-            echo "<td>" . $row['approver'] . "</td>";
+            echo "<td>" . $row['Description'] . "</td>";
+            echo "<td>" . $row['Link'] . "</td>";
+            echo "<td>" . $row['Type'] . "</td>";
+            echo "<td>" . $row['Date'] . "</td>";
+            echo "<td>" . $row['Available Spots'] . "</td>";
+            echo "<td>" . $row['Skills Needed'] . "</td>";
+            echo "<td>" . $row['Age Minimum'] . "</td>";
+            echo "<td>" . $row['Approver'] . "</td>";
             echo "<td><form action='delete.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='View/Update Details' /></form></td></tr>";
             echo "</tr>";
         }
@@ -163,6 +169,5 @@ if($result = mysqli_query($link, $sql)){
 		</table>
 	</div>
 </div>
-
 </body>
 </html>

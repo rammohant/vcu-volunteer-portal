@@ -4,7 +4,7 @@ require_once('connection.php'); // Using database connection file here
 
 $id = $_GET['eventID']; // get id through query string
 
-$del = mysqli_query($link,"delete from volunteer_events where eventID = '$id'"); // delete query
+$del = mysqli_query($link,"DELETE FROM volunteer_events WHERE eventID = '$id'"); // delete query
 
 if($del)
 {
