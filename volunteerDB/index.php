@@ -59,17 +59,6 @@ li a:hover {
     background-color: #111;
 }
 
-/* table { */
-/*   width: 100%;  */
-/*   background-color: #615F5F; */
-/*   opacity: 0.80; */
-/* } */
-
-/* tr{ */
-/*     color: #EEEAE9; */
-/*     font-family: "Verdana"; */
-/* } */
-
 </style>
 
 <?php require_once('header.php'); ?>
@@ -178,14 +167,25 @@ li a:hover {
 					<td>Age Min</td>
           <td>Organization</td>
 					<td>Contact Number</td>
-					<td>Email</td>
+					<td>Contact Email</td>
           <td></td>
 				</tr>
 
       <?php
 
-        $records = mysqli_query($link,"SELECT s.eventID, Title, Description, Link, Type, DateRange, available_spots, needed_skills,age_minimum, organization, number, email
-        FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID"); 
+        $records = mysqli_query($link,"SELECT s.eventID, 
+        v.title as 'Title', 
+        v.description as 'Description', 
+        Link, 
+        v.type as 'Type', 
+        DateRange, 
+        v.available_spots as 'Available Spots',
+        v.needed_skills as 'Skills Needed',
+        v.age_minimum as 'Age Minimum',
+        v.organization as 'Organization', 
+        v.number as 'Contact Number', 
+        v.email as 'Contact Email'
+        FROM v_all_volunteer_signups"); 
 
         while($data = mysqli_fetch_array($records))
         {
@@ -197,13 +197,13 @@ li a:hover {
             <td><?php echo $data['Link']; ?></td>    
             <td><?php echo $data['Type']; ?></td>   
             <td><?php echo $data['DateRange']; ?></td>     
-            <td><?php echo $data['available_spots']; ?></td>    
-            <td><?php echo $data['needed_skills']; ?></td>    
-            <td><?php echo $data['age_minimum']; ?></td>   
-            <td><?php echo $data['organization']; ?></td>    
-            <td><?php echo $data['number']; ?></td>    
-            <td><?php echo $data['email']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
+            <td><?php echo $data['Available Spots']; ?></td>    
+            <td><?php echo $data['Skills Needed']; ?></td>    
+            <td><?php echo $data['Age Minimum']; ?></td>   
+            <td><?php echo $data['Organization']; ?></td>    
+            <td><?php echo $data['Contact Number']; ?></td>    
+            <td><?php echo $data['Contact Email']; ?></td>    
+            <td><a href="delete.php?id=<?php echo $data['eventID']; ?>">Delete</a></td>
           </tr>	
         <?php
         }
