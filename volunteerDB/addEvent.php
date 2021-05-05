@@ -170,13 +170,26 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
         $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
         $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
+        $stmt->bindValue(':type', trim($_POST['type']));
+
         
-        
-        if($_POST['type'] != -1) {
-            $stmt->bindValue(':type', $_POST['type']); }
-//         } else {
-//             $stmt->bindValue(':type', null, PDO::PARAM_INT);
-//         }
+//         if($_POST['type'] != -1) {
+//             $stmt->bindValue(':type', $_POST['type']); }
+// //         } else {
+// //             $stmt->bindValue(':type', null, PDO::PARAM_INT);
+// //         }
+
+        if($_POST['organizerID'] != -1) {
+            $stmt->bindValue(':organizerID', $_POST['organizerID']);
+        } else {
+            $stmt->bindValue(':organizerID', 'Jared Dunn', PDO::PARAM_INT);
+        }
+
+        if($_POST['adminID'] != -1) {
+            $stmt->bindValue(':adminID', $_POST['adminID']);
+        } else {
+            $stmt->bindValue(':adminID', 'Tara Ram Mohan', PDO::PARAM_INT);
+        }
 
         
         $stmt->execute();

@@ -131,7 +131,7 @@ li a:hover {
 
       <?php
 
-        $records = mysqli_query($link,"SELECT v.eventID as 'id',
+        $records = mysqli_query($link,"SELECT v.eventID,
         v.Title as `Title`,
         v.description as `Description`,
         v.link as 'Link',
@@ -146,7 +146,7 @@ li a:hover {
         {
         ?>
           <tr>
-            <td><?php echo $data['id']; ?></td>
+            <td><?php echo $data['eventID']; ?></td>
             <td><?php echo $data['Title']; ?></td>
             <td><?php echo $data['Description']; ?></td>
             <td><?php echo $data['Link']; ?></td>    
@@ -155,7 +155,55 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php?id=<?php echo $data['id']; ?>">Sign Up</a></td>
+            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
+          </tr>	
+        <?php
+        }
+        ?>
+		</table>
+	</div>
+
+  <h2>Volunteer Opportunities</h2>
+	<div class="table-responsive">
+		<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>
+				<tr>
+          <td>ID</td>
+					<td>Title</td>
+					<td>Description</td>
+					<td style='word-wrap: break-word'>Link</td>
+					<td>Type</td>
+					<td>Date</td>
+					<td>Available Spots</td>
+					<td>Skills Needed</td>
+					<td>Age Min</td>
+          <td>Organization</td>
+					<td>Contact Number</td>
+					<td>Email</td>
+          <td></td>
+				</tr>
+
+      <?php
+
+        $records = mysqli_query($link,"SELECT s.eventID, Title, Description, Link, Type, DateRange, available_spots, needed_skills,age_minimum, organization, number, email
+        FROM volunteer_signup s LEFT JOIN v_volunteer_ops v on s.eventID = v.eventID"); 
+
+        while($data = mysqli_fetch_array($records))
+        {
+        ?>
+          <tr>
+            <td><?php echo $data['eventID']; ?></td>
+            <td><?php echo $data['Title']; ?></td>
+            <td><?php echo $data['Description']; ?></td>
+            <td><?php echo $data['Link']; ?></td>    
+            <td><?php echo $data['Type']; ?></td>   
+            <td><?php echo $data['DateRange']; ?></td>     
+            <td><?php echo $data['available_spots']; ?></td>    
+            <td><?php echo $data['needed_skills']; ?></td>    
+            <td><?php echo $data['age_minimum']; ?></td>   
+            <td><?php echo $data['organization']; ?></td>    
+            <td><?php echo $data['number']; ?></td>    
+            <td><?php echo $data['email']; ?></td>    
+            <td><a href="signup.php?id=<?php echo $data['eventID']; ?>">Sign Up</a></td>
           </tr>	
         <?php
         }

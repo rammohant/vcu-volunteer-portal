@@ -170,20 +170,20 @@ if($result = mysqli_query($link, $sql)){
         echo "<p>View, add, and delete volunteer events for your organization below.</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
-        echo "<th>Title</th>";
-        echo "<th>Description</th>";
-        echo "<th>Link</th>";
+        echo "<th>Event</th>";
+        echo "<th>Bio</th>";
+        echo "<th>URL</th>";
         echo "<th>Type</th>";
         echo "<th>Date</th>";
         echo "<th>Available Spots</th>";
         echo "<th>Skills Needed</th>";
         echo "<th>Age Minimum</th>";
-        echo "<th>Approver</th>";
+        echo "<th>Approved by</th>";
         echo "<th></th>";
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
-            echo "<td>" . $row['Title'] . "</td>";
+            echo "<td>" . $row['title'] . "</td>";
             echo "<td>" . $row['description'] . "</td>";
             echo "<td>" . $row['link'] . "</td>";
             echo "<td>" . $row['type'] . "</td>";
@@ -218,8 +218,8 @@ if($result = mysqli_query($link, $sql)){
         echo "<p>View, add, and delete volunteer events for your organization below.</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
-        echo "<th>Title</th>";
-        echo "<th>Description</th>";
+        echo "<th>Event</th>";
+        echo "<th>Bio</th>";
         echo "<th>Organization</th>";
         echo "<th>Email</th>";
         echo "<th>Link</th>";
