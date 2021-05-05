@@ -106,6 +106,7 @@ if($result = mysqli_query($link, $sql)){
         echo "<p>View, add, and delete volunteer events for your organization below.</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
+        echo "<th>ID</th>";
         echo "<th>Title</th>";
         echo "<th>Description</th>";
         echo "<th>Organization</th>";
@@ -119,6 +120,7 @@ if($result = mysqli_query($link, $sql)){
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
+            echo "<td>" . $row['eventID'] . "</td>";
             echo "<td>" . $row['Title'] . "</td>";
             echo "<td>" . $row['Description'] . "</td>";
             echo "<td>" . $row['Organization'] . "</td>";
@@ -129,7 +131,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Available Spots'] . "</td>";
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
-            echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row["eventID"]."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

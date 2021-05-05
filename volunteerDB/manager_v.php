@@ -87,7 +87,7 @@ global $conn;
 
 $organizer = $_SESSION['userID'];
 
-$sql = "SELECT v.eventID as 'ID', 
+$sql = "SELECT v.eventID, 
 v.title as 'Title', 
 v.description as 'Description', 
 v.link as 'Link', 
@@ -126,7 +126,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><a href='delete-manager.php?id=".$row['eventID']."'>Delete</a></td>";
             echo "</tr>";
         }
         echo "</table>";

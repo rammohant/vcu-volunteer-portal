@@ -47,6 +47,7 @@ button {
 <div class="wrapper"> 
 	<h2 align=center >VCU Volunteer Database</h2>
 	<p align=center >For all your volunteering needs and desires</p>
+	<p align=center > Don't have an account? <a href="register.php">Register here!</a>.</p>
 	<div class="container mt-3 mb-3">
 		<form method="post">
 			<div class="row justify-content-center">
@@ -60,9 +61,6 @@ button {
 						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<p>
-						Don't have an account? <a href="register.php">Register here!</a>.
-					</p>
 				</div>
 			</div>
 		</form>
