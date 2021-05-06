@@ -86,8 +86,6 @@ tr{
 
 <?php 
 
-require_once('connection.php');
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     echo "<form method='post' action='signup2.php'>";
@@ -115,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</tbody>";
     echo "</table>";
     echo "</form>";
+
 } else {
     
     try {
@@ -136,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         die();
     }
 
-    header("location:volunteer_v.php"); 
+    header("location:volunteer_v.ph"); 
     echo "Success";    
 }
 
