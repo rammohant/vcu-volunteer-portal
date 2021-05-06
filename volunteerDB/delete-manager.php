@@ -19,17 +19,15 @@ require_once('connection.php'); // Using database connection file here
 
 $title = $_POST['Title']; // get id through query string
 
-$del = mysqli_query($link,"DELETE FROM volunteer_events WHERE title = '$title'"); // delete query
+$del = mysqli_query($link,"delete from volunteer_events where eventID = 6"); // delete query
 
 if($del)
 {
     mysqli_close($link); // Close connection
-    echo "Record deleted"; // display error message if not delete
     header("location:manager_v.php"); // redirects to all records page
+    echo "Record deleted"; // display error message if not delete
     exit;	
-}
-
-else
+} else
 {
     echo "Error deleting record"; // display error message if not delete
 }

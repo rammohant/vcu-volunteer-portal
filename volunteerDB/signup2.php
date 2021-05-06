@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         die();
     }
 
-    header("location:volunteer_v.ph"); 
+    header("location:volunteer_v.php"); 
     echo "Success";    
 }
 

@@ -83,8 +83,8 @@ tr{
 
 <?php 
 
-// global $conn;
-// $volunteerID = $_SESSION['userID']; 
+global $conn;
+$volunteerID = $_SESSION['userID']; 
 
 // $stmt = $conn->prepare("SELECT v.eventID, 
 // v.title as 'Title', 
