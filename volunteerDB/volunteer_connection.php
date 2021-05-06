@@ -5,7 +5,7 @@ if (!isset($_SESSION['userID']))
     // If the page is receiving the email and password from the login form then verify the login data
     if (isset($_POST['email']) && isset($_POST['password']))
     {
-        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type IN ('organizer','admin')");
+        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type IN ('volunteer')");
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->execute();
         
@@ -21,7 +21,7 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            echo("Incorrect email or password. Please login to your admin/organizer account to access this page.");
+            echo("Incorrect email or password. Please login to your volunteer account to access this page.");
             require('login.php');
             exit();
         }
@@ -29,7 +29,7 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
-        echo("Please login to your admin/organizer account to access this page.");
+        echo("Please login to your admin/volunteer account to access this page.");
         require('login.php');
         exit();
     }

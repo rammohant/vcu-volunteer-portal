@@ -70,7 +70,7 @@ li a:hover {
 
 </head>
 <!-- check if user is logged in and a manager -->
-<?php require_once('connection.php'); ?>
+<?php require_once('manager_connection.php'); ?>
 
 <body>
 
@@ -126,7 +126,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><a href='delete-manager.php?id=".$row['eventID']."'>Delete</a></td>";
+            echo "<td><a href='delete-manager.php?id=".$row['Title']."'>Delete</a></td>";
             echo "</tr>";
         }
         echo "</table>";

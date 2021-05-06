@@ -4,12 +4,12 @@ require_once('connection.php'); // Using database connection file here
 
 global $conn;
 
-if(isset($_GET['id'])) {
+if(isset($_POST['Title'])) {
 
-    $id = $_GET['id'];
+    $title = $_POST['Title'];
 
-    $stmt = $mysqli->prepare("DELETE FROM volunteer_events WHERE id = ?");
-    $stmt->bind_param('i', $id);
+    $stmt = $mysqli->prepare("DELETE FROM volunteer_events WHERE title = ?");
+    $stmt->bind_param('title', $title);
     $stmt->execute(); 
     $stmt->close();
 }

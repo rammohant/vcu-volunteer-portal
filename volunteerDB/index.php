@@ -145,7 +145,7 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-            <td><a href="signup.php">Sign Up</a></td>
+           <!-- <td><a href="signup.php">Sign Up</a></td> -->
           </tr>	
         <?php
         }
@@ -153,7 +153,7 @@ li a:hover {
 		</table>
 	</div>
   <div id="center_button">
-    <button onclick="location.href='signup.php'">Sign Up</button>
-</div>
+    <button onclick="location.href='signup2.php'">Sign Up</button>
+</div style='padding-bottom: 20px'>
 </body>
 </html>

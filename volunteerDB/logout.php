@@ -1,5 +1,5 @@
 <?php
 session_start();
 unset($_SESSION['userID']);
-header("Location:connection.php");
+header("Location:index.php");
 ?>
