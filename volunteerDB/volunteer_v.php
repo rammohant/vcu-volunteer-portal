@@ -86,7 +86,7 @@ tr{
 global $conn;
 $volunteerID = $_SESSION['userID']; 
 
-$stmt = $db->prepare("SELECT v.eventID, 
+$stmt = $conn->prepare("SELECT v.eventID, 
 v.title as 'Title', 
 v.description as 'Description', 
 v.link as 'Link', 

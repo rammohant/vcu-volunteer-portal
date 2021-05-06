@@ -12,6 +12,9 @@ if(isset($_POST['Title'])) {
     $stmt->bind_param('title', $title);
     $stmt->execute(); 
     $stmt->close();
+    echo "Record deleted"; // display error message if not delete
+    header("location:index.php"); // redirects to all records page
+    exit;	
 }
 
 // $id = $_POST['eventID']; // get id through query string
