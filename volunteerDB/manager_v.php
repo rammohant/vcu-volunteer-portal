@@ -129,6 +129,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
             echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='update-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";
@@ -141,6 +142,8 @@ if($result = mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 ?>
-
+<div id="center_button" style='padding-bottom: 20px'>
+    <button onclick="location.href='addEvent.php'">Add Event</button>
+</div>
 </body>
 </html>

@@ -79,16 +79,18 @@ tr{
 
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li class="active"><a href="user_v.php">Volunteer Portal</a></li>
-	<li><a href="manager_v.php">Manager Portal</a></li>
+	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
 	<li><a href="register.php">Register</a></li>
 </ul>
 
 <?php 
 
+echo "<h2>Add a Volunteer Event</h2>";
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    echo "<form method='post' action='addEvent.php'>";
+    echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
     echo "<table>";
     echo "<tbody>";
     echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
@@ -111,18 +113,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
     // echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
 
-    echo "<tr><td>Type</td><td>";
+    // echo "<tr><td>Type</td><td>";
 
-    // Retrieve list of employees as potential manager of the new employee
-    $stmt = $conn->prepare("Select type from v_volunteer_ops");
-    $stmt->execute();
+    // // Retrieve list of employees as potential manager of the new employee
+    // $stmt = $conn->prepare("Select type from v_volunteer_ops");
+    // $stmt->execute();
     
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[type]'>$row[type]</option>";        
-    }
+    // while ($row = $stmt->fetch()) {
+    //     echo "<option value='$row[type]'>$row[type]</option>";        
+    // }
     
-    echo "</select>";
-    echo "</td></tr>";
+    // echo "</select>";
+    // echo "</td></tr>";
     
     echo "<tr><td>Organizer</td><td>";
     // Retrieve list of organizer

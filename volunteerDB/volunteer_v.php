@@ -157,8 +157,8 @@ FROM v_all_volunteer_signups v where v.volunteerID = '$volunteerID'";
 
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
-        echo "<h2>Welcome to the Manager Portal</h2>";
-        echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+        echo "<h2>Welcome to the Volunteer Portal</h2>";
+        echo "<p>View and delete volunteer event signups</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -187,6 +187,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='update-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";
@@ -198,6 +199,8 @@ if($result = mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 ?>
-
+  <div id="center_button" style='padding-bottom: 20px'>
+    <button onclick="location.href='signup2.php'">Sign Up</button>
+</div>
 </body>
 </html>
