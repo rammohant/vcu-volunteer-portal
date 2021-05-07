@@ -40,7 +40,7 @@ button {
 <?php require_once('header.php'); ?>
 
 </head>
-<?php require_once('connection.php'); ?>
+<?php require_once('manager_connection.php'); ?>
 
 <body>
 

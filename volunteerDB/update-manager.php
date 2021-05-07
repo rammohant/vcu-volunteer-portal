@@ -6,8 +6,10 @@ global $conn;
     
 if ($_POST['eventID']) {
 
-    $title = $_POST['title'];
-    $description = $_POST['description'];
+    $title =
+     $_POST['ptitle'];
+    $description = 
+    $_POST['pdescription'];
 
     $sqlQuery = "UPDATE volunteer_events
                     SET
@@ -50,8 +52,8 @@ if ($_POST['eventID']) {
 <h2>Update Event</h2>
 
 <form method="POST">
-  <input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required>
-  <input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description" Required>
+  <input type="text" name="ptitle" value="<?php echo $data['ptitle'] ?>" placeholder="Enter title" Required>
+  <input type="text" name="pdescription" value="<?php echo $data['pdescription'] ?>" placeholder="Enter description" Required>
   <input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required>
   <input type="date" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate" >
   <input type="date" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate" >

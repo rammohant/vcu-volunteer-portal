@@ -25,13 +25,18 @@ session_start();
 if (!isset($_SESSION['userID']))
 {
     // If the page is receiving the email and password from the login form then verify the login data
-    if (isset($_POST['email']) && isset($_POST['password']))
-    {
+    if (isset($_POST['email']) && isset($_POST['password'])) {
         $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type IN ('organizer','admin')");
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->execute();
         
         $queryResult = $stmt->fetch();
+
+        $stmt2 = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type IN ('volunteer')");
+        $stmt2->bindValue(':email', $_POST['email']);
+        $stmt2->execute();
+        
+        $queryResult2 = $stmt->fetch();
         
         // Verify password submitted by the user with the hash stored in the database
         if(!empty($queryResult) && password_verify($_POST["password"], $queryResult['password']))
@@ -40,18 +45,23 @@ if (!isset($_SESSION['userID']))
             $_SESSION['userID'] = $queryResult['userID'];
             
             // Redirect to URL
-            header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+            header("location:manager_v.php"); 
+        } else if(!empty($queryResult) && password_verify($_POST["password"], $queryResult2['password'])) {
+            // Create session variable
+            $_SESSION['userID'] = $queryResult['userID'];
+            // Redirect to URL
+            header("location:volunteer_v.php"); 
         } else {
             // Password mismatch
-            echo("Incorrect email or password. Please login to your admin/organizer account to access this page.");
+            echo("Please login to access this page.");
             require('login.php');
             exit();
         }
-    }
+    } 
     else
     {
         // Show login page
-        echo("Please login to your admin/organizer account to access this page.");
+        echo("Please login to access this page.");
         require('login.php');
         exit();
     }
