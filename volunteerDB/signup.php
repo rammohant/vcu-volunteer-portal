@@ -61,7 +61,7 @@ table {
   margin-right: auto;
   padding: 10px 20px 10px 20px; 
   background-color: #615F5F;
-  opacity: 0.80;
+  opacity: 0.90;
 }
 
 tr{
@@ -89,8 +89,8 @@ echo "<h2>Sign up for a Volunteer Event!</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    echo "<form method='post' action='signup.php' style='padding: 10px 20px 10px 20px'>";
-    echo "<table>";
+    echo "<form method='post' action='signup.php'>";
+    echo "<table style='padding: 10px 20px 10px 20px'>";
     echo "<tbody>";
 
     echo "<tr><td>Select Event:</td><td>";

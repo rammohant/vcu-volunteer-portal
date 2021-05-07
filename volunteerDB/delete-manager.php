@@ -6,7 +6,7 @@ global $conn;
 
 if ($_POST['eventID']) {
             
-    $sqlQuery = "DELETE FROM volunteer_events WHERE eventID = :eventID";
+    $sqlQuery = "DELETE FROM volunteer_events WHERE title = :Title";
     
     $stmt = $conn->prepare($sqlQuery);
     $stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);

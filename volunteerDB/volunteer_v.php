@@ -155,10 +155,11 @@ v.number as 'Contact Number',
 v.email as 'Contact Email'
 FROM v_all_volunteer_signups v where v.volunteerID = '$volunteerID'";
 
+echo "<h2>Welcome to the Volunteer Portal</h2>";
+echo "<p>View and delete volunteer event signups</p>";
+
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
-        echo "<h2>Welcome to the Volunteer Portal</h2>";
-        echo "<p>View and delete volunteer event signups</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -193,7 +194,7 @@ if($result = mysqli_query($link, $sql)){
         echo "</table>";
         mysqli_free_result($result);
     } else{
-        echo "No records matching your query were found.";
+        echo "<p>No records matching your query were found.</p>";
     }
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

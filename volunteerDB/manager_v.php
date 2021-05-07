@@ -98,11 +98,12 @@ v.needed_skills as 'Skills Needed',
 v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
 FROM v_volunteer_ops v where v.organizer='$organizer'";
-    
+
+echo "<h2>Welcome to the Manager Portal</h2>";
+echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
-        echo "<h2>Welcome to the Manager Portal</h2>";
-        echo "<p>View, add, and delete volunteer events for your organization below.</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>ID</th>";
@@ -128,7 +129,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
             echo "<td><form action='update-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
@@ -136,7 +137,7 @@ if($result = mysqli_query($link, $sql)){
         // Free result set
         mysqli_free_result($result);
     } else{
-        echo "No records matching your query were found.";
+        echo "<p>No records matching your query were found.<p>";
     }
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

@@ -6,10 +6,13 @@ global $conn;
     
 if ($_POST['eventID']) {
 
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+
     $sqlQuery = "UPDATE volunteer_events
                     SET
-                    title = :title,
-                    description = :description,
+                    title = :ptitle,
+                    description = :pdescription,
                     type = :type,
                     startdate = :startdate,
                     enddate = :enddate,
@@ -22,8 +25,8 @@ if ($_POST['eventID']) {
                     approved_by = :approved_by
                     WHERE eventID = :eventID";
     $stmt = $conn->prepare($sqlQuery);
-    $stmt->bindValue(':title', $_POST["title"]);
-    $stmt->bindValue(':description', $_POST["description"]);
+    $stmt->bindValue(':ptitle', $title);
+    $stmt->bindValue(':pdescription', $description);
     $stmt->bindValue(':type', $_POST["type"]);
     $stmt->bindValue(':startdate', $_POST["startdate"]);
     $stmt->bindValue(':enddate', $_POST["enddate"]);

@@ -128,7 +128,7 @@ li a:hover {
 		</table>
 	</div>
   <div id="center_button" style='padding-bottom: 20px'>
-    <button onclick="location.href='signup2.php'">Sign Up</button>
+    <button onclick="location.href='signup.php'">Sign Up</button>
 </div>
 </body>
 </html>
