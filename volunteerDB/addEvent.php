@@ -111,18 +111,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
     // echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
 
-    // echo "<tr><td>Type</td><td>";
+    echo "<tr><td>Type</td><td>";
 
-    // // Retrieve list of employees as potential manager of the new employee
-    // $stmt = $conn->prepare("Select type from v_volunteer_ops");
-    // $stmt->execute();
+    // Retrieve list of employees as potential manager of the new employee
+    $stmt = $conn->prepare("Select type from v_volunteer_ops");
+    $stmt->execute();
     
-    // while ($row = $stmt->fetch()) {
-    //     echo "<option value=''>$row[type]</option>";        
-    // }
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[type]'>$row[type]</option>";        
+    }
     
-    // echo "</select>";
-    // echo "</td></tr>";
+    echo "</select>";
+    echo "</td></tr>";
     
     echo "<tr><td>Organizer</td><td>";
     // Retrieve list of organizer

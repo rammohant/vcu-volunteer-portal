@@ -76,9 +76,9 @@ li a:hover {
 
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
-	<li><a href="register.php">Register</a></li>
+    <li><a href="logout.php">Log Out</a></li>
 </ul>
 
 <?php 
@@ -105,6 +105,7 @@ if($result = mysqli_query($link, $sql)){
         echo "<p>View, add, and delete volunteer events for your organization below.</p>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
+        echo "<th>ID</th>";
         echo "<th>Title</th>";
         echo "<th>Description</th>";
         echo "<th>Link</th>";
@@ -117,6 +118,7 @@ if($result = mysqli_query($link, $sql)){
         echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
+            echo "<td>" . $row['eventID'] . "</td>";
             echo "<td>" . $row['Title'] . "</td>";
             echo "<td>" . $row['Description'] . "</td>";
             echo "<td>" . $row['Link'] . "</td>";
@@ -126,7 +128,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><a href='delete-manager.php?id=".$row['Title']."'>Delete</a></td>";
+            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

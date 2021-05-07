@@ -73,35 +73,11 @@ li a:hover {
 
 <ul>
 	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
   <li><a href="orgs.php">Organizations</a></li>
-	<li><a href="register.php">Register</a></li>
-  <li><a href="logout.php">Log Out</a></li>
 	
 </ul>
-
-<!-- <div class="container-fluid mt-3 mb-3"> 
-	<h2>Volunteer Opportunities</h2>
-	<div class="table-responsive">
-		<table id="volunteer_events" class="table table-dark table-stripped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Link</th>
-					<th>Type</th>
-					<th>Date</th>
-					<th>Available Spots</th>
-					<th>Skills Needed</th>
-					<th>Age Minimum</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-</div>
-<div class="container-fluid mt-3 mb-3"> -->
 
 <h2>Volunteer Opportunities</h2>
 	<div class="table-responsive">
@@ -145,7 +121,6 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>    
-           <!-- <td><a href="signup.php">Sign Up</a></td> -->
           </tr>	
         <?php
         }

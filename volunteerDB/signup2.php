@@ -79,7 +79,7 @@ tr{
 
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li class="active"><a href="user_v.php">Volunteer Portal</a></li>
+	<li class="active"><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
 	<li><a href="register.php">Register</a></li>
 </ul>
@@ -128,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             echo "Please select an event to sign up for.";
         }
 
-        
         $stmt->execute();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
