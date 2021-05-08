@@ -55,20 +55,18 @@ if (!isset($_SESSION['userID']))
         //     header("location:volunteer_v.php"); 
         } else {
             // Password mismatch
-            header("location:index.php"); 
-            echo("Requires manager account to access. Redirected to home page.");
-            //require('login.php');
-            //exit();
+            // header("location:index.php"); 
+            echo("Requires manager account to access.");
+            require('login.php');
+            exit();
         }
     } 
     else
     {
         // Show login page
-        //header("location:index.php"); 
-        header("location:index.php"); 
-        echo("Requires manager account to access. Redirected to home page.");
-        //require('login.php');
-        //exit();
+        echo("Requires manager account to access.");
+        require('login.php');
+        exit();
     }
 }
 

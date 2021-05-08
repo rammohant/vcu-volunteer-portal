@@ -67,7 +67,7 @@ li a:hover {
 
 </head>
 
-<?php require_once('connection.php'); ?> 
+<?php require_once('config.php'); ?> 
 
 <body>
 
@@ -76,7 +76,6 @@ li a:hover {
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="manager_v.php">Manager Portal</a></li>
   <li><a href="orgs.php">Organizations</a></li>
-	
 </ul>
 
 <h2>Volunteer Opportunities</h2>
@@ -91,10 +90,9 @@ li a:hover {
 					<td>Date</td>
 					<td>Available Spots</td>
 					<td>Skills Needed</td>
-					<td>Age Min</td>
+					<td>Age Minimum</td>
           <td></td>
 				</tr>
-
       <?php
 
         $records = mysqli_query($link,"SELECT v.eventID,
@@ -106,7 +104,7 @@ li a:hover {
         v.available_spots as 'Available Spots',
         v.needed_skills as 'Skills Needed',
         v.age_minimum as 'Age Minimum'   
- FROM  v_volunteer_ops v"); 
+        FROM  v_volunteer_ops v"); 
 
         while($data = mysqli_fetch_array($records))
         {
