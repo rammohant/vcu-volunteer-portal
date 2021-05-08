@@ -61,7 +61,9 @@ button {
 						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
+					<button onclick="location.href='index.php'">Return home</button>
 				</div>
+				
 			</div>
 		</form>
 	</div>

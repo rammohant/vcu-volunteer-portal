@@ -44,6 +44,7 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
+            echo "Must be a manager to access this page";
             require('manager-login.php');
             exit();
         }
@@ -51,6 +52,7 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
+        echo "Must be a manager to access this page";
         require('manager-login.php');
         exit();
     }
