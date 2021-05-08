@@ -98,9 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
     echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
 
     // echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
@@ -161,15 +161,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</form>";
 } else {
     
-    echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
-    echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-    echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
-    echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
-    echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
-    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
-    echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+    // echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
+    // echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
+    // echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
+    // echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
+    // echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
+    // echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
+    // echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
+    // echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
+    // echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     
     try {
         $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
@@ -184,7 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
         $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
         $stmt->bindValue(':type', trim($_POST['type']));
-
         
 //         if($_POST['type'] != -1) {
 //             $stmt->bindValue(':type', $_POST['type']); }
@@ -192,6 +191,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 // //             $stmt->bindValue(':type', null, PDO::PARAM_INT);
 // //         }
 
+        if (empty($_POST['startdate'])) {
+            $stmt->bindValue(':startdate','NULL');
+        }   
+
+        if (empty($_POST['enddate'])) {
+            $stmt->bindValue(':enddate','NULL');
+        }   
+        
         if($_POST['organizerID'] != -1) {
             $stmt->bindValue(':organizerID', $_POST['organizerID']);
         } else {
@@ -203,12 +210,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         } else {
             $stmt->bindValue(':approverID', '1', PDO::PARAM_INT);
         }
-
         
         $stmt->execute();
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
         die();
+        header("location:addEvent.php"); 
+        echo "Error: " . $e->getMessage();
     }
 
     header("location:manager_v.php"); 
