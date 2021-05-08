@@ -73,7 +73,7 @@ tr{
 <?php require_once('header.php'); ?>
 </head>
 
-<?php require_once('connection-volunteer.php'); ?>
+<?php require_once('connection.php'); ?>
 
 <body>
 

@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>VDASH organizer Portal</title>
+<title>VDASH Organizer Portal</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -70,7 +70,7 @@ li a:hover {
 
 </head>
 <!-- check if user is logged in and a organizer -->
-<?php require_once('connection-organizer.php'); ?>
+<?php require_once('connection.php'); ?>
 
 <body>
 
@@ -99,7 +99,7 @@ v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
 FROM v_volunteer_ops v where v.organizer='$organizer'";
 
-echo "<h2>Welcome to the organizer Portal</h2>";
+echo "<h2>Welcome to the Organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
 if($result = mysqli_query($link, $sql)){

@@ -67,7 +67,7 @@ li a:hover {
 
 </head>
 
-<?php require_once('config.php'); ?> 
+<?php require_once('connection.php'); ?> 
 
 <body>
 
