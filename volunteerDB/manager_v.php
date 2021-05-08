@@ -70,7 +70,7 @@ li a:hover {
 
 </head>
 <!-- check if user is logged in and a manager -->
-<?php require_once('manager_connection.php'); ?>
+<?php require_once('connection-manager.php'); ?>
 
 <body>
 
