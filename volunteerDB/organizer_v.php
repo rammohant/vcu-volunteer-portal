@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>VDASH Manager Portal</title>
+<title>VDASH organizer Portal</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -66,18 +66,18 @@ li a:hover {
 </style>
 <?php require_once('header.php'); ?>
 
-<script src="js/manager_v.js"></script>
+<script src="js/organizer_v.js"></script>
 
 </head>
-<!-- check if user is logged in and a manager -->
-<?php require_once('connection-manager.php'); ?>
+<!-- check if user is logged in and a organizer -->
+<?php require_once('connection-organizer.php'); ?>
 
 <body>
 
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
-	<li class="active"><a href="manager_v.php">Manager Portal</a></li>
+	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
     <li><a href="logout.php">Log Out</a></li>
 </ul>
 
@@ -99,7 +99,7 @@ v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
 FROM v_volunteer_ops v where v.organizer='$organizer'";
 
-echo "<h2>Welcome to the Manager Portal</h2>";
+echo "<h2>Welcome to the organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
 if($result = mysqli_query($link, $sql)){
@@ -129,8 +129,8 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><form action='delete-manager.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
-            echo "<td><form action='update-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
+            echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='temp.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

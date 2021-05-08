@@ -77,7 +77,7 @@ tr{
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li class="active"><a href="volunteer_v.php">Volunteer Portal</a></li>
-	<li><a href="manager_v.php">Manager Portal</a></li>
+	<li><a href="organizer_v.php">organizer Portal</a></li>
     <li><a href="logout.php">Log Out</a></li>
 
 </ul>
@@ -104,7 +104,7 @@ $volunteerID = $_SESSION['userID'];
 // $stmt->bind_param('volunteerID', $_SESSION['userID']);
 // $stmt->execute();
 
-// echo "<h2>Welcome to the Manager Portal</h2>";
+// echo "<h2>Welcome to the organizer Portal</h2>";
 //         echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 //         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
 //         echo "<tr>";
@@ -188,7 +188,7 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
-            echo "<td><form action='update-manager.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
+            echo "<td><form action='update-organizer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

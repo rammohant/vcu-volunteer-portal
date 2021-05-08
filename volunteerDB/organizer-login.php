@@ -40,7 +40,7 @@ button {
 <?php require_once('header.php'); ?>
 
 </head>
-<?php require_once('connection-manager.php'); ?>
+<?php require_once('connection-organizer.php'); ?>
 
 <body>
 
@@ -61,7 +61,7 @@ button {
 						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<button class="btn btn-secondary onclick="location.href='index.php'>Return home</button>
+					<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>
 				</div>
 				
 			</div>

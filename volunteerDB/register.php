@@ -235,7 +235,7 @@ li a:hover {
 	<ul>
     	<li><a href="index.php" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
     	<li><a href="user_v.php">Volunteer Portal</a></li>
-    	<li><a href="manager_v.php">Manager Portal</a></li>
+    	<li><a href="organizer_v.php">Organizer Portal</a></li>
     	<li class="active"><a href="register.php">Register</a></li>
 	</ul>
 

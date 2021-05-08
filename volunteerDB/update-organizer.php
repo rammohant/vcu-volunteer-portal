@@ -6,10 +6,8 @@ global $conn;
     
 if ($_POST['eventID']) {
 
-    $title =
-     $_POST['ptitle'];
-    $description = 
-    $_POST['pdescription'];
+    $title = $_POST['ptitle'];
+    $description = $_POST['pdescription'];
 
     $sqlQuery = "UPDATE volunteer_events
                     SET
@@ -52,8 +50,8 @@ if ($_POST['eventID']) {
 <h2>Update Event</h2>
 
 <form method="POST">
-  <input type="text" name="ptitle" value="<?php echo $data['ptitle'] ?>" placeholder="Enter title" Required>
-  <input type="text" name="pdescription" value="<?php echo $data['pdescription'] ?>" placeholder="Enter description" Required>
+  <input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required>
+  <input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description" Required>
   <input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required>
   <input type="date" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate" >
   <input type="date" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate" >
@@ -63,6 +61,5 @@ if ($_POST['eventID']) {
   <input type="number" name="age_minumum" value="<?php echo $data['age_minumum'] ?>" placeholder="Enter age_minumum" >
   <input type="text" name="organizer" value="<?php echo $data['organizer'] ?>" placeholder="Enter Age" Required>
   <input type="text" name="approved_by" value="<?php echo $data['approved_by'] ?>" placeholder="Enter Age" Required>
-
   <input type="submit" name="update" value="Update">
 </form>

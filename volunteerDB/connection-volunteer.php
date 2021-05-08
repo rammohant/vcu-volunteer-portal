@@ -44,7 +44,7 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            echo "Must be a volunteer to access this page";
+            echo "Incorrect password.";
             require('volunteer-login.php');
             exit();
         }

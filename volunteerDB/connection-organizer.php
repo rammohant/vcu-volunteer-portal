@@ -27,7 +27,7 @@ if (!isset($_SESSION['userID']))
     // If the page is receiving the email and password from the login form then verify the login data
     if (isset($_POST['email']) && isset($_POST['password']))
     {
-        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type like 'manager'");
+        $stmt = $conn->prepare("SELECT userID, password FROM users WHERE email=:email and type like 'organizer'");
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->execute();
         
@@ -44,16 +44,16 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            echo "Must be a manager to access this page";
-            require('manager-login.php');
+            //echo "Incorrect password";
+            require('organizer-login.php');
             exit();
         }
     }
     else
     {
         // Show login page
-        echo "Must be a manager to access this page";
-        require('manager-login.php');
+        //echo "Must be a organizer to access this page";
+        require('organizer-login.php');
         exit();
     }
 }
