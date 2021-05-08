@@ -19,7 +19,7 @@ try {
 }
 
 // Start or resume session variables
-session_start();
+//session_start();
 
 // If the user_ID session is not set, then the user has not logged in yet
 if (!isset($_SESSION['userID']))
@@ -45,25 +45,30 @@ if (!isset($_SESSION['userID']))
             $_SESSION['userID'] = $queryResult['userID'];
             
             // Redirect to URL
-            header("location:manager_v.php"); 
-        } else if(!empty($queryResult) && password_verify($_POST["password"], $queryResult2['password'])) {
-            // Create session variable
-            $_SESSION['userID'] = $queryResult['userID'];
-            // Redirect to URL
-            header("location:volunteer_v.php"); 
+            header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+
+           // header("location:manager_v.php"); 
+        // } else if(!empty($queryResult) && password_verify($_POST["password"], $queryResult2['password'])) {
+        //     // Create session variable
+        //     $_SESSION['userID'] = $queryResult['userID'];
+        //     // Redirect to URL
+        //     header("location:volunteer_v.php"); 
         } else {
             // Password mismatch
-            echo("Please login to access this page.");
-            require('login.php');
-            exit();
+            header("location:index.php"); 
+            echo("Requires manager account to access. Redirected to home page.");
+            //require('login.php');
+            //exit();
         }
     } 
     else
     {
         // Show login page
-        echo("Please login to access this page.");
-        require('login.php');
-        exit();
+        //header("location:index.php"); 
+        header("location:index.php"); 
+        echo("Requires manager account to access. Redirected to home page.");
+        //require('login.php');
+        //exit();
     }
 }
 

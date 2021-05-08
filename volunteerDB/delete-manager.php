@@ -1,6 +1,6 @@
 <?php
 
-require_once('connection.php'); // Using database connection file here
+require_once('manager_connection.php'); // Using database connection file here
 
 global $conn;
 
