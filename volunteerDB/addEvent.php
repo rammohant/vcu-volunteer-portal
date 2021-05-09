@@ -103,17 +103,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
 
-    // echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
+    echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
 
-    // echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
-    // echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
-    // echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
+    echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
+    echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
+    echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
 
-    // echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
-    // echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
-    // echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
+    echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
+    echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
+    echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
 
-    // echo "<tr><td>Type</td><td>";
+    //echo "<tr><td>Type</td><td>";
 
     // // Retrieve list of employees as potential manager of the new employee
     // $stmt = $conn->prepare("Select type from v_volunteer_ops");
@@ -170,7 +170,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
-    
+    echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
+    echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
+    echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
+    echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
+    echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
+    echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
+    echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
+
     try {
         $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
                                 VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
@@ -185,20 +192,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
         $stmt->bindValue(':type', trim($_POST['type']));
         
-//         if($_POST['type'] != -1) {
-//             $stmt->bindValue(':type', $_POST['type']); }
-// //         } else {
-// //             $stmt->bindValue(':type', null, PDO::PARAM_INT);
-// //         }
-
-        // if (empty($_POST['startdate'])) {
-        //     $stmt->bindValue(':startdate','NULL');
-        // }   
-
-        // if (empty($_POST['enddate'])) {
-        //     $stmt->bindValue(':enddate','NULL');
-        // }   
-        
         if($_POST['organizerID'] != -1) {
             $stmt->bindValue(':organizerID', $_POST['organizerID']);
         } else {
@@ -212,6 +205,20 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         }
         
         $stmt->execute();
+
+        // $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
+        //                         VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
+
+        // $stmt->bindValue(':title', trim($_POST['title']));
+        // $stmt->bindValue(':description', trim($_POST['description']));
+        // $stmt->bindValue(':startdate', trim($_POST['startdate']));
+        // $stmt->bindValue(':enddate', trim($_POST['enddate']));
+        // $stmt->bindValue(':link', trim($_POST['link']));
+        // $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
+        // $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
+        // $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
+        // $stmt->bindValue(':type', trim($_POST['type']));
+
     } catch (PDOException $e) {
         //header("location:addEvent.php"); 
         echo "Error: " . $e->getMessage();
