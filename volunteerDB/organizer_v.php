@@ -55,6 +55,9 @@ li a:hover {
     background-color: #111;
 }
 
+td{
+    word-wrap:break-word
+}
 
 </style>
 <?php require_once('header.php'); ?>
@@ -97,7 +100,7 @@ $stmt->execute();
 echo "<h2>Welcome to the Organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
-echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>";
+echo "<table class='table table-dark table-stripped' style='width:90%; margin-left: auto; margin-right: auto; opacity: 90%'>";
 echo "<tr>";
 echo "<th>ID</th>";
 echo "<th>Title</th>";
@@ -125,9 +128,8 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row['Skills Needed'] . "</td>";
         echo "<td>" . $row['Age Minimum'] . "</td>";
         echo "<td>" . $row['Approver'] . "</td>";
-        echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
-        echo "<td><form action='temp.php' method='GET'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td></tr>";
-        // echo "<td><form action='update2.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update' value='Update' /></form></td></tr>";
+        echo "<td style='word-wrap:break-word'><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form>
+            <form action='update-organizer.php' method='GET'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td>";
         echo "</tr>";
     }
         echo "</table>";

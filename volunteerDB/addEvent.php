@@ -5,7 +5,7 @@
 <style type="text/css">
 h2 {
     text-align: center;
-    font-size: 25px; 
+    font-size: 20px; 
     padding-top: 25px; 
     font-family: "Verdana";
     font-weight: bold; 
@@ -13,7 +13,7 @@ h2 {
 
 p {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     font-family: "Verdana"; 
     
 }
@@ -86,8 +86,6 @@ tr{
 
 <?php 
 
-echo "<h2>Add a Volunteer Event</h2>";
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     $check = $conn->prepare("SELECT email FROM users WHERE userID=:volunteerID and type like 'organizer'");
@@ -97,8 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<p>Sorry! Please log out and login to your manager account to add events</p>";
+        echo "<h2>Access denied: Please log out and login to your manager account to add events.</h2>";
     } else {
+        echo "<h2>Add a Volunteer Event</h2>";
         echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
         echo "<table>";
         echo "<tbody>";

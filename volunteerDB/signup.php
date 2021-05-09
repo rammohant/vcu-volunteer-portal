@@ -85,7 +85,6 @@ tr{
 </ul>
 
 <?php 
-echo "<h2>Sign up for a Volunteer Event!</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
@@ -96,8 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<p>Sorry! Please log out and login to your volunteer account to sign up for events</p>";
+        echo "<h2>Access denied: Please log out and login to your manager account to sign up for events.</h2>";
     } else {
+        echo "<h2>Sign up for a Volunteer Event!</h2>";
         echo "<form method='post' action='signup.php'>";
         echo "<table style='padding: 10px 20px 10px 20px'>";
         echo "<tbody>";
