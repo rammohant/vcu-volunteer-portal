@@ -6,7 +6,7 @@ global $conn;
 
 $title_f = $_POST['Title']; // get id through query string
 
-$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where title='$title'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where title='$title_f'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
