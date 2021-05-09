@@ -93,6 +93,7 @@ $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
 $selectstmt->execute();
 
+echo "<h2>Test</h2>"; 
 while ($data = $selectstmt->fetch()) {
     echo "<div class='wrapper'>"; 
     echo "<h2>View Event</h2>"; 

@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_university = "INSERT INTO university (university_name) VALUES (?)";
         $sql_volunteer = "INSERT INTO volunteers (userID, university_name) VALUES (?, ?)";
 
-        if ($stmt = mysqli_prepare($link, $sql)) {
+        if ($stmt = mysqli_prepare($link, $sql) && $stmt_university = mysqli_prepare($link, $sql_university) && $stmt_volunteer = mysqli_prepare($link, $sql_volunteer)) {
 
             // Set parameters
             $param_email = $email;

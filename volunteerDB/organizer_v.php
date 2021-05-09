@@ -130,7 +130,8 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row['Skills Needed'] . "</td>";
         echo "<td>" . $row['Age Minimum'] . "</td>";
         echo "<td>" . $row['Approver'] . "</td>";
-        echo "<td style='word-wrap:break-word'><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form>
+        echo "<td style='word-wrap:break-word'>
+            <form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form>
             <form action='update-organizer.php' method='GET'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td>";
         echo "</tr>";
     }
