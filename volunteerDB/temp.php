@@ -6,12 +6,12 @@ global $conn;
 
 $title_f = $_POST['Title']; // get id through query string
 
-$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where title='$title_f'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minumum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
 //if(isset($_POST['update'])) // when click on Update button
-if($_POST['update']) // when click on Update button
+if($_POST['Update']) // when click on Update button
 {
     // $title = $_POST['title'];
     // $description = $_POST['description'];
@@ -41,8 +41,8 @@ if($_POST['update']) // when click on Update button
                     needed_skills = :needed_skills,
                     age_minumum = :age_minumum,
                     needed_skills = :needed_skills,
-                    organizer = :organizer,
-                    approved_by = :approved_by
+                    organizerID = :organizerID,
+                    approverID = :approverID
                     WHERE title = :title_f";
 
     $stmt = $conn->prepare($sqlQuery);
@@ -83,5 +83,5 @@ if($_POST['update']) // when click on Update button
 <input type="text" name="age_minumum" value="<?php echo $data['age_minumum'] ?>" placeholder="Enter age_minumum">
 <input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID">
 <input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID">
-<input type="submit" name="update" value="Update">
+<input type="submit" name="Update" value="Update">
 </form>

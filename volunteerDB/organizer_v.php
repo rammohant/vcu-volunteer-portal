@@ -123,8 +123,8 @@ if($result = mysqli_query($link, $sql)){
             echo "<td>" . $row['Skills Needed'] . "</td>";
             echo "<td>" . $row['Age Minimum'] . "</td>";
             echo "<td>" . $row['Approver'] . "</td>";
-            echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
-            echo "<td><form action='temp.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
+            echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
+            echo "<td><form action='temp.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td></tr>";
             echo "</tr>";
         }
         echo "</table>";

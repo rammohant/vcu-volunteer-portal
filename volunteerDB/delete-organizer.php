@@ -16,6 +16,6 @@ if ($_POST['Title']) {
     exit; 
 } else
 {
-    echo "Error deleting record"; // display error message if not delete
+    echo "Error updating record"; // display error message if not delete
 }
 ?>

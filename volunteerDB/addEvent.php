@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
     echo "<table>";
     echo "<tbody>";
-    echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
+    echo "<tr><td>Title</td><td><input name='title' type='text' Required></td></tr>";
     echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
     echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
