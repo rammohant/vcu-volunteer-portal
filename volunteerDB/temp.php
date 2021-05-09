@@ -85,8 +85,8 @@ $qry = mysqli_query($link,"select eventID, title, description, type, startdate, 
 $data = mysqli_fetch_array($qry); // fetch data
 
 echo '<script type="text/javascript">' .
-          'console.log(JSON.stringify(' . $_POST . '));</script>';
-          
+          'console.log(' . $_POST . ');</script>';
+
 if(isset($_POST['update'])) // when click on Update button
 {
     console.log($_POST['update']);
