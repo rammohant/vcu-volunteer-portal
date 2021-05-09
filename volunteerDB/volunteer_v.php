@@ -100,7 +100,7 @@ v.number as 'Contact Number',
 v.email as 'Contact Email'
 FROM v_all_volunteer_signups v where volunteerID = :volunteerID");
 
-$stmt->bind_param(':volunteerID', $volunteerID);
+$stmt->bindValue(':volunteerID', $volunteerID);
 $stmt->execute();
 
 echo "<h2>Welcome to the organizer Portal</h2>";
