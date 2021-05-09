@@ -202,7 +202,7 @@ while ($row = $stmt->fetch()) {
 ?>
 
 <div id="center_button" style='padding-bottom: 20px'>
-<button onclick="location.href='signup.php'">Sign Up</button>
+<button class="btn btn-secondary" onclick="location.href='signup.php'">Sign Up</button>
 
 </div>
 </body>
