@@ -35,21 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $skills = trim($_POST["skills"]);
     $vaccinated = trim($_POST["vaccinated"]);
     
-    echo "<tr><td>Organizer</td><td>";
-    // Retrieve list of organizer
-    $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
-    $stmt->execute();
-    
-    echo "<select name='organizerID'>";
-    
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[organizerID]'>$row[name]</option>";
-    }
-    
-    echo "</select>";
-    echo "</td></tr>";
-    
-
     // Validate email
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter a email.";
@@ -274,7 +259,6 @@ li a:hover {
 						</div>
                         <div class="form-group">
 							<label>University</label> 
-                            <!-- <input type="text" name="university" class="form-control" value="<?php echo $university;?>" >  -->
 					
                             <?php $stmt = $conn->prepare("SELECT universityID, university_name as name FROM universities");
                             $stmt->execute();
@@ -300,10 +284,6 @@ li a:hover {
 								value="<?php echo $confirm_password; ?>"> <span
 								class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
 						</div>
-						<div class="form-group">
-							<input type="submit" class="btn btn-primary" value="Submit"> <input
-								type="reset" class="btn btn-secondary ml-2" value="Reset">
-						</div>
                         <div class="form-group">
                             <label>Languages</label> <input type="text" name="languages"
                                     class="form-control"
@@ -318,6 +298,10 @@ li a:hover {
                             <label>Vaccinated</label> <input type="text" name="vaccinated"
                                     class="form-control"
                                     value="<?php echo $vaccinated;?>"> 
+						</div>
+                        <div class="form-group">
+							<input type="submit" class="btn btn-primary" value="Submit"> <input
+								type="reset" class="btn btn-secondary ml-2" value="Reset">
 						</div>
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.
