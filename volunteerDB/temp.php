@@ -83,9 +83,11 @@ $title_f = $_POST['Title']; // get id through query string
 $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
+console.log(JSON.stringify($_POST));
 
 if(isset($_POST['update'])) // when click on Update button
 {
+    console.log($_POST['update']);
     $title = $_POST['Title'];
     $description = $_POST['description'];
 	
@@ -144,7 +146,7 @@ if(isset($_POST['update'])) // when click on Update button
 
 <div class="wrapper">
 <h2>Update Event</h2>
-<form action='temp.php' method='POST'>
+<form method='POST'>
 <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
 <tr><td>Description</td><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
