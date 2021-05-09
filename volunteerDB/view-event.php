@@ -61,13 +61,13 @@ td {
 }
 
 </style>
-<?php require_once('header.php'); ?>
+<?php require_once('header.php')."
 
 <script src="js/organizer_v.js"></script>
 
 </head>
 <!-- check if user is logged in and a organizer -->
-<?php require_once('connection-organizer.php'); ?>
+<?php require_once('connection-organizer.php')."
 
 <body>
 
@@ -95,41 +95,41 @@ $selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
 $selectstmt->execute();
 
 $data = $selectstmt->fetch();
-echo $data['title'];
+while ($row = $stmt->fetch()) {
+    echo "<div class='wrapper'>"; 
+    echo "<h2>View Event</h2>"; 
+        echo "<form method='GET'>"; 
+        echo "<table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>"; 
+        echo "<tr><td>Title</td><td>".$data['title']."</td></tr>";
+        echo "<tr><td>Description</td><td>".$data['description']."</td></tr>";
+        echo "<tr><td>Organization</td><td>".$data['organization']."</td></tr>";
+        echo "<tr><td>Number</td><td>".$data['number']."</td></tr>";
+        echo "<tr><td>Email</td><td>".$data['email']."</td></tr>";
+        echo "<tr><td>Dates</td><td>".$data['daterange']."</td></tr>";
+        echo "<tr><td>Link</td><td>".$data['link']."</td></tr>";
+        echo "<tr><td>Available Spots</td><td>".$data['available_spots']."</td></tr>";
+        echo "<tr><td>Skills Needed</td><td>".$data['needed_skills']."</td></tr>";
+        echo "<tr><td>Age Minimum</td><td>".$data['age_minimum']."</td></tr>";
+            // if($data['type']=='virtual event') {
+            //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
+            // }
+
+            // if($data['type']=='in-person event') {
+            //     echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
+            //     echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
+            //     echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
+            // }
+
+            // if($data['type']=='donations') {
+            //     echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
+            //     echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
+            //     echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
+            // }
+    echo "</table>";
+    echo "</form>";
+    echo "</div>"; 
+} 
 ?>
-
-<div class="wrapper">
-<h2>View Event</h2>
-    <form method='GET'>
-        <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
-        <tr><td>Title</td><td><?php echo $data['title']; ?></td></tr>
-        <tr><td>Description</td><td><?php echo $data['description']; ?></td></tr>
-        <tr><td>Organization</td><td><?php echo $data['organization']; ?></td></tr>
-        <tr><td>Number</td><td><?php echo $data['number']; ?></td></tr>
-        <tr><td>Email</td><td><?php echo $data['email']; ?></td></tr>
-        <tr><td>Dates</td><td><?php echo $data['daterange']; ?></td></tr>
-        <tr><td>Link</td><td><?php echo $data['link']; ?></td></tr>
-        <tr><td>Available Spots</td><td><?php echo $data['available_spots']; ?></td></tr>
-        <tr><td>Skills Needed</td><td><?php echo $data['needed_skills']; ?></td></tr>
-        <tr><td>Age Minimum</td><td><?php echo $data['age_minimum']; ?></td></tr>
-        <?php
-        // if($data['type']=='virtual event') {
-        //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
-        // }
-
-        // if($data['type']=='in-person event') {
-        //     echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
-        //     echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
-        //     echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
-        // }
-
-        // if($data['type']=='donations') {
-        //     echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
-        //     echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
-        //     echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
-        // }
-        ?>
-        </table>
-    </form>
+<div id="center_button" style='padding-bottom: 20px'>
+    <button class="btn btn-secondary" onclick="location.href='index.php'">Return home</button>
 </div>
-

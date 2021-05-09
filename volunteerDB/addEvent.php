@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<h2>Access denied: Please log out and login to your manager account to add events.</h2>";
+        echo "<p>Access denied: Please log out and login to your manager account to add events.</p>";
     } else {
         echo "<h2>Add a Volunteer Event</h2>";
         echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
@@ -103,13 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tbody>";
         echo "<tr><td>Title</td><td><input name='title' type='text' Required></td></tr>";
         echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-        echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
-        echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
+        echo "<tr><td>Start Date</td><td><input name='startdate' type='date' Required></td></tr>";
+        echo "<tr><td>End Date</td><td><input name='enddate' type='date' Required></td></tr>";
         echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
         echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' Required></td></tr>";
         echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
         echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text' Required></td></tr>";
-        echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+        echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr> Required";
 
         echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
 
@@ -230,6 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     } catch (PDOException $e) {
         //header("location:addEvent.php"); 
+        echo "Failed to add event"; 
         echo "Error: " . $e->getMessage();
         die();
     }
