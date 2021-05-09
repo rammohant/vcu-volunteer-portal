@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tbody>";
         echo "<tr><td>Title</td><td><input name='title' type='text' Required></td></tr>";
         echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-        echo "<tr><td>Start Date</td><td><input name='startdate' type='date' Required></td></tr>";
+        //echo "<tr><td>Start Date</td><td><input name='startdate' type='date' Required></td></tr>";
         echo "<tr><td>End Date</td><td><input name='enddate' type='date' Required></td></tr>";
         echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
         echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' Required></td></tr>";
@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
     echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-    echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
+    //echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
     echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
     echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
@@ -190,12 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
 
     try {
-        $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
-                                VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
+        $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
+                                VALUES (:title, :description, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
 
         $stmt->bindValue(':title', trim($_POST['title']));
         $stmt->bindValue(':description', trim($_POST['description']));
-        $stmt->bindValue(':startdate', trim($_POST['startdate']));
+        //$stmt->bindValue(':startdate', trim($_POST['startdate']));
         $stmt->bindValue(':enddate', trim($_POST['enddate']));
         $stmt->bindValue(':link', trim($_POST['link']));
         $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
