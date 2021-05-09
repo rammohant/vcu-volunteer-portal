@@ -135,7 +135,8 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row["Available Spots"] . "</td>";
         echo "<td>" . $row["Skills Needed"] . "</td>";
         echo "<td>" . $row["Age Minimum"] . "</td>";
-        echo "<td><form action='delete-volunteer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+        echo "<td><form action='delete-volunteer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form>
+              <form action='view-event.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td>";
         echo "</tr>";
     }
         echo "</table>";
