@@ -4,7 +4,7 @@ require_once('connection.php'); // Using database connection file here
 
 global $conn;
 
-$title = $_POST['title']; // get id through query string
+$title_f = $_POST['Title']; // get id through query string
 
 $qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where title='$title'"); // select query
 
@@ -15,7 +15,7 @@ if(isset($_POST['update'])) // when click on Update button
     $title = $_POST['title'];
     $description = $_POST['description'];
 	
-    $edit = mysqli_query($db,"update volunteer_events set title='$title', description='$description' where eventID='$eventID'");
+    $edit = mysqli_query($db,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
 	
     if($edit)
     {
