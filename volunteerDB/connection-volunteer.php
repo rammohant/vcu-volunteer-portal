@@ -43,7 +43,6 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            include('logout.php');
             echo "Incorrect password.";
             require('volunteer-login.php');
             exit();
@@ -52,7 +51,6 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
-        include('logout.php');
         echo "Must be a volunteer to access this page";
         require('volunteer-login.php');
         exit();

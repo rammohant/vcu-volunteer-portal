@@ -60,12 +60,12 @@ if(isset($_POST['update'])) // when click on Update button
     // //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
     // $stmt->execute();
 
-    header("location:organizer_v.php"); 
-    exit; 
-} else {
-    echo "Error deleting record"; // display error message if not delete
-    echo mysqli_error();
-}
+    // header("location:organizer_v.php"); 
+    // exit; 
+} 
+// else {
+//     echo "Error deleting record"; // display error message if not delete
+// }
 ?>
 
 <h3>Update Data</h3>
