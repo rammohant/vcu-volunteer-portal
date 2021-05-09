@@ -166,9 +166,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
     echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
     echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
     echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     
     try {

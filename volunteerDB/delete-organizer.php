@@ -1,6 +1,6 @@
 <?php
 
-require_once('connection-manager.php'); // Using database connection file here
+require_once('connection.php'); // Using database connection file here
 
 global $conn;
 
@@ -12,7 +12,7 @@ if ($_POST['Title']) {
     $stmt->bindValue(':title', $_POST["Title"], PDO::PARAM_STR);
     
     $stmt->execute();
-    header("location:manager_v.php"); 
+    header("location:organizer_v.php"); 
     exit; 
 } else
 {

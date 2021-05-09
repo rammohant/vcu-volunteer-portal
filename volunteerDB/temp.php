@@ -4,9 +4,9 @@ require_once('connection.php'); // Using database connection file here
 
 global $conn;
 
-$eventID = $_POST['eventID']; // get id through query string
+$title = $_POST['title']; // get id through query string
 
-$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where eventID='$eventID'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where title='$title'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
