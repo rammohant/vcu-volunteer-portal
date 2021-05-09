@@ -20,7 +20,7 @@ if(isset($_POST['update'])) // when click on Update button
     if($edit)
     {
         mysqli_close($link); // Close connection
-        header("location:manager_v.php"); // redirects to all records page
+        header("location:organizer_v.php"); // redirects to all records page
         exit;
     }
     else
