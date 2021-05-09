@@ -6,7 +6,7 @@ global $conn;
 
 $title_f = $_POST['Title']; // get id through query string
 
-$qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minumum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
@@ -39,7 +39,7 @@ if($_POST['Update']) // when click on Update button
                     link = :link,
                     available_spots = :available_spots,
                     needed_skills = :needed_skills,
-                    age_minumum = :age_minumum,
+                    age_minimum = :age_minimum,
                     needed_skills = :needed_skills,
                     organizerID = :organizerID,
                     approverID = :approverID
@@ -55,7 +55,7 @@ if($_POST['Update']) // when click on Update button
     $stmt->bindValue(':link', $_POST["link"], PDO::PARAM_STR);
     $stmt->bindValue(':available_spots', $_POST["available_spots"], PDO::PARAM_STR);
     $stmt->bindValue(':needed_skills', $_POST["needed_skills"], PDO::PARAM_STR);
-    $stmt->bindValue(':age_minumum', $_POST["age_minumum"], PDO::PARAM_STR);
+    $stmt->bindValue(':age_minimum', $_POST["age_minimum"], PDO::PARAM_STR);
     $stmt->bindValue(':organizerID', $_POST["organizerID"], PDO::PARAM_STR);
     $stmt->bindValue(':approverID', $_POST["approverID"], PDO::PARAM_STR);
     //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
@@ -80,7 +80,7 @@ if($_POST['Update']) // when click on Update button
 <input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link">
 <input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots">
 <input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills">
-<input type="text" name="age_minumum" value="<?php echo $data['age_minumum'] ?>" placeholder="Enter age_minumum">
+<input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum">
 <input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID">
 <input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID">
 <input type="submit" name="Update" value="Update">
