@@ -47,7 +47,7 @@ if(isset($_POST['update'])) // when click on Update button
     $stmt = $conn->prepare($sqlQuery);
     $stmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
     $stmt->bindValue(':title', $_POST["title"], PDO::PARAM_STR);
-    $stmt->bindValue(':description', $description);
+    $stmt->bindValue(':description', $_POST["description"]);
     $stmt->bindValue(':type', $_POST["type"], PDO::PARAM_STR);
     $stmt->bindValue(':startdate', $_POST["startdate"], PDO::PARAM_STR);
     $stmt->bindValue(':enddate', $_POST["enddate"], PDO::PARAM_STR);
@@ -62,8 +62,7 @@ if(isset($_POST['update'])) // when click on Update button
 
     header("location:organizer_v.php"); 
     exit; 
-} else
-{
+} else {
     echo "Error deleting record"; // display error message if not delete
 }
 ?>
