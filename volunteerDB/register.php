@@ -119,6 +119,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_firstname = $first_name;
             $param_lastname = $last_name;
             $param_university = $university;
+            $param_languages = $languages;
+            $param_skills = $skills;
+            $param_vaccinated = $vaccinated;
             $param_type = 'volunteer';
             
             // Bind variables to the prepared statement as parameters
@@ -137,11 +140,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
             $row = mysql_fetch_assoc($result); 
 
-            $sql2 = "INSERT INTO volunteers (userID, universityID) VALUES (?, ?)";
+            $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills, vaccinated) VALUES (?, ?, ?, ?, ?)";
 
             if ($stmt2 = mysqli_prepare($link, $sql2)) {
                 // Bind variables to the prepared statement as parameters
-                mysqli_stmt_bind_param($stmt2,'ss', $param_userID, $param_university);
+                mysqli_stmt_bind_param($stmt2,'sssss', $param_userID, $param_university, $param_languages, $param_skills, $param_vaccinated);
 
                 // Attempt to execute the prepared statement
                 if (mysqli_stmt_execute($stmt2)) {
@@ -300,6 +303,21 @@ li a:hover {
 						<div class="form-group">
 							<input type="submit" class="btn btn-primary" value="Submit"> <input
 								type="reset" class="btn btn-secondary ml-2" value="Reset">
+						</div>
+                        <div class="form-group">
+                            <label>Languages</label> <input type="text" name="languages"
+                                    class="form-control"
+                                    value="<?php echo $languages;?>"> 
+						</div>
+                        <div class="form-group">
+                            <label>Skills</label> <input type="text" name="skills"
+                                    class="form-control"
+                                    value="<?php echo $skills;?>"> 
+						</div>
+                        <div class="form-group">
+                            <label>Vaccinated</label> <input type="text" name="vaccinated"
+                                    class="form-control"
+                                    value="<?php echo $vaccinated;?>"> 
 						</div>
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.
