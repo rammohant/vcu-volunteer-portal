@@ -80,17 +80,16 @@ td{
 </ul>
 
 <?php 
-
-$Title = $_GET['Title']; // get id through query string
+if ($_POST['eventID']) { 
 
 $selectsql = "select eventID, title, description, organization, number, email, type, daterange, link, available_spots, needed_skills,age_minimum,needed_skills,organizer,approved_by,
             technology,
             address, vaccine_required, precautions,
             dropoff_time,dropoff_address,instructions
-            from v_volunteer_ops where title=:Title"; 
+            from v_volunteer_ops where eventID=:eventID"; 
 
 $selectstmt = $conn->prepare($selectsql);
-$selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
+$selectstmt->bindValue(':eventID', $eventID, PDO::PARAM_STR);
 $selectstmt->execute();
 
 echo "<h2>Test</h2>"; 
@@ -128,6 +127,7 @@ while ($data = $selectstmt->fetch()) {
     echo "</form>";
     echo "</div>"; 
 } 
+}
 ?>
 <div id="center_button" style='padding-bottom: 20px'>
     <button class="btn btn-secondary" onclick="location.href='index.php'">Return home</button>

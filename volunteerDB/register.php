@@ -96,7 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_university = "INSERT INTO university (university_name) VALUES (?)";
         $sql_volunteer = "INSERT INTO volunteers (userID, university_name) VALUES (?, ?)";
 
-        if ($stmt = mysqli_prepare($link, $sql) && $stmt_university = mysqli_prepare($link, $sql_university) && $stmt_volunteer = mysqli_prepare($link, $sql_volunteer)) {
+        if ($stmt = mysqli_prepare($link, $sql)) {
+        // if ($stmt = mysqli_prepare($link, $sql) && $stmt_university = mysqli_prepare($link, $sql_university) && $stmt_volunteer = mysqli_prepare($link, $sql_volunteer)) {
 
             // Set parameters
             $param_email = $email;
@@ -117,7 +118,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt_volunteer,'ss', $param_userID, $param_university);
 
             // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_university) && mysqli_stmt_execute($stmt_volunteer)) {
+            if (mysqli_stmt_execute($stmt)) {
+            // if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_university) && mysqli_stmt_execute($stmt_volunteer)) {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
                 header("location: index.php");
