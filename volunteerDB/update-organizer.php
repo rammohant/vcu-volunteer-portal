@@ -88,7 +88,7 @@ $selectsql = "select eventID, title, description, type, startdate, enddate, link
 $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
 $selectstmt->execute();
-$data = $stmt->fetch();
+$data = $selectstmt->fetch();
 // $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 // $data = mysqli_fetch_array($qry); // fetch data
 
