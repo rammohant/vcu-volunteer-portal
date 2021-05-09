@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $university = trim($_POST["university"]);
-    $languages = trim($_POST["languages"]);
-    $skills = trim($_POST["skills"]);
-    $vaccinated = trim($_POST["vaccinated"]);
+    // $languages = trim($_POST["languages"]);
+    // $skills = trim($_POST["skills"]);
+    // $vaccinated = trim($_POST["vaccinated"]);
 
     // Validate email
     if (empty(trim($_POST["email"]))) {
@@ -93,6 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Prepare an insert statement
         $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
+        $sql_university = "INSERT INTO university (university_name) VALUES (?)";
+        $sql_volunteer = "INSERT INTO volunteers (userID, university_name) VALUES (?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
 
@@ -101,17 +103,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_firstname = $first_name;
             $param_lastname = $last_name;
-            $param_university = $university;
+            $param_university = 1;
             $param_type = 'volunteer';
             
+            //Insert into volunteers table now 
+            $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
+            $row = mysql_fetch_assoc($result); 
+            $param_userID = $row['maximum'];
+
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
+            mysqli_stmt_bind_param($stmt_university,'s', $param_university);
+            mysqli_stmt_bind_param($stmt_volunteer,'ss', $param_userID, $param_university);
 
             // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
+            if (mysqli_stmt_execute($stmt) && mysqli_stmt_execute($stmt_university) && mysqli_stmt_execute($stmt_volunteer)) {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
-                header("location: login.php");
+                header("location: index.php");
             } else {
                 echo 'You have successfully created a VDASH account!';
             }
@@ -140,9 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $newID = 
-
-    $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills) VALUES (?, ?, ?, ?, ?)";
+    // $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills) VALUES (?, ?, ?, ?, ?)";
 
     // Close connection
     mysqli_close($link);

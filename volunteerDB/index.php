@@ -76,6 +76,7 @@ li a:hover {
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="organizer_v.php">Organizer Portal</a></li>
   <li><a href="orgs.php">Organizations</a></li>
+  <li><a href="register.php">Register</a></li>
 </ul>
 
 <h2>Volunteer Opportunities</h2>
