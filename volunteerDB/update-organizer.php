@@ -87,7 +87,8 @@ $title_f = $_GET['Title']; // get id through query string
 $selectsql = "select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title=:title_f"; 
 $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
-
+$selectstmt->execute();
+$data = $stmt->fetch();
 // $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 // $data = mysqli_fetch_array($qry); // fetch data
 
@@ -125,7 +126,24 @@ if(isset($_POST['update'])) {
 } 
 ?>
 
+<div class="wrapper">
 <h2>Update Event</h2>
+    <form method='POST'>
+        <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
+        <tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
+        <tr><td>Description</td><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
+        <tr><td>Start date</td><td><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
+        <tr><td>End date</td><td><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></td></tr>
+        <tr><td>Link</td><td><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></td></tr>
+        <tr><td>Available Spots</td><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
+        <tr><td>Skills Needed</td><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
+        <tr><td>Age Minimum</td><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
+        <tr><td><input type="submit" name="update" value="Update"></tr>
+        </table>
+    </form>
+</div>
+
+<!-- <h2>Update Event</h2>
 <form method='POST'>
 <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><th></th><th></th><th></th></tr>
@@ -140,4 +158,4 @@ if(isset($_POST['update'])) {
 <tr><td colspan="3"><input type="submit" name="update" value="Update"></tr>
 </table>
 </form>
-</div>
+</div> -->
