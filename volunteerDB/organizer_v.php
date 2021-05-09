@@ -94,7 +94,7 @@ v.available_spots as 'Available Spots',
 v.needed_skills as 'Skills Needed',
 v.age_minimum as 'Age Minimum',
 v.approver as 'Approver'
-FROM v_volunteer_ops v where v.organizer=:organizerID");
+FROM v_allevents v where v.organizer=:organizerID");
 
 $stmt->bindValue(':organizerID', $organizer);
 $stmt->execute();

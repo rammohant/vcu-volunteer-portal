@@ -101,7 +101,7 @@ $selectsql = "select eventID,
             technology,
             address, vaccine_required, precautions,
             dropoff_time,dropoff_address,instructions
-            from v_volunteer_ops where eventID=:eventID"; 
+            from v_allevents where eventID=:eventID"; 
 
 $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':eventID', $_POST['eventID'], PDO::PARAM_STR);
@@ -115,29 +115,29 @@ while ($data = $selectstmt->fetch()) {
         echo "<table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>"; 
         echo "<tr><td>Title</td><td>".$data["Title"]."</td></tr>";
         echo "<tr><td>Description</td><td>".$data["Description"]."</td></tr>";
-        echo "<tr><td>Organization</td><td>".$data["Organization"]."</td></tr>";
-        echo "<tr><td>Number</td><td>".$data["Number"]."</td></tr>";
-        echo "<tr><td>Email</td><td>".$data["Email"]."</td></tr>";
         echo "<tr><td>Dates</td><td>".$data["Dates"]."</td></tr>";
         echo "<tr><td>Link</td><td>".$data["Link"]."</td></tr>";
+        echo "<tr><td>Organization</td><td>".$data["Organization"]."</td></tr>";
+        echo "<tr><td>Email</td><td>".$data["Email"]."</td></tr>";
+        echo "<tr><td>Number</td><td>".$data["Number"]."</td></tr>";
         echo "<tr><td>Available Spots</td><td>".$data["Available Spots"]."</td></tr>";
         echo "<tr><td>Skills Needed</td><td>".$data["Skills Needed"]."</td></tr>";
         echo "<tr><td>Age Minimum</td><td>".$data["Age Minimum"]."</td></tr>";
-            // if($data['type']=='virtual event') {
-            //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
-            // }
+        if($data["Type"]=='virtual event') {
+            echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
+        }
 
-            // if($data['type']=='in-person event') {
-            //     echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
-            //     echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
-            //     echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
-            // }
+        if($data["Type"]=='in-person event') {
+            echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
+            echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
+            echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
+        }
 
-            // if($data['type']=='donations') {
-            //     echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
-            //     echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
-            //     echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
-            // }
+        if($data["Type"]=='donations') {
+            echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
+            echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
+            echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
+        }
     echo "</table>";
     echo "</form>";
     echo "</div>"; 

@@ -105,7 +105,7 @@ li a:hover {
         v.available_spots as 'Available Spots',
         v.needed_skills as 'Skills Needed',
         v.age_minimum as 'Age Minimum'   
-        FROM  v_volunteer_ops v"); 
+        FROM  v_allevents v"); 
 
         while($data = mysqli_fetch_array($records))
         {

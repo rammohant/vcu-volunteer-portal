@@ -99,7 +99,7 @@ v.age_minimum as 'Age Minimum',
 v.organization as 'Organization', 
 v.number as 'Contact Number', 
 v.email as 'Contact Email'
-FROM v_all_volunteer_signups v where volunteerID = :volunteerID");
+FROM v_allsignups v where volunteerID = :volunteerID");
 
 $stmt->bindValue(':volunteerID', $volunteerID);
 $stmt->execute();
