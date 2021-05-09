@@ -79,7 +79,7 @@ tr{
 
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
 	<li><a href="register.php">Register</a></li>
 </ul>
@@ -90,7 +90,7 @@ echo "<h2>Add a Volunteer Event</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    $check = $conn->prepare("SELECT email FROM users WHERE userID=:volunteerID and type like 'volunteer'");
+    $check = $conn->prepare("SELECT email FROM users WHERE userID=:volunteerID and type like 'organizer'");
     $check->bindValue(':volunteerID',$_SESSION['userID']);
     $check->execute();
 

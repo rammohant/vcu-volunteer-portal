@@ -76,8 +76,6 @@ li a:hover {
 
 <?php
 
-require_once('connection.php'); // Using database connection file here
-
 global $conn;
 
 $title_f = $_POST['Title']; // get id through query string
@@ -150,18 +148,18 @@ if(isset($_POST['update'])) // when click on Update button
 <tbody>
 <div class="row justify-content-center">
 <div class="col-4">
-<tr><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></tr>
-<tr><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></tr>
-<tr><input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required></tr>
-<tr><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></tr>
-<tr><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></tr>
-<tr><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></tr>
-<tr><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></tr>
-<tr><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></tr>
-<tr><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></tr>
-<tr><input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID"></tr>
-<tr><input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID"></tr>
-<tr><input type="submit" name="update" value="Update"></tr>
+<tr><td>input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
+<tr><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
+<tr><td><input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required></td></tr>
+<tr<td>><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
+<tr><td><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></td></tr>
+<tr><td><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></td></tr>
+<tr><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
+<tr><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
+<tr><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
+<tr><td><input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID"></td></tr>
+<tr><td><input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID"></td></tr>
+<tr><td><input type="submit" name="update" value="Update"></tr>
 </div> 
 </div>
 <tbody>
