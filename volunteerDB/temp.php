@@ -79,8 +79,9 @@ li a:hover {
 global $conn;
 
 $title_f = $_POST['Title']; // get id through query string
+$eventID = $_POST['eventID']; // get id through query string
 
-$qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where eventID='$eventID'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
@@ -89,7 +90,7 @@ if(isset($_POST['update'])) // when click on Update button
     $title = $_POST['title'];
     $description = $_POST['description'];
 	
-    $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
+    $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where eventID='$eventID'");
 	
     if($edit)
     {
@@ -136,32 +137,32 @@ if(isset($_POST['update'])) // when click on Update button
 
     // header("location:organizer_v.php"); 
     // exit; 
+
 } 
 // else {
 //     echo "Error deleting record"; // display error message if not delete
 // }
 ?>
 
+<div class="wrapper">
 <h3>Update Data</h3>
+<div class="container mt-3 mb-3">
 <form method='POST'>
 <table>
-<tbody>
 <div class="row justify-content-center">
 <div class="col-4">
-<tr><td>input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
-<tr><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
-<tr><td><input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required></td></tr>
-<tr<td>><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
-<tr><td><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></td></tr>
-<tr><td><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></td></tr>
-<tr><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
-<tr><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
-<tr><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
-<tr><td><input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID"></td></tr>
-<tr><td><input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID"></td></tr>
+<tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
+<tr><td>Description</td><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
+<tr><td>Start date</td><td><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
+<tr><td>End date</td><td><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></td></tr>
+<tr><td>Link</td><td><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></td></tr>
+<tr><td>Available Spots</td><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
+<tr><td>Skills Needed</td><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
+<tr><td>Age Minimum</td><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
 <tr><td><input type="submit" name="update" value="Update"></tr>
 </div> 
 </div>
-<tbody>
 </table>
 </form>
+</div>
+</div>
