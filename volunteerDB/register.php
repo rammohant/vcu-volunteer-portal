@@ -270,9 +270,8 @@ li a:hover {
                                     value="<?php echo $birthdate;?>"> 
 						</div>
                         <div class="form-group">
-							<label>University</label> <input type="text" name="university"
-								class="form-control"
-                                > 
+							<label>University</label> 
+                            <!-- <input type="text" name="university" class="form-control" value="<?php echo $university;?>" >  -->
 					
                             <?php $stmt = $conn->prepare("SELECT universityID, university_name as name FROM universities");
                             $stmt->execute();
@@ -284,7 +283,6 @@ li a:hover {
                             }
                             
                             echo "</select>";
-                            echo "</td></tr>";
                             ?> 
                         </div>
 						<div class="form-group">
