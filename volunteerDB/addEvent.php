@@ -161,15 +161,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</form>";
 } else {
     
-    // echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
-    // echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-    // echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
-    // echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
-    // echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    // echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
-    // echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    // echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
-    // echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+    echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";
+    echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
+    echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
+    echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
+    echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
+    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='number'></td></tr>";
+    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
+    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='number'></td></tr>";
+    echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     
     try {
         $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
@@ -213,9 +213,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
         $stmt->execute();
     } catch (PDOException $e) {
-        die();
-        header("location:addEvent.php"); 
+        //header("location:addEvent.php"); 
         echo "Error: " . $e->getMessage();
+        die();
     }
 
     header("location:organizer_v.php"); 
