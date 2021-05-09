@@ -109,6 +109,8 @@ echo "<th>Available Spots</th>";
 echo "<th>Skills Needed</th>";
 echo "<th>Age Minimum</th>";
 echo "<th>Approver</th>";
+echo "<th></th>";
+echo "<th></th>";
 echo "</tr>";
 
 while ($row = $stmt->fetch()) {
@@ -125,7 +127,7 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row['Approver'] . "</td>";
         echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
         echo "<td><form action='temp.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td></tr>";
-        echo "<td><form action='update2.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update' value='Update' /></form></td></tr>";
+        // echo "<td><form action='update2.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update' value='Update' /></form></td></tr>";
         echo "</tr>";
     }
         echo "</table>";
@@ -192,7 +194,7 @@ while ($row = $stmt->fetch()) {
 // }
 ?>
 <div id="center_button" style='padding-bottom: 20px'>
-    <button onclick="location.href='addEvent.php'">Add Event</button>
+    <button class="btn btn-primary" onclick="location.href='addEvent.php'">Add Event</button>
 </div>
 </body>
 </html>

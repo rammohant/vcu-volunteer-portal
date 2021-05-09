@@ -86,7 +86,7 @@ $data = mysqli_fetch_array($qry); // fetch data
 
 if(isset($_POST['update'])) // when click on Update button
 {
-    $title = $_POST['title'];
+    $title = $_POST['Title'];
     $description = $_POST['description'];
 	
     $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
@@ -144,10 +144,8 @@ if(isset($_POST['update'])) // when click on Update button
 
 <div class="wrapper">
 <h3>Update Data</h3>
-<div class="container mt-3 mb-3">
 <form method='POST'>
-<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
-<div class="row justify-content-center">
+<table class='table table-dark' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
 <tr><td>Description</td><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
 <tr><td>Start date</td><td><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
@@ -156,9 +154,8 @@ if(isset($_POST['update'])) // when click on Update button
 <tr><td>Available Spots</td><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
 <tr><td>Skills Needed</td><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
 <tr><td>Age Minimum</td><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
-<tr><td><input type="submit" name="update" value="Update"></tr>
-</div>
 </table>
 </form>
+<button class="btn btn-primary" type="submit" name="update" value="Update"></button>
 </div>
 </div>
