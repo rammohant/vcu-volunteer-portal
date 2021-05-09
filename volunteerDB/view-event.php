@@ -83,7 +83,21 @@ td{
 
 if ($_POST['eventID']) { 
 
-$selectsql = "select eventID, title, description, organization, number, email, type, daterange, link, available_spots, needed_skills,age_minimum,needed_skills,organizer,approved_by,
+$selectsql = "select eventID, 
+            title as 'Title', 
+            description as 'Description', 
+            organization as 'Organization', 
+            number as 'Number', 
+            email as 'Email', 
+            type as 'Type', 
+            daterange as 'Dates', 
+            link as 'Link', 
+            available_spots as 'Available Spots', 
+            needed_skills as 'Skills Needed',
+            age_minimum as 'Age Minimum',
+            needed_skills as 'Skills Needed',
+            organizer as 'Organizer',
+            approver as 'Approver',
             technology,
             address, vaccine_required, precautions,
             dropoff_time,dropoff_address,instructions
@@ -99,16 +113,16 @@ while ($data = $selectstmt->fetch()) {
     echo "<h2>View Event</h2>"; 
         echo "<form method='GET'>"; 
         echo "<table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>"; 
-        echo "<tr><td>Title</td><td>".$data['title']."</td></tr>";
-        echo "<tr><td>Description</td><td>".$data['description']."</td></tr>";
-        echo "<tr><td>Organization</td><td>".$data['organization']."</td></tr>";
-        echo "<tr><td>Number</td><td>".$data['number']."</td></tr>";
-        echo "<tr><td>Email</td><td>".$data['email']."</td></tr>";
-        echo "<tr><td>Dates</td><td>".$data['daterange']."</td></tr>";
-        echo "<tr><td>Link</td><td>".$data['link']."</td></tr>";
-        echo "<tr><td>Available Spots</td><td>".$data['available_spots']."</td></tr>";
-        echo "<tr><td>Skills Needed</td><td>".$data['needed_skills']."</td></tr>";
-        echo "<tr><td>Age Minimum</td><td>".$data['age_minimum']."</td></tr>";
+        echo "<tr><td>Title</td><td>".$data["Title"]."</td></tr>";
+        echo "<tr><td>Description</td><td>".$data["Description"]."</td></tr>";
+        echo "<tr><td>Organization</td><td>".$data["Organization"]."</td></tr>";
+        echo "<tr><td>Number</td><td>".$data["Number"]."</td></tr>";
+        echo "<tr><td>Email</td><td>".$data["Email"]."</td></tr>";
+        echo "<tr><td>Dates</td><td>".$data["Dates"]."</td></tr>";
+        echo "<tr><td>Link</td><td>".$data["Link"]."</td></tr>";
+        echo "<tr><td>Available Spots</td><td>".$data["Available Spots"]."</td></tr>";
+        echo "<tr><td>Skills Needed</td><td>".$data["Skills Needed"]."</td></tr>";
+        echo "<tr><td>Age Minimum</td><td>".$data["Age Minimum"]."</td></tr>";
             // if($data['type']=='virtual event') {
             //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
             // }
