@@ -10,8 +10,7 @@ $qry = mysqli_query($link,"select eventID, title, description, type, startdate, 
 
 $data = mysqli_fetch_array($qry); // fetch data
 
-//if(isset($_POST['update'])) // when click on Update button
-if($_POST['Update']) // when click on Update button
+if(isset($_POST['update'])) // when click on Update button
 {
     // $title = $_POST['title'];
     // $description = $_POST['description'];
@@ -61,7 +60,7 @@ if($_POST['Update']) // when click on Update button
     //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
     $stmt->execute();
 
-    header("location:manager_v.php"); 
+    header("location:organizer_v.php"); 
     exit; 
 } else
 {
@@ -83,5 +82,5 @@ if($_POST['Update']) // when click on Update button
 <input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum">
 <input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID">
 <input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID">
-<input type="submit" name="Update" value="Update">
+<input type="submit" name="update" value="Update">
 </form>
