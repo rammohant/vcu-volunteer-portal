@@ -96,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_university = "INSERT INTO university (university_name) VALUES (?)";
         $sql_volunteer = "INSERT INTO volunteers (userID, university_name) VALUES (?, ?)";
 
+        try {
         if ($stmt = mysqli_prepare($link, $sql)) {
         // if ($stmt = mysqli_prepare($link, $sql) && $stmt_university = mysqli_prepare($link, $sql_university) && $stmt_volunteer = mysqli_prepare($link, $sql_volunteer)) {
 
@@ -123,14 +124,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
                 header("location: index.php");
-            } else {
-                echo "Error: " . $e->getMessage();
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
+            } 
         }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
+
+    // Close statement
+    mysqli_stmt_close($stmt);
+}
+
 
     // Close connection
     mysqli_close($link);

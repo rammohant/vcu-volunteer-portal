@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<h3>Access denied: Please log out and login to your volunteer account to sign up for events.</h3>";
+        echo "<p>Access denied: Please log out and login to your volunteer account to sign up for events.</p>";
     } else {
         echo "<h3>Sign up for a Volunteer Event!</h3>";
         echo "<form method='post' action='signup.php'>";
