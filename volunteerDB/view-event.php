@@ -80,6 +80,7 @@ td{
 </ul>
 
 <?php 
+
 if ($_POST['eventID']) { 
 
 $selectsql = "select eventID, title, description, organization, number, email, type, daterange, link, available_spots, needed_skills,age_minimum,needed_skills,organizer,approved_by,
@@ -89,7 +90,7 @@ $selectsql = "select eventID, title, description, organization, number, email, t
             from v_volunteer_ops where eventID=:eventID"; 
 
 $selectstmt = $conn->prepare($selectsql);
-$selectstmt->bindValue(':eventID', $eventID, PDO::PARAM_STR);
+$selectstmt->bindValue(':eventID', $_POST['eventID'], PDO::PARAM_STR);
 $selectstmt->execute();
 
 echo "<h2>Test</h2>"; 
