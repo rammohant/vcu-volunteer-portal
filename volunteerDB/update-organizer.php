@@ -56,7 +56,7 @@ li a:hover {
 }
 
 td {
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
 }
 
@@ -94,6 +94,7 @@ $data = $selectstmt->fetch();
 
 if(isset($_POST['update'])) {
 
+    try {
     $sqlQuery = "UPDATE volunteer_events
                     SET
                     title = :vtitle,
@@ -123,10 +124,15 @@ if(isset($_POST['update'])) {
 
     header("location:organizer_v.php"); 
     exit; 
+    } catch (PDOException $e) {
+        header("location:organizer_v.php"); 
+        echo "Error: " . $e->getMessage();
+        die();
+    }
 } 
 ?>
 
-<div class="wrapper">
+<!-- <div class="wrapper">
 <h2>Update Event</h2>
     <form method='POST'>
         <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
@@ -141,9 +147,9 @@ if(isset($_POST['update'])) {
         <tr><td><input type="submit" name="update" value="Update"></tr>
         </table>
     </form>
-</div>
+</div> -->
 
-<!-- <h2>Update Event</h2>
+<h2>Update Event</h2>
 <form method='POST'>
 <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><th></th><th></th><th></th></tr>
@@ -158,4 +164,4 @@ if(isset($_POST['update'])) {
 <tr><td colspan="3"><input type="submit" name="update" value="Update"></tr>
 </table>
 </form>
-</div> -->
+</div>
