@@ -93,8 +93,7 @@ $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
 $selectstmt->execute();
 
-$data = $selectstmt->fetch();
-while ($row = $stmt->fetch()) {
+while ($data = $selectstmt->fetch()) {
     echo "<div class='wrapper'>"; 
     echo "<h2>View Event</h2>"; 
         echo "<form method='GET'>"; 
