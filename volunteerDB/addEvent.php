@@ -80,7 +80,7 @@ tr{
 <ul>
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="user_v.php">Volunteer Portal</a></li>
-	<li class="active"><a href="organizer.php">Organizer Portal</a></li>
+	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
 	<li><a href="register.php">Register</a></li>
 </ul>
 
@@ -191,13 +191,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 // //             $stmt->bindValue(':type', null, PDO::PARAM_INT);
 // //         }
 
-        if (empty($_POST['startdate'])) {
-            $stmt->bindValue(':startdate','NULL');
-        }   
+        // if (empty($_POST['startdate'])) {
+        //     $stmt->bindValue(':startdate','NULL');
+        // }   
 
-        if (empty($_POST['enddate'])) {
-            $stmt->bindValue(':enddate','NULL');
-        }   
+        // if (empty($_POST['enddate'])) {
+        //     $stmt->bindValue(':enddate','NULL');
+        // }   
         
         if($_POST['organizerID'] != -1) {
             $stmt->bindValue(':organizerID', $_POST['organizerID']);

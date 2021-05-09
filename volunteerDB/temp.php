@@ -6,7 +6,7 @@ global $conn;
 
 $eventID = $_POST['eventID']; // get id through query string
 
-$qry = mysqli_query($conn,"select eventID, title, description, type from volunteer_events where eventID='$eventID'"); // select query
+$qry = mysqli_query($link,"select eventID, title, description, type from volunteer_events where eventID='$eventID'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
 
@@ -19,7 +19,7 @@ if(isset($_POST['update'])) // when click on Update button
 	
     if($edit)
     {
-        mysqli_close($conn); // Close connection
+        mysqli_close($link); // Close connection
         header("location:manager_v.php"); // redirects to all records page
         exit;
     }

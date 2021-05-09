@@ -99,6 +99,7 @@ v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
 FROM v_volunteer_ops v where v.organizer='$organizer'";
 
+echo $_SESSION['userID'];
 echo "<h2>Welcome to the Organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
