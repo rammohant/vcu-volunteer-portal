@@ -83,11 +83,11 @@ table { */
 <body>
 
 <ul>
-	<li class="active"><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
-	<li><a href="user_v.php">Volunteer Portal</a></li>
+	<li><a href="index.php" class="pull-left"  style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="organizer_v.php">Organizer Portal</a></li>
-    <li><a href="org.php">Organizations</a></li>
-	<li><a href="signup.php">Sign up</a></li>
+    <li class="active"><a href="orgs.php">Organizations</a></li>
+    <li><a href="register.php">Register</a></li>
 </ul>
 
 <?php 

@@ -81,7 +81,8 @@ tr{
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li class="active"><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li><a href="organizer_v.php">Organizer Portal</a></li>
-	<li><a href="register.php">Register</a></li>
+    <li><a href="orgs.php">Organizations</a></li>
+    <li><a href="logout.php">Log Out</a></li>
 </ul>
 
 <?php 
@@ -95,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<h3>Access denied: Please log out and login to your manager account to sign up for events.</h3>";
+        echo "<h3>Access denied: Please log out and login to your volunteer account to sign up for events.</h3>";
     } else {
         echo "<h3>Sign up for a Volunteer Event!</h3>";
         echo "<form method='post' action='signup.php'>";

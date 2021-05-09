@@ -81,7 +81,8 @@ tr{
 	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
-	<li><a href="register.php">Register</a></li>
+    <li><a href="orgs.php">Organizations</a></li>
+    <li><a href="logout.php">Log Out</a></li>
 </ul>
 
 <?php 
@@ -109,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' Required></td></tr>";
         echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
         echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text' Required></td></tr>";
-        echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr> Required";
+        echo "<tr><td>Type</td><td><input name='type' type='text' Required></td></tr>";
 
         echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
 
@@ -180,7 +181,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
     echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
     echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
-    echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
+    echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>"; 
+
     echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
     echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
     echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";

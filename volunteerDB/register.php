@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_firstname = $first_name;
             $param_lastname = $last_name;
-            $param_university = 1;
+            $param_university = $university;
             $param_type = 'volunteer';
             
             //Insert into volunteers table now 
@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "You have successfully created a VDASH account!";
                 header("location: index.php");
             } else {
-                echo 'You have successfully created a VDASH account!';
+                echo 'Uh oh!';
             }
 
             // Close statement
@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 h3 {
     text-align: center;
-    font-size: 25px; 
+    font-size: 20px; 
     padding-top: 25px; 
     font-family: "Verdana";
     font-weight: bold; 
@@ -156,7 +156,7 @@ h3 {
 
 p {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     font-family: "Verdana"; 
     
 }
@@ -204,8 +204,8 @@ li a:hover {
 
 	<ul>
     	<li><a href="index.php" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
-    	<li><a href="user_v.php">Volunteer Portal</a></li>
-    	<li><a href="manager_v.php">Manager Portal</a></li>
+    	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
+    	<li><a href="organizer_v.php">Organizer Portal</a></li>
     	<li class="active"><a href="register.php">Register</a></li>
 	</ul>
 
