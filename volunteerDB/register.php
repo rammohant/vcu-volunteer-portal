@@ -108,50 +108,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email_err) && empty($password_err) && empty($confirm_password_err && empty($firstname_err) && empty($lastname_err))) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (email, password, birthdate, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
 
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_birthdate = $birthdate; 
             $param_firstname = $first_name;
             $param_lastname = $last_name;
             $param_university = $university;
             $param_type = 'volunteer';
             
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
+            mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_birthdate, $param_firstname, $param_lastname, $param_type);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
-                header("location: login.php");
+                // header("location: index.php");
             } else {
                 echo 'You have not successfully created a VDASH account!';
             }
 
-            // //Insert into volunteers table  
-            // $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
-            // $row = mysql_fetch_assoc($result); 
-            // $param_userID = ++$row['maximum'];
+            //Insert into volunteers table  
+            $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
+            $row = mysql_fetch_assoc($result); 
 
-            // $sql2 = "INSERT INTO volunteers (userID, universityID) VALUES (?, ?)";
+            $sql2 = "INSERT INTO volunteers (userID, universityID) VALUES (?, ?)";
 
-            // if ($stmt2 = mysqli_prepare($link, $sql2)) {
-            //     // Bind variables to the prepared statement as parameters
-            //     mysqli_stmt_bind_param($stmt2,'ss', $param_userID, $param_university);
+            if ($stmt2 = mysqli_prepare($link, $sql2)) {
+                // Bind variables to the prepared statement as parameters
+                mysqli_stmt_bind_param($stmt2,'ss', $param_userID, $param_university);
 
-            //     // Attempt to execute the prepared statement
-            //     if (mysqli_stmt_execute($stmt2)) {
-            //         // Redirect to home page
-            //         echo "You have successfully created a VDASH account!";
-            //         header("location: login.php");
-            //     } else {
-            //         echo 'You have not successfully created a VDASH account!';
-            //     }
-            // }
+                // Attempt to execute the prepared statement
+                if (mysqli_stmt_execute($stmt2)) {
+                    // Redirect to home page
+                    echo "You have successfully created a VDASH account!";
+                    header("location: index.php");
+                } else {
+                    echo 'You have not successfully created a VDASH account!';
+                }
+            }
 
             // Close statement
             mysqli_stmt_close($stmt);
