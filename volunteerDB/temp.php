@@ -123,19 +123,17 @@ if(isset($_POST['update']))
                     approverID = :vapproverID
                     WHERE title = :title_f";
 
+    // NOTE: We do not want to allow the user to update type, approverID, or organizerID
     $stmt = $conn->prepare($sqlQuery);
     $stmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
     $stmt->bindValue(':vtitle', $_POST["title"], PDO::PARAM_STR);
     $stmt->bindValue(':vdescription', $_POST["description"]);
-    $stmt->bindValue(':vtype', $_POST["type"], PDO::PARAM_STR);
     $stmt->bindValue(':vstartdate', $_POST["startdate"], PDO::PARAM_STR);
     $stmt->bindValue(':venddate', $_POST["enddate"], PDO::PARAM_STR);
     $stmt->bindValue(':vlink', $_POST["link"], PDO::PARAM_STR);
     $stmt->bindValue(':vavailable_spots', $_POST["available_spots"], PDO::PARAM_STR);
     $stmt->bindValue(':vneeded_skills', $_POST["needed_skills"], PDO::PARAM_STR);
     $stmt->bindValue(':vage_minimum', $_POST["age_minimum"], PDO::PARAM_STR);
-    $stmt->bindValue(':vorganizerID', $_POST["organizerID"], PDO::PARAM_STR);
-    $stmt->bindValue(':vapproverID', $_POST["approverID"], PDO::PARAM_STR);
     //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
     $stmt->execute();
 
