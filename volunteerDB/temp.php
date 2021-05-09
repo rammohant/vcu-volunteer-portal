@@ -1,3 +1,79 @@
+<html>
+<head>
+<title>VDASH Organizer Portal</title>
+<style type="text/css">
+h2 {
+    text-align: center;
+    font-size: 25px; 
+    padding-top: 25px; 
+    font-family: "Verdana";
+    font-weight: bold; 
+}
+
+p {
+    text-align: center;
+    font-size: 13px;
+    font-family: "Verdana"; 
+    
+}
+div {
+    text-align: center;
+}
+body {
+    background-image:url('bg.png'); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+/*   float: right; */
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "Verdana"; 
+  font-size: 15px; 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px; 
+  text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+
+</style>
+<?php require_once('header.php'); ?>
+
+<script src="js/organizer_v.js"></script>
+
+</head>
+<!-- check if user is logged in and a organizer -->
+<?php require_once('connection-organizer.php'); ?>
+
+<body>
+
+<ul>
+	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
+	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
+    <li><a href="logout.php">Log Out</a></li>
+</ul>
+
 <?php
 
 require_once('connection.php'); // Using database connection file here
@@ -70,7 +146,7 @@ if(isset($_POST['update'])) // when click on Update button
 
 <h3>Update Data</h3>
 
-<form method="POST">
+<form method='POST' action='temp.php'>
 <input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required>
 <input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description">
 <input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required>

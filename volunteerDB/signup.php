@@ -90,63 +90,63 @@ echo "<h2>Sign up for a Volunteer Event!</h2>";
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     $check = $conn->prepare("INSERT INTO volunteer_signup (eventID, volunteerID) VALUES (:eventID, :volunteerID)");
-        $check->bindValue(':volunteerID',$_SESSION['userID']);
-        $stmt->execute();
+    $check->bindValue(':volunteerID',$_SESSION['userID']);
+    $check->execute();
 
-        $queryResult = $stmt->fetch();
+    $checkResult = $check->fetch();
         
-        if(empty($queryResult)) {
-            echo "<p>Only volunteers can sign up. Please log out and login to your volunteer account.</p>";
-        } else {
-            echo "<form method='post' action='signup.php'>";
-            echo "<table style='padding: 10px 20px 10px 20px'>";
-            echo "<tbody>";
-
-            echo "<tr><td>Select Event:</td><td>";
-
-            // Retrieve list of all available events
-            $stmt = $conn->prepare("SELECT v.eventID, v.Title as `Title` FROM  v_volunteer_ops v");
-            $stmt->execute();
-            
-            echo "<select name='eventID'>";
-            
-            while ($row = $stmt->fetch()) {
-                echo "<option value='$row[eventID]'>$row[Title]</option>";
-            }
-            
-            echo "</select>";
-            echo "</td></tr>";
-            
-            echo "<tr><td></td><td><input type='submit' value='Confirm Sign Up'></td></tr>";
-            
-            echo "</tbody>";
-            echo "</table>";
-            echo "</form>";
-        }
+    if(empty($checkResult)) {
+        echo "<p>Only volunteers can sign up. Please log out and login to your volunteer account.</p>";
     } else {
-   
-        try {
-            $stmt = $conn->prepare("INSERT INTO volunteer_signup (eventID, volunteerID)
-                                    VALUES (:eventID, :volunteerID)");
+        echo "<form method='post' action='signup.php'>";
+        echo "<table style='padding: 10px 20px 10px 20px'>";
+        echo "<tbody>";
 
-            $stmt->bindValue(':volunteerID', $_SESSION['userID']);
+        echo "<tr><td>Select Event:</td><td>";
+
+        // Retrieve list of all available events
+        $stmt = $conn->prepare("SELECT v.eventID, v.Title as `Title` FROM  v_volunteer_ops v");
+        $stmt->execute();
         
-            if($_POST['eventID'] != -1) {
-                $stmt->bindValue(':eventID', $_POST['eventID']);
-            } else {
-                echo "Please select an event to sign up for.";
-            }
+        echo "<select name='eventID'>";
+        
+        while ($row = $stmt->fetch()) {
+            echo "<option value='$row[eventID]'>$row[Title]</option>";
+        }
+        
+        echo "</select>";
+        echo "</td></tr>";
+        
+        echo "<tr><td></td><td><input type='submit' value='Confirm Sign Up'></td></tr>";
+        
+        echo "</tbody>";
+        echo "</table>";
+        echo "</form>";
+    }
+} else {
 
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            die();
+    try {
+        $stmt = $conn->prepare("INSERT INTO volunteer_signup (eventID, volunteerID)
+                                VALUES (:eventID, :volunteerID)");
+
+        $stmt->bindValue(':volunteerID', $_SESSION['userID']);
+    
+        if($_POST['eventID'] != -1) {
+            $stmt->bindValue(':eventID', $_POST['eventID']);
+        } else {
+            echo "Please select an event to sign up for.";
         }
 
-        header("location:volunteer_v.php"); 
-        echo "Success";    
-
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        die();
     }
+
+    header("location:volunteer_v.php"); 
+    echo "Success";    
+
+}
 
 ?>
 
