@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>VDASH Volunteer Portal</title>
+<title>Add Volunteer Event</title>
 
 <style type="text/css">
 h2 {
@@ -90,75 +90,85 @@ echo "<h2>Add a Volunteer Event</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
-    echo "<table>";
-    echo "<tbody>";
-    echo "<tr><td>Title</td><td><input name='title' type='text' Required></td></tr>";
-    echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
-    echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
-    echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
-    echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-    echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
-    echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-    echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
-    echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+    $check = $conn->prepare("SELECT email FROM users WHERE userID=:volunteerID and type like 'volunteer'");
+    $check->bindValue(':volunteerID',$_SESSION['userID']);
+    $check->execute();
 
-    echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
-
-    echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
-    echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
-    echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
-
-    echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
-    echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
-    echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
-
-    //echo "<tr><td>Type</td><td>";
-
-    // // Retrieve list of employees as potential manager of the new employee
-    // $stmt = $conn->prepare("Select type from v_volunteer_ops");
-    // $stmt->execute();
-    
-    // while ($row = $stmt->fetch()) {
-    //     echo "<option value='$row[type]'>$row[type]</option>";        
-    // }
-    
-    // echo "</select>";
-    // echo "</td></tr>";
-    
-    echo "<tr><td>Organizer</td><td>";
-    // Retrieve list of organizer
-    $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
-    $stmt->execute();
-    
-    echo "<select name='organizerID'>";
-    
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[organizerID]'>$row[name]</option>";
-    }
-    
-    echo "</select>";
-    echo "</td></tr>";
-    
-    echo "<tr><td>Approved by</td><td>";
-    // Retrieve list of admin 
-    $stmt = $conn->prepare("SELECT userID as approverID, name FROM allusers where type like 'admin'");
-    $stmt->execute();
-    
-    echo "<select name='approverID'>";
+    $checkResult = $check->fetch();
         
-    while ($row = $stmt->fetch()) {
-        echo "<option value='$row[approverID]'>$row[name]</option>";
+    if(empty($checkResult)) {
+        echo "<p>Sorry! Please log out and login to your manager account to add events</p>";
+    } else {
+        echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
+        echo "<table>";
+        echo "<tbody>";
+        echo "<tr><td>Title</td><td><input name='title' type='text' Required></td></tr>";
+        echo "<tr><td>Description</td><td><input name='description' type='text'></td></tr>";
+        echo "<tr><td>Start Date</td><td><input name='startdate' type='date'></td></tr>";
+        echo "<tr><td>End Date</td><td><input name='enddate' type='date'></td></tr>";
+        echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
+        echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
+        echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
+        echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
+        echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+
+        echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
+
+        echo "<tr><td>Address</td><td><input name='address' type='text'></td></tr>";
+        echo "<tr><td>Vaccine (Y/N)</td><td><input name='vaccine_required' type='text'></td></tr>";
+        echo "<tr><td>Precautions</td><td><input name='precautions' type='text'></td></tr>";
+
+        echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
+        echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
+        echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
+
+        //echo "<tr><td>Type</td><td>";
+
+        // // Retrieve list of employees as potential manager of the new employee
+        // $stmt = $conn->prepare("Select type from v_volunteer_ops");
+        // $stmt->execute();
+        
+        // while ($row = $stmt->fetch()) {
+        //     echo "<option value='$row[type]'>$row[type]</option>";        
+        // }
+        
+        // echo "</select>";
+        // echo "</td></tr>";
+        
+        echo "<tr><td>Organizer</td><td>";
+        // Retrieve list of organizer
+        $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
+        $stmt->execute();
+        
+        echo "<select name='organizerID'>";
+        
+        while ($row = $stmt->fetch()) {
+            echo "<option value='$row[organizerID]'>$row[name]</option>";
+        }
+        
+        echo "</select>";
+        echo "</td></tr>";
+        
+        echo "<tr><td>Approved by</td><td>";
+        // Retrieve list of admin 
+        $stmt = $conn->prepare("SELECT userID as approverID, name FROM allusers where type like 'admin'");
+        $stmt->execute();
+        
+        echo "<select name='approverID'>";
+            
+        while ($row = $stmt->fetch()) {
+            echo "<option value='$row[approverID]'>$row[name]</option>";
+        }
+        
+        echo "</select>";
+        echo "</td></tr>";
+    
+        echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
+        
+        echo "</tbody>";
+        echo "</table>";
+        echo "</form>";
     }
-    
-    echo "</select>";
-    echo "</td></tr>";
- 
-    echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
-    
-    echo "</tbody>";
-    echo "</table>";
-    echo "</form>";
 } else {
     
     echo "<tr><td>Title</td><td><input name='title' type='text'></td></tr>";

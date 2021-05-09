@@ -4,7 +4,7 @@
 <style type="text/css">
 h2 {
     text-align: center;
-    font-size: 25px; 
+    font-size: 20px; 
     padding-top: 25px; 
     font-family: "Verdana";
     font-weight: bold; 
@@ -12,7 +12,7 @@ h2 {
 
 p {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     font-family: "Verdana"; 
     
 }

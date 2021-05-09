@@ -147,6 +147,9 @@ if(isset($_POST['update'])) // when click on Update button
 <h3>Update Data</h3>
 <form method='POST'>
 <table>
+<tbody>
+<div class="row justify-content-center">
+<div class="col-4">
 <tr><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></tr>
 <tr><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></tr>
 <tr><input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required></tr>
@@ -159,5 +162,8 @@ if(isset($_POST['update'])) // when click on Update button
 <tr><input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID"></tr>
 <tr><input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID"></tr>
 <tr><input type="submit" name="update" value="Update"></tr>
+</div> 
+</div>
+<tbody>
 </table>
 </form>

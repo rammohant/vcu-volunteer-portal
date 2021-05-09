@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>VDASH Volunteer Portal</title>
+<title>Sign up</title>
 
 <style type="text/css">
 h2 {
