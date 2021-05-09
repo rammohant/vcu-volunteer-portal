@@ -2,7 +2,7 @@
 require_once('connection.php'); // Using database connection file here
 if(count($_POST)>0) {
     mysqli_query($link,
-    "UPDATE employee set eventID='" . $_POST['eventID'] . "', title='" . $_POST['last_name'] . "', description='" . $_POST['description'] . "' WHERE eventID='" . $_GET['eventID'] . "'");
+    "UPDATE employee set eventID='" . $_POST['eventID'] . "', title='" . $_POST['title'] . "', description='" . $_POST['description'] . "' WHERE eventID='" . $_GET['eventID'] . "'");
     $message = "Record Modified Successfully";
 }
 $result = mysqli_query($link,"select eventID, title, description from volunteer_events WHERE eventID='" . $_GET['eventID'] . "'");
@@ -19,7 +19,7 @@ $row= mysqli_fetch_array($result);
 <div><?php if(isset($message)) { echo $message; } ?>
 </div>
 <div style="padding-bottom:5px;">
-<a href="retrieve.php">Employee List</a>
+<a href="organizer_v.php">Employee List</a>
 
 </div>
 Username: <br>
