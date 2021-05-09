@@ -95,22 +95,23 @@ $selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
 $selectstmt->execute();
 
 $data = $selectstmt->fetch();
+echo $data['title'];
 ?>
 
 <div class="wrapper">
 <h2>View Event</h2>
     <form method='GET'>
         <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
-        <tr><td>Title</td><td><?php echo $data['title'] ?></td></tr>
-        <tr><td>Description</td><td><?php echo $data['description'] ?></td></tr>
-        <tr><td>Organization</td><td><?php echo $data['organization'] ?></td></tr>
-        <tr><td>Number</td><td><?php echo $data['number'] ?></td></tr>
-        <tr><td>Email</td><td><?php echo $data['email'] ?></td></tr>
-        <tr><td>Dates</td><td><?php echo $data['daterange'] ?></td></tr>
-        <tr><td>Link</td><td><?php echo $data['link'] ?></td></tr>
-        <tr><td>Available Spots</td><td><?php echo $data['available_spots'] ?></td></tr>
-        <tr><td>Skills Needed</td><td><?php echo $data['needed_skills'] ?></td></tr>
-        <tr><td>Age Minimum</td><td><?php echo $data['age_minimum'] ?></td></tr>
+        <tr><td>Title</td><td><?php echo $data['title']; ?></td></tr>
+        <tr><td>Description</td><td><?php echo $data['description']; ?></td></tr>
+        <tr><td>Organization</td><td><?php echo $data['organization']; ?></td></tr>
+        <tr><td>Number</td><td><?php echo $data['number']; ?></td></tr>
+        <tr><td>Email</td><td><?php echo $data['email']; ?></td></tr>
+        <tr><td>Dates</td><td><?php echo $data['daterange']; ?></td></tr>
+        <tr><td>Link</td><td><?php echo $data['link']; ?></td></tr>
+        <tr><td>Available Spots</td><td><?php echo $data['available_spots']; ?></td></tr>
+        <tr><td>Skills Needed</td><td><?php echo $data['needed_skills']; ?></td></tr>
+        <tr><td>Age Minimum</td><td><?php echo $data['age_minimum']; ?></td></tr>
         <?php
         // if($data['type']=='virtual event') {
         //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";

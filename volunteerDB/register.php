@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             //Insert into volunteers table now 
             $result= mysqli_query($link,"SELECT MAX(userID) AS maximum FROM users");
-            $row = mysql_fetch_assoc($result); 
+            $row = mysqli_fetch_array($result); 
             $param_userID = $row['maximum'];
 
             // Bind variables to the prepared statement as parameters
