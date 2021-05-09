@@ -91,7 +91,7 @@ echo '<script type="text/javascript">' .
 
 if(isset($_POST['update'])) // when click on Update button
 {
-    console.log($_POST['update']);
+    // console.log($_POST['update']);
     $title = $_POST['Title'];
     $description = $_POST['description'];
 	
