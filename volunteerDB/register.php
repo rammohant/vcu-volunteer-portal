@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $birthdate = trim($_POST["birthdate"]);
-    $university = trim($_POST["university"]);
+    $university = trim($_POST['universityID']);
     $languages = trim($_POST["languages"]);
     $skills = trim($_POST["skills"]);
     $vaccinated = trim($_POST["vaccinated"]);
-
+    
     echo "<tr><td>Organizer</td><td>";
     // Retrieve list of organizer
     $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
@@ -272,8 +272,21 @@ li a:hover {
                         <div class="form-group">
 							<label>University</label> <input type="text" name="university"
 								class="form-control"
-								value="<?php echo $university;?>"> 
-						</div>
+                                > 
+					
+                            <?php $stmt = $conn->prepare("SELECT universityID, university_name as name FROM universities");
+                            $stmt->execute();
+                            
+                            echo "<select name='universityID'>";
+                            
+                            while ($row = $stmt->fetch()) {
+                                echo "<option value='$row[universityID]'>$row[university_name]</option>";
+                            }
+                            
+                            echo "</select>";
+                            echo "</td></tr>";
+                            ?> 
+                        </div>
 						<div class="form-group">
 							<label>Password</label> <input type="password" name="password"
 								class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
