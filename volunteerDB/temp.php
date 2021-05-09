@@ -83,8 +83,10 @@ $title_f = $_POST['Title']; // get id through query string
 $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 
 $data = mysqli_fetch_array($qry); // fetch data
-console.log(JSON.stringify($_POST));
 
+echo '<script type="text/javascript">' .
+          'console.log(JSON.stringify(' . $_POST . '));</script>';
+          
 if(isset($_POST['update'])) // when click on Update button
 {
     console.log($_POST['update']);
