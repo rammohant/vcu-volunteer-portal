@@ -144,7 +144,7 @@ if(isset($_POST['update'])) // when click on Update button
 
 <div class="wrapper">
 <h2>Update Event</h2>
-<form method='POST'>
+<form action='temp.php' method='POST'>
 <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
 <tr><td>Description</td><td><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
@@ -154,7 +154,7 @@ if(isset($_POST['update'])) // when click on Update button
 <tr><td>Available Spots</td><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
 <tr><td>Skills Needed</td><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
 <tr><td>Age Minimum</td><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
-<tr><td><input class="btn btn-primary" type="submit" name="update" value="Update"></tr>
+<tr><td><input type="submit" name="update" value="Update"></tr>
 </table>
 </form>
 </div>
