@@ -4,7 +4,7 @@
 <style type="text/css">
 h2 {
     text-align: center;
-    font-size: 25px; 
+    font-size: 20px; 
     padding-top: 25px; 
     font-family: "Verdana";
     font-weight: bold; 
@@ -12,7 +12,7 @@ h2 {
 
 p {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     font-family: "Verdana"; 
     
 }
@@ -55,32 +55,31 @@ li a:hover {
     background-color: #111;
 }
 
-td {
-    text-align: left;
-    vertical-align: middle;
+td{
+    word-wrap:break-word
 }
 
 </style>
-<?php require_once('header.php')."
+<?php require_once('header.php'); ?>
 
 <script src="js/organizer_v.js"></script>
 
 </head>
-<!-- check if user is logged in and a organizer -->
-<?php require_once('connection-organizer.php')."
+
+<!-- check if user is logged in as an organizer -->
+<?php require_once('config.php'); ?>
 
 <body>
 
 <ul>
-	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li class="active"><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
-	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
+	<li><a href="organizer_v.php">Organizer Portal</a></li>
+    <li><a href="orgs.php">Organizations</a></li>
     <li><a href="logout.php">Log Out</a></li>
 </ul>
 
-<?php
-
-global $conn;
+<?php 
 
 $Title = $_GET['Title']; // get id through query string
 
