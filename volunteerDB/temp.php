@@ -78,7 +78,7 @@ li a:hover {
 
 global $conn;
 
-$title_f = $_POST['Title']; // get id through query string
+$title_f = $_GET['Title']; // get id through query string
 
 $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
 
