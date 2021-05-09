@@ -107,7 +107,7 @@ echo "<h2>Welcome to the Organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
 
-echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>";
 echo "<tr>";
 echo "<th>ID</th>";
 echo "<th>Title</th>";

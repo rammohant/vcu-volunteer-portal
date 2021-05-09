@@ -54,11 +54,11 @@ button {
 				<div class="col-4">
 					<div class="form-group">
 						<label>Email:</label>
-						<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+						<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 					</div>
 					<div class="form-group">
 						<label>Password:</label>
-						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 					<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>

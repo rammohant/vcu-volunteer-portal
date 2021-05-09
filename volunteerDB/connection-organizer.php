@@ -19,7 +19,7 @@ try {
 }
 
 // Start or resume session variables
-//session_start();
+session_start();
 
 // If the user_ID session is not set, then the user has not logged in yet
 if (!isset($_SESSION['userID']))
@@ -44,7 +44,7 @@ if (!isset($_SESSION['userID']))
             header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         } else {
             // Password mismatch
-            //echo "Incorrect password";
+            echo "Incorrect password";
             require('organizer-login.php');
             exit();
         }
@@ -52,7 +52,7 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
-        //echo "Must be a organizer to access this page";
+        echo "Must be an organizer to access this page";
         require('organizer-login.php');
         exit();
     }
