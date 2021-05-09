@@ -89,14 +89,14 @@ echo "<h2>Sign up for a Volunteer Event!</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
-    $check = $conn->prepare("INSERT INTO volunteer_signup (eventID, volunteerID) VALUES (:eventID, :volunteerID)");
+    $check = $conn->prepare("SELECT email FROM users WHERE userID=:volunteerID and type like 'volunteer'");
     $check->bindValue(':volunteerID',$_SESSION['userID']);
     $check->execute();
 
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<p>Only volunteers can sign up. Please log out and login to your volunteer account.</p>";
+        echo "<p>Sorry! Please log out and login to your volunteer account to sign up for events</p>";
     } else {
         echo "<form method='post' action='signup.php'>";
         echo "<table style='padding: 10px 20px 10px 20px'>";

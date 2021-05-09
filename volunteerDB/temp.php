@@ -145,18 +145,19 @@ if(isset($_POST['update'])) // when click on Update button
 ?>
 
 <h3>Update Data</h3>
-
-<form method='POST' action='temp.php'>
-<input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required>
-<input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description">
-<input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required>
-<input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate">
-<input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate">
-<input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link">
-<input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots">
-<input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills">
-<input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum">
-<input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID">
-<input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID">
-<input type="submit" name="update" value="Update">
+<form method='POST'>
+<table>
+<tr><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></tr>
+<tr><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></tr>
+<tr><input type="text" name="type" value="<?php echo $data['type'] ?>" placeholder="Enter type" Required></tr>
+<tr><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></tr>
+<tr><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></tr>
+<tr><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></tr>
+<tr><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></tr>
+<tr><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></tr>
+<tr><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></tr>
+<tr><input type="text" name="organizerID" value="<?php echo $data['organizerID'] ?>" placeholder="Enter organizerID"></tr>
+<tr><input type="text" name="approverID" value="<?php echo $data['approverID'] ?>" placeholder="Enter approverID"></tr>
+<tr><input type="submit" name="update" value="Update"></tr>
+</table>
 </form>

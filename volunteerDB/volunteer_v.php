@@ -112,7 +112,7 @@ echo "<th>ID</th>";
 echo "<th>Title</th>";
 echo "<th>Description</th>";
 echo "<th>Organization</th>";
-echo "<th>Email</th>";
+// echo "<th>Email</th>";
 echo "<th>Link</th>";
 echo "<th>Type</th>";
 echo "<th>Date</th>";
@@ -127,7 +127,7 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row["Title"] . "</td>";
         echo "<td>" . $row["Description"] . "</td>";
         echo "<td>" . $row["Organization"] . "</td>";
-        echo "<td>" . $row["Contact Email"] . "</td>";
+        // echo "<td>" . $row["Contact Email"] . "</td>";
         echo "<td>" . $row["Link"] . "</td>";
         echo "<td>" . $row["Type"] . "</td>";
         echo "<td>" . $row["Date"] . "</td>";
