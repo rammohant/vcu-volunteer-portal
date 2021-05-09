@@ -128,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     try {
         $stmt = $conn->prepare("INSERT INTO volunteer_signup (eventID, volunteerID)
                                 VALUES (:eventID, :volunteerID)");
-
         $stmt->bindValue(':volunteerID', $_SESSION['userID']);
     
         if($_POST['eventID'] != -1) {

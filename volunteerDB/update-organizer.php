@@ -144,7 +144,7 @@ if(isset($_POST['update'])) {
         <tr><td>Available Spots</td><td><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
         <tr><td>Skills Needed</td><td><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
         <tr><td>Age Minimum</td><td><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
-        <tr> <input type="submit" name="update" value="Update"> </tr>
+        <tr><td><input type="submit" name="update" value="Update"><td></tr>
         </table>
     </form>
 </div>
