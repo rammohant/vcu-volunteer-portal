@@ -12,58 +12,59 @@ $data = mysqli_fetch_array($qry); // fetch data
 
 if(isset($_POST['update'])) // when click on Update button
 {
-    // $title = $_POST['title'];
-    // $description = $_POST['description'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
 	
-    // $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
+    $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
 	
-    // if($edit)
-    // {
-    //     mysqli_close($link); // Close connection
-    //     header("location:organizer_v.php"); // redirects to all records page
-    //     exit;
-    // }
-    // else
-    // {
-    //     echo mysqli_error();
-    // }    
+    if($edit)
+    {
+        mysqli_close($link); // Close connection
+        header("location:organizer_v.php"); // redirects to all records page
+        exit;
+    }
+    else
+    {
+        echo mysqli_error();
+    }    
     
-    $sqlQuery = "UPDATE volunteer_events
-                    SET
-                    title = :title,
-                    description = :description,
-                    type = :type,
-                    startdate = :startdate,
-                    enddate = :enddate,
-                    link = :link,
-                    available_spots = :available_spots,
-                    needed_skills = :needed_skills,
-                    age_minimum = :age_minimum,
-                    needed_skills = :needed_skills,
-                    organizerID = :organizerID,
-                    approverID = :approverID
-                    WHERE title = :title_f";
+    // $sqlQuery = "UPDATE volunteer_events
+    //                 SET
+    //                 title = :vtitle,
+    //                 description = :vdescription,
+    //                 type = :vtype,
+    //                 startdate = :vstartdate,
+    //                 enddate = :venddate,
+    //                 link = :vlink,
+    //                 available_spots = :vavailable_spots,
+    //                 needed_skills = :vneeded_skills,
+    //                 age_minimum = :vage_minimum,
+    //                 needed_skills = :vneeded_skills,
+    //                 organizerID = :vorganizerID,
+    //                 approverID = :vapproverID
+    //                 WHERE title = :title_f";
 
-    $stmt = $conn->prepare($sqlQuery);
-    $stmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
-    $stmt->bindValue(':title', $_POST["title"], PDO::PARAM_STR);
-    $stmt->bindValue(':description', $_POST["description"]);
-    $stmt->bindValue(':type', $_POST["type"], PDO::PARAM_STR);
-    $stmt->bindValue(':startdate', $_POST["startdate"], PDO::PARAM_STR);
-    $stmt->bindValue(':enddate', $_POST["enddate"], PDO::PARAM_STR);
-    $stmt->bindValue(':link', $_POST["link"], PDO::PARAM_STR);
-    $stmt->bindValue(':available_spots', $_POST["available_spots"], PDO::PARAM_STR);
-    $stmt->bindValue(':needed_skills', $_POST["needed_skills"], PDO::PARAM_STR);
-    $stmt->bindValue(':age_minimum', $_POST["age_minimum"], PDO::PARAM_STR);
-    $stmt->bindValue(':organizerID', $_POST["organizerID"], PDO::PARAM_STR);
-    $stmt->bindValue(':approverID', $_POST["approverID"], PDO::PARAM_STR);
-    //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
-    $stmt->execute();
+    // $stmt = $conn->prepare($sqlQuery);
+    // $stmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
+    // $stmt->bindValue(':vtitle', $_POST["title"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vdescription', $_POST["description"]);
+    // $stmt->bindValue(':vtype', $_POST["type"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vstartdate', $_POST["startdate"], PDO::PARAM_STR);
+    // $stmt->bindValue(':venddate', $_POST["enddate"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vlink', $_POST["link"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vavailable_spots', $_POST["available_spots"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vneeded_skills', $_POST["needed_skills"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vage_minimum', $_POST["age_minimum"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vorganizerID', $_POST["organizerID"], PDO::PARAM_STR);
+    // $stmt->bindValue(':vapproverID', $_POST["approverID"], PDO::PARAM_STR);
+    // //$stmt->bindValue(':eventID', $_POST["eventID"], PDO::PARAM_STR);
+    // $stmt->execute();
 
     header("location:organizer_v.php"); 
     exit; 
 } else {
     echo "Error deleting record"; // display error message if not delete
+    echo mysqli_error();
 }
 ?>
 

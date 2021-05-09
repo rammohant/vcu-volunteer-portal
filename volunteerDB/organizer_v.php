@@ -77,9 +77,62 @@ li a:hover {
 <?php 
 
 global $conn;
-
 $organizer = $_SESSION['userID'];
 
+$stmt = $conn->prepare("SELECT v.eventID, 
+v.title as 'Title', 
+v.description as 'Description', 
+v.link as 'Link', 
+v.type as 'Type', 
+v.DateRange as 'Date', 
+v.available_spots as 'Available Spots',
+v.needed_skills as 'Skills Needed',
+v.age_minimum as 'Age Minimum',
+v.approved_by as 'Approver'
+FROM v_volunteer_ops v where v.organizer=:organizerID");
+
+$stmt->bindValue(':organizerID', $organizer);
+$stmt->execute();
+
+echo "<h2>Welcome to the Organizer Portal</h2>";
+echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+
+echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+echo "<tr>";
+echo "<th>ID</th>";
+echo "<th>Title</th>";
+echo "<th>Description</th>";
+echo "<th>Link</th>";
+echo "<th>Type</th>";
+echo "<th>Date</th>";
+echo "<th>Available Spots</th>";
+echo "<th>Skills Needed</th>";
+echo "<th>Age Minimum</th>";
+echo "<th>Approver</th>";
+echo "</tr>";
+
+while ($row = $stmt->fetch()) {
+        echo "<tr>";
+        echo "<td>" . $row['eventID'] . "</td>";
+        echo "<td>" . $row['Title'] . "</td>";
+        echo "<td>" . $row['Description'] . "</td>";
+        echo "<td>" . $row['Link'] . "</td>";
+        echo "<td>" . $row['Type'] . "</td>";
+        echo "<td>" . $row['Date'] . "</td>";
+        echo "<td>" . $row['Available Spots'] . "</td>";
+        echo "<td>" . $row['Skills Needed'] . "</td>";
+        echo "<td>" . $row['Age Minimum'] . "</td>";
+        echo "<td>" . $row['Approver'] . "</td>";
+        echo "<td><form action='delete-organizer.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='delete-btn' value='Delete' /></form></td></tr>";
+        echo "<td><form action='temp.php' method='POST'><input type='hidden' name='Title' value='".$row['Title']."'/><input type='submit' name='update-btn' value='Update' /></form></td></tr>";
+        echo "<td><form action='update2.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='update' value='Update' /></form></td></tr>";
+        echo "</tr>";
+    }
+        echo "</table>";
+
+?>
+
+<?php
 $sql = "SELECT v.eventID, 
 v.title as 'Title', 
 v.description as 'Description', 
@@ -92,7 +145,7 @@ v.age_minimum as 'Age Minimum',
 v.approved_by as 'Approver'
 FROM v_volunteer_ops v where v.organizer='$organizer'";
 
-echo $_SESSION['userID'];
+echo $_SESSION['userID']; //DELETE
 echo "<h2>Welcome to the Organizer Portal</h2>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
