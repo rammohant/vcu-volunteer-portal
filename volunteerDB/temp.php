@@ -111,19 +111,16 @@ if(isset($_POST['update']))
                     SET
                     title = :vtitle,
                     description = :vdescription,
-                    type = :vtype,
                     startdate = :vstartdate,
                     enddate = :venddate,
                     link = :vlink,
                     available_spots = :vavailable_spots,
                     needed_skills = :vneeded_skills,
                     age_minimum = :vage_minimum,
-                    needed_skills = :vneeded_skills,
-                    organizerID = :vorganizerID,
-                    approverID = :vapproverID
+                    needed_skills = :vneeded_skills
                     WHERE title = :title_f";
 
-    // NOTE: We do not want to allow the user to update type, approverID, or organizerID
+// NOTE: We do not want to allow the user to update type, approverID, or organizerID
     $stmt = $conn->prepare($sqlQuery);
     $stmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
     $stmt->bindValue(':vtitle', $_POST["title"], PDO::PARAM_STR);
