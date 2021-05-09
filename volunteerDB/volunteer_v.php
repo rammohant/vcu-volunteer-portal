@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Volunteer Portal</title>
-
 <style type="text/css">
 h2 {
     text-align: center;
