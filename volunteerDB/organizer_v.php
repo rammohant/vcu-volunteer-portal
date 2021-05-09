@@ -63,7 +63,7 @@ li a:hover {
 
 </head>
 <!-- check if user is logged in and a organizer -->
-<?php require_once('connection.php'); ?>
+<?php require_once('connection-organizer.php'); ?>
 
 <body>
 

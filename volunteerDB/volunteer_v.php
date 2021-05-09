@@ -135,71 +135,71 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row["Available Spots"] . "</td>";
         echo "<td>" . $row["Skills Needed"] . "</td>";
         echo "<td>" . $row["Age Minimum"] . "</td>";
-        echo "<td><form action='delete-user.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+        echo "<td><form action='delete-volunteer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
         echo "</tr>";
     }
         echo "</table>";
 
 ?>
 <?php
-$sql = "SELECT v.eventID, 
-v.title as 'Title', 
-v.description as 'Description', 
-v.link as 'Link', 
-v.type as 'Type', 
-v.DateRange as 'Date', 
-v.available_spots as 'Available Spots',
-v.needed_skills as 'Skills Needed',
-v.age_minimum as 'Age Minimum',
-v.organization as 'Organization', 
-v.number as 'Contact Number', 
-v.email as 'Contact Email'
-FROM v_all_volunteer_signups v where v.volunteerID = '$volunteerID'";
+// $sql = "SELECT v.eventID, 
+// v.title as 'Title', 
+// v.description as 'Description', 
+// v.link as 'Link', 
+// v.type as 'Type', 
+// v.DateRange as 'Date', 
+// v.available_spots as 'Available Spots',
+// v.needed_skills as 'Skills Needed',
+// v.age_minimum as 'Age Minimum',
+// v.organization as 'Organization', 
+// v.number as 'Contact Number', 
+// v.email as 'Contact Email'
+// FROM v_all_volunteer_signups v where v.volunteerID = '$volunteerID'";
 
-echo "<h2>Welcome to the Volunteer Portal</h2>";
-echo "<p>View and delete volunteer event signups</p>";
+// echo "<h2>Welcome to the Volunteer Portal</h2>";
+// echo "<p>View and delete volunteer event signups</p>";
 
-if($result = mysqli_query($link, $sql)){
-    if(mysqli_num_rows($result) > 0){
-        echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
-        echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>Title</th>";
-        echo "<th>Description</th>";
-        echo "<th>Organization</th>";
-        echo "<th>Email</th>";
-        echo "<th>Link</th>";
-        echo "<th>Type</th>";
-        echo "<th>Date</th>";
-        echo "<th>Available Spots</th>";
-        echo "<th>Skills Needed</th>";
-        echo "<th>Age Minimum</th>";
-        echo "</tr>";
-        while($row = mysqli_fetch_array($result)){
-            echo "<tr>";
-            echo "<td>" . $row['eventID'] . "</td>";
-            echo "<td>" . $row['Title'] . "</td>";
-            echo "<td>" . $row['Description'] . "</td>";
-            echo "<td>" . $row['Organization'] . "</td>";
-            echo "<td>" . $row['Contact Email'] . "</td>";
-            echo "<td>" . $row['Link'] . "</td>";
-            echo "<td>" . $row['Type'] . "</td>";
-            echo "<td>" . $row['Date'] . "</td>";
-            echo "<td>" . $row['Available Spots'] . "</td>";
-            echo "<td>" . $row['Skills Needed'] . "</td>";
-            echo "<td>" . $row['Age Minimum'] . "</td>";
-            echo "<td><form action='delete-volunteer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
-            echo "<td><form action='update-organizer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        mysqli_free_result($result);
-    } else{
-        echo "<p>No records matching your query were found.</p>";
-    }
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
+// if($result = mysqli_query($link, $sql)){
+//     if(mysqli_num_rows($result) > 0){
+//         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
+//         echo "<tr>";
+//         echo "<th>ID</th>";
+//         echo "<th>Title</th>";
+//         echo "<th>Description</th>";
+//         echo "<th>Organization</th>";
+//         echo "<th>Email</th>";
+//         echo "<th>Link</th>";
+//         echo "<th>Type</th>";
+//         echo "<th>Date</th>";
+//         echo "<th>Available Spots</th>";
+//         echo "<th>Skills Needed</th>";
+//         echo "<th>Age Minimum</th>";
+//         echo "</tr>";
+//         while($row = mysqli_fetch_array($result)){
+//             echo "<tr>";
+//             echo "<td>" . $row['eventID'] . "</td>";
+//             echo "<td>" . $row['Title'] . "</td>";
+//             echo "<td>" . $row['Description'] . "</td>";
+//             echo "<td>" . $row['Organization'] . "</td>";
+//             echo "<td>" . $row['Contact Email'] . "</td>";
+//             echo "<td>" . $row['Link'] . "</td>";
+//             echo "<td>" . $row['Type'] . "</td>";
+//             echo "<td>" . $row['Date'] . "</td>";
+//             echo "<td>" . $row['Available Spots'] . "</td>";
+//             echo "<td>" . $row['Skills Needed'] . "</td>";
+//             echo "<td>" . $row['Age Minimum'] . "</td>";
+//             echo "<td><form action='delete-volunteer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Delete' /></form></td></tr>";
+//             echo "<td><form action='update-organizer.php' method='POST'><input type='hidden' name='eventID' value='".$row['eventID']."'/><input type='submit' name='submit-btn' value='Update' /></form></td></tr>";
+//             echo "</tr>";
+//         }
+//         echo "</table>";
+//         mysqli_free_result($result);
+//     } else{
+//         echo "<p>No records matching your query were found.</p>";
+//     }
+// } else{
+//     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+// }
 ?>
 
 <div id="center_button" style='padding-bottom: 20px'>
