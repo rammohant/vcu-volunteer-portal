@@ -2,7 +2,7 @@
 require_once('connection.php'); // Using database connection file here
 if(count($_POST)>0) {
     mysqli_query($link,
-    "UPDATE employee set eventID='" . $_POST['eventID'] . "', title='" . $_POST['title'] . "', description='" . $_POST['description'] . "' WHERE eventID='" . $_POST['eventID'] . "'");
+    "UPDATE employee set eventID='" . $_POST['eventID'] . "', title='" . $_POST['Title'] . "', description='" . $_POST['description'] . "' WHERE title='" . $_POST['Title'] . "'");
     $message = "Record Modified Successfully";
 }
 $result = mysqli_query($link,"select eventID, title, description from volunteer_events WHERE eventID='" . $_GET['eventID'] . "'");
