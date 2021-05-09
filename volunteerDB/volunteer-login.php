@@ -3,7 +3,7 @@
 <title>VDASH Login Page</title>
 <style type="text/css">
 
-h2 {
+h3 {
     text-align: center;
     font-size: 30px; 
     padding-top: 25px; 
@@ -45,7 +45,7 @@ button {
 <body>
 
 <div class="wrapper"> 
-	<h2 align=center >VCU Volunteer Database </h2>
+	<h3 align=center >VCU Volunteer Database </h3>
 	<p align=center >For all your volunteering needs and desires</p>
 	<p align=center > Don't have an account? <a href="register.php">Register here!</a>.</p>
 	<div class="container mt-3 mb-3">
@@ -60,10 +60,11 @@ button {
 						<label>Password:</label>
 						<input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
-					<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Submit</button>
+						<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>
+					</div>
 				</div>
-				
 			</div>
 		</form>
 	</div>

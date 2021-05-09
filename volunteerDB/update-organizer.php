@@ -2,7 +2,7 @@
 <head>
 <title>VDASH Organizer Portal</title>
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 25px; 
     padding-top: 25px; 
@@ -133,7 +133,7 @@ if(isset($_POST['update'])) {
 ?>
 
 <div class="wrapper">
-<h2>Update Event</h2>
+<h3>Update Event</h3>
     <form method='POST'>
         <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
         <tr><td>Title</td><td><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
@@ -149,7 +149,7 @@ if(isset($_POST['update'])) {
     </form>
 </div>
 
-<!-- <h2>Update Event</h2>
+<!-- <h3>Update Event</h3>
 <form method='POST'>
 <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
 <tr><td>Title</td><td colspan="2"><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>

@@ -61,7 +61,7 @@ table {
   margin-right: auto;
   padding: 10px 20px 10px 20px; 
   background-color: #615F5F;
-  opacity: 0.80;
+  opacity: 0.90;
 }
 
 tr{
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
         echo "<tr><td>Organizer</td><td>";
         // Retrieve list of organizer
-        $stmt = $conn->prepare("SELECT userID as organizerID, name FROM allusers where type like 'organizer'");
+        $stmt = $conn->prepare("SELECT userID as organizerID, name FROM v_allusers where type like 'organizer'");
         $stmt->execute();
         
         echo "<select name='organizerID'>";
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
         echo "<tr><td>Approved by</td><td>";
         // Retrieve list of admin 
-        $stmt = $conn->prepare("SELECT userID as approverID, name FROM allusers where type like 'admin'");
+        $stmt = $conn->prepare("SELECT userID as approverID, name FROM v_allusers where type like 'admin'");
         $stmt->execute();
         
         echo "<select name='approverID'>";

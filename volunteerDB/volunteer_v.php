@@ -2,7 +2,7 @@
 <head>
 <title>Volunteer Portal</title>
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 20px; 
     padding-top: 25px; 
@@ -57,12 +57,16 @@ li a:hover {
 table {
   width: 100%; 
   background-color: #615F5F;
-  opacity: 0.80;
+  opacity: 0.90;
 }
 
 tr{
     color: #EEEAE9;
     font-family: "Verdana";
+}
+
+td{
+    word-wrap:break-word
 }
 </style>
 
@@ -79,7 +83,6 @@ tr{
 	<li><a href="organizer_v.php">Organizer Portal</a></li>
   <li><a href="orgs.php">Organizations</a></li>
   <li><a href="logout.php">Log Out</a></li>
-
 </ul>
 
 <?php 
@@ -104,7 +107,7 @@ FROM v_allsignups v where volunteerID = :volunteerID");
 $stmt->bindValue(':volunteerID', $volunteerID);
 $stmt->execute();
 
-echo "<h2>Welcome to the Volunteer Portal</h2>";
+echo "<h3>Welcome to the Volunteer Portal</h3>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
 echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>";
@@ -113,7 +116,6 @@ echo "<th>ID</th>";
 echo "<th>Title</th>";
 echo "<th>Description</th>";
 echo "<th>Organization</th>";
-// echo "<th>Email</th>";
 echo "<th>Link</th>";
 echo "<th>Type</th>";
 echo "<th>Date</th>";
@@ -128,7 +130,6 @@ while ($row = $stmt->fetch()) {
         echo "<td>" . $row["Title"] . "</td>";
         echo "<td>" . $row["Description"] . "</td>";
         echo "<td>" . $row["Organization"] . "</td>";
-        // echo "<td>" . $row["Contact Email"] . "</td>";
         echo "<td>" . $row["Link"] . "</td>";
         echo "<td>" . $row["Type"] . "</td>";
         echo "<td>" . $row["Date"] . "</td>";

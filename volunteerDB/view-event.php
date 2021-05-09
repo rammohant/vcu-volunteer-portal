@@ -2,7 +2,7 @@
 <head>
 <title>VDASH Organizer Portal</title>
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 20px; 
     padding-top: 25px; 
@@ -107,10 +107,9 @@ $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':eventID', $_POST['eventID'], PDO::PARAM_STR);
 $selectstmt->execute();
 
-echo "<h2>Test</h2>"; 
 while ($data = $selectstmt->fetch()) {
     echo "<div class='wrapper'>"; 
-    echo "<h2>View Event</h2>"; 
+    echo "<h3>View Event</h3>"; 
         echo "<form method='GET'>"; 
         echo "<table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>"; 
         echo "<tr><td>Title</td><td>".$data["Title"]."</td></tr>";

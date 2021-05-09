@@ -114,8 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
-            mysqli_stmt_bind_param($stmt_university,'s', $param_university);
-            mysqli_stmt_bind_param($stmt_volunteer,'ss', $param_userID, $param_university);
+            // mysqli_stmt_bind_param($stmt_university,'s', $param_university);
+            // mysqli_stmt_bind_param($stmt_volunteer,'ss', $param_userID, $param_university);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -127,31 +127,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo 'You have successfully created a VDASH account!';
             }
 
-            //Insert into volunteers table now 
-            // $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
-            // $row = mysql_fetch_assoc($result); 
-            // $maximum = ++$row['maximum'];
-
-            // $sql = "INSERT INTO users (userID, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
-
-            // // Bind variables to the prepared statement as parameters
-            // mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
-
-            // // Attempt to execute the prepared statement
-            // if (mysqli_stmt_execute($stmt)) {
-            //     // Redirect to home page
-            //     echo "You have successfully created a VDASH account!";
-            //     header("location: login.php");
-            // } else {
-            //     echo 'You have successfully created a VDASH account!';
-            // }
-
             // Close statement
             mysqli_stmt_close($stmt);
         }
     }
-
-    // $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills) VALUES (?, ?, ?, ?, ?)";
 
     // Close connection
     mysqli_close($link);
@@ -167,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 
-h2 {
+h3 {
     text-align: center;
     font-size: 25px; 
     padding-top: 25px; 
@@ -231,7 +210,7 @@ li a:hover {
 	</ul>
 
 	<div class="wrapper">
-		<h2>Sign Up</h2>
+		<h3>Sign Up</h3>
 		<p>Create a VDASH volunteer account by completing this form:</p>
         <div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
@@ -273,8 +252,8 @@ li a:hover {
 								class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
 						</div>
 						<div class="form-group">
-							<input type="submit" class="btn btn-primary" value="Submit"> <input
-								type="reset" class="btn btn-secondary ml-2" value="Reset">
+							<input type="submit" class="btn btn-primary" value="Submit"> 
+                            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
 						</div>
 						<p>
 							Already have an account? <a href="login.php">Login here</a>.

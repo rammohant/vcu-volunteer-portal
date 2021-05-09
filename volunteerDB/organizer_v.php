@@ -2,7 +2,7 @@
 <head>
 <title>VDASH Organizer Portal</title>
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 20px; 
     padding-top: 25px; 
@@ -55,6 +55,17 @@ li a:hover {
     background-color: #111;
 }
 
+table {
+  width: 100%; 
+  background-color: #615F5F;
+  opacity: 0.90;
+}
+
+tr{
+    color: #EEEAE9;
+    font-family: "Verdana";
+}
+
 td{
     word-wrap:break-word
 }
@@ -99,7 +110,7 @@ FROM v_allevents v where v.organizer=:organizerID");
 $stmt->bindValue(':organizerID', $organizer);
 $stmt->execute();
 
-echo "<h2>Welcome to the Organizer Portal</h2>";
+echo "<h3>Welcome to the Organizer Portal</h3>";
 echo "<p>View, add, and delete volunteer events for your organization below.</p>";
 
 echo "<table class='table table-dark table-stripped' style='width:90%; margin-left: auto; margin-right: auto; opacity: 90%'>";

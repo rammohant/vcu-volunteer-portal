@@ -5,7 +5,7 @@
 
 <style type="text/css">
 
-h2 {
+h3 {
     text-align: center;
     font-size: 25px; 
     padding-top: 25px; 
@@ -79,7 +79,7 @@ li a:hover {
   <li><a href="register.php">Register</a></li>
 </ul>
 
-<h2>Volunteer Opportunities</h2>
+<h3>Volunteer Opportunities</h3>
 	<div class="table-responsive">
 		<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
 				<tr>

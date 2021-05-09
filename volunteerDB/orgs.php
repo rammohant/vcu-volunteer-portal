@@ -5,7 +5,7 @@
 
 <style type="text/css">
 
-h2 {
+h3 {
     text-align: center;
     font-size: 25px; 
     padding-top: 25px; 
@@ -96,7 +96,7 @@ global $conn;
 $sql = "SELECT orgID, org_name, phone_number, email, website FROM v_allorgs where type like 'off-campus org'";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
-        echo "<h2>Off Campus Organizations</h2>";
+        echo "<h3>Off Campus Organizations</h3>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>Organization</th>";
@@ -130,7 +130,7 @@ global $conn;
 $sql = "SELECT orgID, org_name, email, university_name, school_address FROM v_allorgs where type like 'student org'";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
-        echo "<h2>Student Organizations</h2>";
+        echo "<h3>Student Organizations</h3>";
         echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: 10%; margin-right: 10%; opacity: 90%'>";
         echo "<tr>";
         echo "<th>Club</th>";

@@ -3,7 +3,7 @@
 <title>Sign up</title>
 
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 25px; 
     padding-top: 25px; 
@@ -95,9 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $checkResult = $check->fetch();
         
     if(empty($checkResult)) {
-        echo "<h2>Access denied: Please log out and login to your manager account to sign up for events.</h2>";
+        echo "<h3>Access denied: Please log out and login to your manager account to sign up for events.</h3>";
     } else {
-        echo "<h2>Sign up for a Volunteer Event!</h2>";
+        echo "<h3>Sign up for a Volunteer Event!</h3>";
         echo "<form method='post' action='signup.php'>";
         echo "<table style='padding: 10px 20px 10px 20px'>";
         echo "<tbody>";
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tr><td>Select Event:</td><td>";
 
         // Retrieve list of all available events
-        $stmt = $conn->prepare("SELECT v.eventID, v.Title as `Title` FROM  v_volunteer_ops v");
+        $stmt = $conn->prepare("SELECT v.eventID, v.Title as `Title` FROM  v_allevents v");
         $stmt->execute();
         
         echo "<select name='eventID'>";
