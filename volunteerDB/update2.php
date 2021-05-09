@@ -31,7 +31,8 @@ title: <br>
 <br>
 description :<br>
 <input type="text" name="description" class="txtField" value="<?php echo $row['description']; ?>">
-
+<br>
+<input type="submit" name="submit" value="Submit" class="buttom">
 
 </form>
 </body>
