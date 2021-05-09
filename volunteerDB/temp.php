@@ -92,7 +92,7 @@ echo '<script type="text/javascript">' .
 if(isset($_POST['update'])) // when click on Update button
 {
     // console.log($_POST['update']);
-    $title = $_POST['Title'];
+    $title = $_POST['title'];
     $description = $_POST['description'];
 	
     $edit = mysqli_query($link,"update volunteer_events set title='$title', description='$description' where title='$title_f'");
