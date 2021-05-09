@@ -120,7 +120,7 @@ li a:hover {
             <td><?php echo $data['Available Spots']; ?></td>    
             <td><?php echo $data['Skills Needed']; ?></td>    
             <td><?php echo $data['Age Minimum']; ?></td>   
-            <td><form action='view-event.php' method='GET'><input type='hidden' name='Title' value=<?php echo $data['eventID'] ?>/> 
+            <td><form action='view-event.php' method='GET'><input type='hidden' name='Title' value=<?php echo $data['Title'] ?>/> 
             <input type='submit' name='view-btn' value='View' /></form>
           </tr>	
         <?php

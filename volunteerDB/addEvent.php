@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
         echo "<tr><td>Drop-off Time</td><td><input name='dropoff_time' type='text'></td></tr>";
         echo "<tr><td>Drop-off Address</td><td><input name='dropoff_address' type='text'></td></tr>";
-        echo "<tr><td>Instructions</td><td><input name='precautions' type='text'></td></tr>";
+        echo "<tr><td>Instructions</td><td><input name='instructions' type='text'></td></tr>";
 
         //echo "<tr><td>Type</td><td>";
 

@@ -82,16 +82,16 @@ td {
 
 global $conn;
 
-$eventID = $_GET['eventID']; // get id through query string
+$Title = $_GET['Title']; // get id through query string
 
 $selectsql = "select eventID, title, description, organization, number, email, type, daterange, link, available_spots, needed_skills,age_minimum,needed_skills,organizer,approved_by,
             technology,
             address, vaccine_required, precautions,
             dropoff_time,dropoff_address,instructions
-            from v_volunteer_ops where eventID=:eventID"; 
+            from v_volunteer_ops where title=:Title"; 
 
 $selectstmt = $conn->prepare($selectsql);
-$selectstmt->bindValue(':eventID', $eventID, PDO::PARAM_STR);
+$selectstmt->bindValue(':Title', $Title, PDO::PARAM_STR);
 $selectstmt->execute();
 
 $data = $selectstmt->fetch();
@@ -99,7 +99,7 @@ $data = $selectstmt->fetch();
 
 <div class="wrapper">
 <h2>View Event</h2>
-    <form method='POST'>
+    <form method='GET'>
         <table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
         <tr><td>Title</td><td><?php echo $data['title'] ?></td></tr>
         <tr><td>Description</td><td><?php echo $data['description'] ?></td></tr>
@@ -112,21 +112,21 @@ $data = $selectstmt->fetch();
         <tr><td>Skills Needed</td><td><?php echo $data['needed_skills'] ?></td></tr>
         <tr><td>Age Minimum</td><td><?php echo $data['age_minimum'] ?></td></tr>
         <?php
-        if($data['type']=='virtual event') {
-            echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
-        }
+        // if($data['type']=='virtual event') {
+        //     echo "<tr><td>Technology</td><td>" . $data['technology'] . "</td></tr>";
+        // }
 
-        if($data['type']=='in-person event') {
-            echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
-            echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
-            echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
-        }
+        // if($data['type']=='in-person event') {
+        //     echo "<tr><td>Address</td><td>" . $data['address'] . "</td></tr>";
+        //     echo "<tr><td>Vaccine Required</td><td>" . $data['vaccine_required'] . "</td></tr>";
+        //     echo "<tr><td>Precautions</td><td>" . $data['precautions'] . "</td></tr>";
+        // }
 
-        if($data['type']=='donations') {
-            echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
-            echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
-            echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
-        }
+        // if($data['type']=='donations') {
+        //     echo "<tr><td>Dropoff time</td><td>" . $data['dropoff_time'] . "</td></tr>";
+        //     echo "<tr><td>Dropoff address</td><td>" . $data['dropoff_address'] . "</td></tr>";
+        //     echo "<tr><td>Instructions</td><td>" . $data['instructions'] . "</td></tr>";
+        // }
         ?>
         </table>
     </form>
