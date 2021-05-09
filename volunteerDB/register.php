@@ -3,7 +3,7 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$email = $password = $first_name = $last_name = $confirm_password = $university = $birthdate = $languages = $skills = $vaccinated = "";
+$email = $password = $first_name = $last_name = $confirm_password = $university = $languages = $skills = $vaccinated = "";
 $email_err = $password_err = $firstname_err = $lastname_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
@@ -29,12 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $last_name = trim($_POST["last_name"]);
     }
 
-    $birthdate = trim($_POST["birthdate"]);
-    $university = trim($_POST['universityID']);
+    $university = trim($_POST["university"]);
     $languages = trim($_POST["languages"]);
     $skills = trim($_POST["skills"]);
     $vaccinated = trim($_POST["vaccinated"]);
-    
+
     // Validate email
     if (empty(trim($_POST["email"]))) {
         $email_err = "Please enter a email.";
@@ -74,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
-        $password_err = "Password must have at least 6 characters.";
+        $password_err = "Password must have atleast 6 characters.";
     } else {
         $password = trim($_POST["password"]);
     }
@@ -93,53 +92,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($email_err) && empty($password_err) && empty($confirm_password_err && empty($firstname_err) && empty($lastname_err))) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (email, password, birthdate, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
 
             // Set parameters
             $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_birthdate = $birthdate; 
             $param_firstname = $first_name;
             $param_lastname = $last_name;
             $param_university = $university;
-            $param_languages = $languages;
-            $param_skills = $skills;
-            $param_vaccinated = $vaccinated;
             $param_type = 'volunteer';
             
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_birthdate, $param_firstname, $param_lastname, $param_type);
+            mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Redirect to home page
                 echo "You have successfully created a VDASH account!";
-                // header("location: index.php");
+                header("location: login.php");
             } else {
-                echo 'You have not successfully created a VDASH account!';
+                echo 'You have successfully created a VDASH account!';
             }
 
-            //Insert into volunteers table  
-            $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
-            $row = mysql_fetch_assoc($result); 
+            //Insert into volunteers table now 
+            // $result= mysql_query("SELECT MAX(userID) AS maximum FROM users");
+            // $row = mysql_fetch_assoc($result); 
+            // $maximum = ++$row['maximum'];
 
-            $sql2 = "INSERT INTO volunteers (userID, universityID, languages, skills, vaccinated) VALUES (?, ?, ?, ?, ?)";
+            // $sql = "INSERT INTO users (userID, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
 
-            if ($stmt2 = mysqli_prepare($link, $sql2)) {
-                // Bind variables to the prepared statement as parameters
-                mysqli_stmt_bind_param($stmt2,'sssss', $param_userID, $param_university, $param_languages, $param_skills, $param_vaccinated);
+            // // Bind variables to the prepared statement as parameters
+            // mysqli_stmt_bind_param($stmt,'sssss', $param_email, $param_password, $param_firstname, $param_lastname, $param_type);
 
-                // Attempt to execute the prepared statement
-                if (mysqli_stmt_execute($stmt2)) {
-                    // Redirect to home page
-                    echo "You have successfully created a VDASH account!";
-                    header("location: index.php");
-                } else {
-                    echo 'You have not successfully created a VDASH account!';
-                }
-            }
+            // // Attempt to execute the prepared statement
+            // if (mysqli_stmt_execute($stmt)) {
+            //     // Redirect to home page
+            //     echo "You have successfully created a VDASH account!";
+            //     header("location: login.php");
+            // } else {
+            //     echo 'You have successfully created a VDASH account!';
+            // }
 
             // Close statement
             mysqli_stmt_close($stmt);
@@ -223,7 +217,7 @@ li a:hover {
 	<ul>
     	<li><a href="index.php" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
     	<li><a href="user_v.php">Volunteer Portal</a></li>
-    	<li><a href="organizer_v.php">Organizer Portal</a></li>
+    	<li><a href="manager_v.php">Manager Portal</a></li>
     	<li class="active"><a href="register.php">Register</a></li>
 	</ul>
 
@@ -253,25 +247,10 @@ li a:hover {
 								class="invalid-feedback"><?php echo $lastname_err; ?></span>
 						</div>
                         <div class="form-group">
-                            <label>Birthday</label> <input type="date" name="birthdate"
-                                    class="form-control"
-                                    value="<?php echo $birthdate;?>"> 
+							<label>University</label> <input type="text" name="university"
+								class="form-control"
+								value="<?php echo $university;?>"> 
 						</div>
-                        <div class="form-group">
-							<label>University</label> 
-					
-                            <?php $stmt = $conn->prepare("SELECT universityID, university_name as name FROM universities");
-                            $stmt->execute();
-                            
-                            echo "<select name='universityID'>";
-                            
-                            while ($row = $stmt->fetch()) {
-                                echo "<option value='$row[universityID]'>$row[university_name]</option>";
-                            }
-                            
-                            echo "</select>";
-                            ?> 
-                        </div>
 						<div class="form-group">
 							<label>Password</label> <input type="password" name="password"
 								class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
@@ -284,22 +263,7 @@ li a:hover {
 								value="<?php echo $confirm_password; ?>"> <span
 								class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
 						</div>
-                        <div class="form-group">
-                            <label>Languages</label> <input type="text" name="languages"
-                                    class="form-control"
-                                    value="<?php echo $languages;?>"> 
-						</div>
-                        <div class="form-group">
-                            <label>Skills</label> <input type="text" name="skills"
-                                    class="form-control"
-                                    value="<?php echo $skills;?>"> 
-						</div>
-                        <div class="form-group">
-                            <label>Vaccinated</label> <input type="text" name="vaccinated"
-                                    class="form-control"
-                                    value="<?php echo $vaccinated;?>"> 
-						</div>
-                        <div class="form-group">
+						<div class="form-group">
 							<input type="submit" class="btn btn-primary" value="Submit"> <input
 								type="reset" class="btn btn-secondary ml-2" value="Reset">
 						</div>
