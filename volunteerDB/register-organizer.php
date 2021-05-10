@@ -99,13 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<p>Access denied: Please log out and login to your admin account to register organizers.</p>";
     } else {
         echo "<h2>Register as Organizer</h2>";
-        echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
+        echo "<form method='post' action='register-organizer.php' style='padding: 10px 20px 10px 20px'>";
         echo "<table>";
         echo "<tbody>";
         echo "<tr><td>First Name</td><td><input name='first_name' type='text' Required></td></tr>";
         echo "<tr><td>Last Name</td><td><input name='last_name' type='text'></td></tr>";
         echo "<tr><td>Email</td><td><input name='email' type='text' Required></td></tr>";
-        echo "<tr><td>Password</td><td><input name='password' type='text' Required></td></tr>";
+        echo "<tr><td>Password</td><td><input name='password' type='password' Required></td></tr>";
         
         echo "<tr><td>Organization</td><td>";
         // Retrieve list of organizer
@@ -133,9 +133,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Last Name</td><td><input name='last_name' type='text'></td></tr>";
     echo "<tr><td>Email</td><td><input name='email' type='text' Required></td></tr>";
     echo "<tr><td>Email</td><td><input name='password' type='text' Required></td></tr>";
-    echo "<tr><td>Confirm Password</td><td><input name='password_conf' type='text' Required></td></tr>";
+    echo "<tr><td>Confirm Password</td><td><input name='password_conf' type='password' Required></td></tr>";
 
     try {
+        //Insert user into user table 
         $stmt = $conn->prepare("INSERT INTO users (email, password, first_name, last_name, type) 
                                 VALUES (:email, :password, :first_name, :last_name, :type)");
 
@@ -152,13 +153,28 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt->bindValue(':last_name',$param_lastname);
         $stmt->bindValue(':type', $param_type);
         
-        if($_POST['orgID'] != -1) {
-            $stmt->bindValue(':orgID', $_POST['orgID']);
-        } else {
-            $stmt->bindValue(':orgID', '1', PDO::PARAM_INT);
-        }
-        
         $stmt->execute();
+
+        //Find userID of user just created and assign to variable
+        $stmt2 = $conn->prepare("SELECT userID FROM users WHERE email=:email");
+        $stmt2->bindValue(':email', $param_email);
+        $stmt2->execute();
+        
+        $param_userID = $stmt2->fetch();
+
+        //Insert user into organizer table
+        $stmt_organizer = $conn->prepare("INSERT INTO organizers (userID, orgID) 
+                                VALUES (:userID,:orgID)");
+
+        $stmt_organizer->bindValue(':userID',$param_userID);
+
+        if($_POST['orgID'] != -1) {
+        $stmt_organizer->bindValue(':orgID', $_POST['orgID']);
+        } else {
+        $stmt_organizer->bindValue(':orgID', '1', PDO::PARAM_INT);
+        }
+        $stmt_organizer->execute();
+        
 
     } catch (PDOException $e) {
         echo "Failed to register manager"; 

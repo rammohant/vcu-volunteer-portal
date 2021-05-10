@@ -22,7 +22,7 @@ div {
 }
 
 body {
-    background-image:url('bg2.jpg'); 
+    background-image:url('images/bg2.jpg'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
