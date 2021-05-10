@@ -113,14 +113,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                
-                 //Insert user into organizer table
-                $stmt_organizer = $conn->prepare("INSERT INTO universities (university_name) VALUES (:university_name)");
+                        
+                // Prepare a select statement
+                $sql2 = "SELECT universityID FROM universities WHERE university_name = ?";
 
-                $stmt_organizer->bindValue(':university_name',$param_university);
+                if ($stmt2 = mysqli_prepare($link, $sql2)) {
 
-                $stmt_organizer->execute();
+                    // Bind variables to the prepared statement as parameters
+                    mysqli_stmt_bind_param($stmt2, "s", $university);
 
+                    // Attempt to execute the prepared statement
+                    if (mysqli_stmt_execute($stmt2)) {
+                        /* store result */
+                        mysqli_stmt_store_result($stmt2);
+
+                        if (mysqli_stmt_num_rows($stmt2) == 0) {
+                             //Insert user into organizer table
+                            $stmt_uni = $conn->prepare("INSERT INTO universities (university_name) VALUES (:university_name)");
+
+                            $stmt_uni->bindValue(':university_name',$param_university);
+
+                            $stmt_uni->execute();
+                        }
+                    }
+                }
                 echo "You have successfully created a VDASH account!";
                 header("location: index.php");
                 
