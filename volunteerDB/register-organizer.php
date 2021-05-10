@@ -3,7 +3,7 @@
 <title>Add Volunteer Event</title>
 
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 20px; 
     padding-top: 25px; 
@@ -67,6 +67,7 @@ table {
 tr{
     color: #EEEAE9;
     font-family: "Verdana";
+    padding-left: 15px; 
 }
 </style>
 
@@ -183,6 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         die();
     }
 
+    header("location:organizer_v.php"); 
     echo "Success";    
 }
 

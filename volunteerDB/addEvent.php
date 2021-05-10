@@ -3,7 +3,7 @@
 <title>Add Volunteer Event</title>
 
 <style type="text/css">
-h2 {
+h3 {
     text-align: center;
     font-size: 20px; 
     padding-top: 25px; 
