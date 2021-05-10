@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     if(empty($checkResult)) {
         echo "<p>Access denied: Please log out and login to your admin account to register organizers.</p>";
     } else {
-        echo "<h2>Register as Organizer</h2>";
+        echo "<h3>Register as Organizer</h3>";
         echo "<form method='post' action='register-organizer.php' style='padding: 10px 20px 10px 20px'>";
         echo "<table>";
         echo "<tbody>";

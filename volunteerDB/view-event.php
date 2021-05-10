@@ -144,5 +144,5 @@ while ($data = $selectstmt->fetch()) {
 }
 ?>
 <div id="center_button" style='padding-bottom: 20px'>
-    <button class="btn btn-primary" onclick="location.href='index.php'">Return Home</button>
+    <button class="btn btn-primary" onclick="location.href='volunteer_v.php'">Return Home</button>
 </div>

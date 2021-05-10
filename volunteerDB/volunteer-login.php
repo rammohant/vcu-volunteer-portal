@@ -62,7 +62,7 @@ button {
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary">Submit</button>
-						<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>
+						<button class="btn btn-secondary" onclick="location.href='index.php'">Return Home</button>
 					</div>
 				</div>
 			</div>

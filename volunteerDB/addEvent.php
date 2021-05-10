@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     if(empty($checkResult)) {
         echo "<p>Access denied: Please log out and login to your manager account to add events.</p>";
     } else {
-        echo "<h2>Add a Volunteer Event</h2>";
+        echo "<h3>Add a Volunteer Event</h3>";
         echo "<form method='post' action='addEvent.php' style='padding: 10px 20px 10px 20px'>";
         echo "<table>";
         echo "<tbody>";
