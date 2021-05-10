@@ -5,7 +5,7 @@
 
 h3 {
     text-align: center;
-    font-size: 30px; 
+    font-size: 25px; 
     padding-top: 25px; 
     font-family: "Andale Mono";
     font-weight: bold; 
@@ -13,7 +13,7 @@ h3 {
 
 p {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     font-family: "Verdana"; 
     
 }
@@ -62,7 +62,7 @@ button {
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary">Submit</button>
-						<button class="btn btn-secondary onclick="location.href='index.php'>Return Home</button>
+						<button class="btn btn-secondary" onclick="location.href='index.php'>Return Home</button>
 					</div>
 				</div>
 				

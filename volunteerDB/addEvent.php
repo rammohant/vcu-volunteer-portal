@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' Required></td></tr>";
         echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
         echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text' Required></td></tr>";
-        echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
+        echo "<tr><td>Type</td><td><input name='type' type='text' Required></td></tr>";
 
         echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
 
@@ -198,21 +198,20 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt->bindValue(':startdate', trim($_POST['startdate']));
         $stmt->bindValue(':enddate', trim($_POST['enddate']));
         $stmt->bindValue(':link', trim($_POST['link']));
+        $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
+        $stmt->bindValue(':type', trim($_POST['type']));
 
         if(isset($_POST['age_minimum'])) {
             $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
         } else {
             $stmt->bindValue(':age_minimum', NULL);
         }
-
-        $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
         
         if(isset($_POST['available_spots'])) {
             $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
         } else {
             $stmt->bindValue(':available_spots', NULL);
         }
-        $stmt->bindValue(':type', trim($_POST['type']));
         
         if($_POST['organizerID'] != -1) {
             $stmt->bindValue(':organizerID', $_POST['organizerID']);
@@ -233,6 +232,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "Error: " . $e->getMessage();
         die();
     }
+
+    // if($_POST['type']=='virtual event') {
+    //     echo '<a href="addEvent-virtual.php?title=' . $_POST['title'] . '></a>';
+    // }
+
+    // if($_POST['type']=='in-person event') {
+    //     header("location:organizer_v.php"); 
+    // }
+
+    // if($_POST['type']=='donations') {
+    //     header("location:organizer_v.php"); 
+    // }
 
     header("location:organizer_v.php"); 
     echo "Success";    

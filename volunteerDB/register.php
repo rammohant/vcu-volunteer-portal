@@ -210,8 +210,8 @@ li a:hover {
 	</ul>
 
 	<div class="wrapper">
-		<h3>Sign Up</h3>
-		<p>Create a VDASH volunteer account by completing this form:</p>
+		<h3>Sign Up as a Volunteer</h3>
+        <p align=center > To create a manager account, <a href="register.php">register here!</a>.</p>
         <div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
