@@ -80,7 +80,7 @@ li a:hover {
 </ul>
 
 <h3>Welcome to VDASH!</h3>
-<p>Check out all of our current volunteer opportunities below!</p>
+<p>Check out all of our current volunteer opportunities below</p>
 	<div class="table-responsive">
 		<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
 				<tr>

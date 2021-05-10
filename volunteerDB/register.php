@@ -114,15 +114,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 
-                $sql_uni= "INSERT INTO university (university_name) VALUES (?)";
-                $stmt_uni = mysqli_prepare($link, $sql_uni); 
-                mysqli_stmt_bind_param($stmt_uni,'s', $param_university);
+                 //Insert user into organizer table
+                $stmt_organizer = $conn->prepare("INSERT INTO university (university_name) VALUES (:university_name)");
+
+                $stmt_organizer->bindValue(':university_name',$param_university);
+
+                $stmt_organizer->execute();
+
+                echo "You have successfully created a VDASH account!";
+                header("location: index.php");
                 
-                // Redirect to home page
-                if (mysqli_stmt_execute($stmt_uni)) {
-                    echo "You have successfully created a VDASH account!";
-                    header("location: index.php");
-                } 
             } 
         }
     } catch (PDOException $e) {
