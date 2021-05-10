@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_stmt_execute($stmt)) {
                 
                  //Insert user into organizer table
-                $stmt_organizer = $conn->prepare("INSERT INTO university (university_name) VALUES (:university_name)");
+                $stmt_organizer = $conn->prepare("INSERT INTO universities (university_name) VALUES (:university_name)");
 
                 $stmt_organizer->bindValue(':university_name',$param_university);
 
