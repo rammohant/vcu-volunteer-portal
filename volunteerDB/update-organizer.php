@@ -20,7 +20,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg.png'); 
+    background-image:url('images/bg.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -72,7 +72,7 @@ td {
 <body>
 
 <ul>
-	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="images/VDASH.png" style="height: 28px"></a><li>
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
     <li><a href="logout.php">Log Out</a></li>
@@ -89,8 +89,6 @@ $selectstmt = $conn->prepare($selectsql);
 $selectstmt->bindValue(':title_f', $title_f, PDO::PARAM_STR);
 $selectstmt->execute();
 $data = $selectstmt->fetch();
-// $qry = mysqli_query($link,"select eventID, title, description, type, startdate, enddate, link,available_spots, needed_skills,age_minimum,needed_skills,organizerID,approverID from volunteer_events where title='$title_f'"); // select query
-// $data = mysqli_fetch_array($qry); // fetch data
 
 if(isset($_POST['update'])) {
 
@@ -148,19 +146,3 @@ if(isset($_POST['update'])) {
         </table>
     </form>
 </div>
-
-<!-- <h3>Update Event</h3>
-<form method='POST'>
-<table class='table table-dark' style='width:50%; margin-left: auto; margin-right: auto; opacity: 90%'>
-<tr><td>Title</td><td colspan="2"><input type="text" name="title" value="<?php echo $data['title'] ?>" placeholder="Enter title" Required></td></tr>
-<tr><td>Description</td><td colspan="2"><input type="text" name="description" value="<?php echo $data['description'] ?>" placeholder="Enter description"></td></tr>
-<tr><td>Start date</td><td colspan="2"><input type="text" name="startdate" value="<?php echo $data['startdate'] ?>" placeholder="Enter startdate"></td></tr>
-<tr><td>End date</td><td colspan="2"><input type="text" name="enddate" value="<?php echo $data['enddate'] ?>" placeholder="Enter enddate"></td></tr>
-<tr><td>Link</td><td colspan="2"><input type="text" name="link" value="<?php echo $data['link'] ?>" placeholder="Enter link"></td></tr>
-<tr><td>Available Spots</td><td colspan="2"><input type="text" name="available_spots" value="<?php echo $data['available_spots'] ?>" placeholder="Enter available_spots"></td></tr>
-<tr><td>Skills Needed</td><td colspan="2"><input type="text" name="needed_skills" value="<?php echo $data['needed_skills'] ?>" placeholder="Enter needed_skills"></td></tr>
-<tr><td>Age Minimum</td><td colspan="2"><input type="text" name="age_minimum" value="<?php echo $data['age_minimum'] ?>" placeholder="Enter age_minimum"></td></tr>
-<tr><td colspan="3"><input type="submit" name="update" value="Update"></tr>
-</table>
-</form>
-</div> -->

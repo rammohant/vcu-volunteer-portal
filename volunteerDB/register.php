@@ -163,7 +163,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg.png'); 
+    background-image:url('images/bg.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -202,9 +202,10 @@ li a:hover {
 <body>
 
 	<ul>
-    	<li><a href="index.php" class="pull-left" style="height: auto"><img src="VDASH.png" style="height: 28px"></a><li>
-    	<li><a href="user_v.php">Volunteer Portal</a></li>
+    	<li><a href="index.php" class="pull-left" style="height: auto"><img src="images/VDASH.png" style="height: 28px"></a><li>
+    	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
     	<li><a href="manager_v.php">Manager Portal</a></li>
+        <li><a href="orgs.php">Organizations</a></li>
     	<li class="active"><a href="register.php">Register</a></li>
 	</ul>
 

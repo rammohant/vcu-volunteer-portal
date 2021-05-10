@@ -51,7 +51,6 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
-        echo "Must be a volunteer to access this page";
         require('volunteer-login.php');
         exit();
     }

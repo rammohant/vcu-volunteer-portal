@@ -21,7 +21,7 @@ div {
     text-align: center;
 }
 body {
-    background-image:url('bg.png'); 
+    background-image:url('images/bg.png'); 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -78,7 +78,7 @@ tr{
 <body>
 
 <ul>
-	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="VDASH.png" style="height: 28px"></a><li>
+	<li><a href="index.php" class="pull-left" style="padding-left: 10px"><img src="images/VDASH.png" style="height: 28px"></a><li>
 	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
 	<li class="active"><a href="organizer_v.php">Organizer Portal</a></li>
     <li><a href="orgs.php">Organizations</a></li>

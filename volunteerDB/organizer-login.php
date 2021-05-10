@@ -45,8 +45,8 @@ button {
 <body>
 
 <div class="wrapper"> 
-	<h3 align=center >VCU Volunteer Database </h3>
-	<p align=center >For all your volunteering needs and desires</p>
+	<h3 align=center >VDASH: Organizer Portal</h3>
+	<p align=center >Must be an organizer to access this page</p>
 	<p align=center > Don't have an account? <a href="register.php">Register here!</a>.</p>
 	<div class="container mt-3 mb-3">
 		<form method="post">

@@ -52,7 +52,6 @@ if (!isset($_SESSION['userID']))
     else
     {
         // Show login page
-        echo "Must be an organizer to access this page";
         require('organizer-login.php');
         exit();
     }
