@@ -160,7 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $stmt2->bindValue(':email', $param_email);
         $stmt2->execute();
         
-        $param_userID = $stmt2->fetch();
+        $row = $stmt2->fetch();
+        $param_userID = $row['userID'];
 
         //Insert user into organizer table
         $stmt_organizer = $conn->prepare("INSERT INTO organizers (userID, orgID) 
