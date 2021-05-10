@@ -108,7 +108,7 @@ $stmt->bindValue(':volunteerID', $volunteerID);
 $stmt->execute();
 
 echo "<h3>Welcome to the Volunteer Portal</h3>";
-echo "<p>View, add, and delete volunteer events for your organization below.</p>";
+echo "<p>View and sign up for volunteer events</p>";
 
 echo "<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>";
 echo "<tr>";
