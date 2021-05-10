@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 /* store result */
                 mysqli_stmt_store_result($stmt);
 
-                if (mysqli_stmt_num_rows($stmt) == 1) {
+                if (mysqli_stmt_num_rows($stmt) > 0) {
                     $email_err = "This email is already taken.";
                 } else {
                     $email = trim($_POST["email"]);
@@ -91,8 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Prepare an insert statement
         $sql = "INSERT INTO users (email, password, first_name, last_name, type) VALUES (?, ?, ?, ?, ?)";
-        $sql_university = "INSERT INTO university (university_name) VALUES (?)";
-        $sql_volunteer = "INSERT INTO volunteers (userID, university_name) VALUES (?, ?)";
 
         try {
         if ($stmt = mysqli_prepare($link, $sql)) {
@@ -102,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_firstname = $first_name;
             $param_lastname = $last_name;
-            $param_university = 1;
+            $param_university = $university;
             $param_type = 'volunteer';
             
             //Insert into volunteers table now 
@@ -115,9 +113,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
+                
+                $sql_uni= "INSERT INTO university (university_name) VALUES (?)";
+                $stmt_uni = mysqli_prepare($link, $sql_uni); 
+                mysqli_stmt_bind_param($stmt_uni,'s', $param_university);
+                
                 // Redirect to home page
-                echo "You have successfully created a VDASH account!";
-                header("location: index.php");
+                if (mysqli_stmt_execute($stmt_uni)) {
+                    echo "You have successfully created a VDASH account!";
+                    header("location: index.php");
+                } 
             } 
         }
     } catch (PDOException $e) {

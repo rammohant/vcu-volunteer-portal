@@ -74,7 +74,7 @@ tr{
 <?php require_once('header.php'); ?>
 </head>
 
-<?php require_once('connection.php'); ?>
+<?php require_once('config.php'); ?>
 
 <body>
 
@@ -98,6 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
     if(empty($checkResult)) {
         echo "<p>Access denied: Please log out and login to your admin account to register organizers.</p>";
+        echo "<p>Tester admin email: admin@vcu.edu</p>";
+        echo "<p>Tester admin password: Password</p>";
     } else {
         echo "<h3>Register as Organizer</h3>";
         echo "<form method='post' action='register-organizer.php' style='padding: 10px 20px 10px 20px'>";

@@ -79,7 +79,8 @@ li a:hover {
   <li><a href="register.php">Register</a></li>
 </ul>
 
-<h3>Volunteer Opportunities</h3>
+<h3>Welcome to VDASH!</h3>
+<p>Check out all of our current volunteer opportunities below!</p>
 	<div class="table-responsive">
 		<table class='table table-dark table-stripped' style='width:80%; margin-left: auto; margin-right: auto; opacity: 90%'>
 				<tr>
