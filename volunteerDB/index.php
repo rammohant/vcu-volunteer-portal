@@ -1,6 +1,6 @@
 <html>
 <head>
-
+// star next to user entry required
 <title>Welcome to VDash!</title>
 
 <style type="text/css">

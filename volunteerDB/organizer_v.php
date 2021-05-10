@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>VDASH Organizer Portal</title>
+<title>Organizer Portal</title>
 <style type="text/css">
 h3 {
     text-align: center;

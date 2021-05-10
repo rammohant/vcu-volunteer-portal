@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         mysqli_stmt_store_result($stmt2);
 
                         if (mysqli_stmt_num_rows($stmt2) == 0) {
-                             //Insert user into organizer table
+                             //Insert university into university table
                             $stmt_uni = $conn->prepare("INSERT INTO universities (university_name) VALUES (:university_name)");
 
                             $stmt_uni->bindValue(':university_name',$param_university);
@@ -220,7 +220,7 @@ li a:hover {
 	<ul>
     	<li><a href="index.php" class="pull-left" style="height: auto"><img src="images/VDASH.png" style="height: 28px"></a><li>
     	<li><a href="volunteer_v.php">Volunteer Portal</a></li>
-    	<li><a href="manager_v.php">Manager Portal</a></li>
+    	<li><a href="organizer_v.php">Organizer Portal</a></li>
         <li><a href="orgs.php">Organizations</a></li>
     	<li class="active"><a href="register.php">Register</a></li>
 	</ul>
