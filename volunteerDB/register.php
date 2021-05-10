@@ -211,7 +211,7 @@ li a:hover {
 
 	<div class="wrapper">
 		<h3>Sign Up as a Volunteer</h3>
-        <p align=center > To create a manager account, <a href="register.php">register here!</a>.</p>
+        <p align=center > To create an organizer account, <a href="register-organizer.php">register here!</a>.</p>
         <div class="container mt-3 mb-3">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
 				method="post">
