@@ -107,9 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         echo "<tr><td>Start Date</td><td><input name='startdate' type='date' Required></td></tr>";
         echo "<tr><td>End Date</td><td><input name='enddate' type='date' Required></td></tr>";
         echo "<tr><td>Link</td><td><input name='link' type='text'></td></tr>";
-        echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text'></td></tr>";
+        echo "<tr><td>Age Minimum</td><td><input name='age_minimum' type='text' Required></td></tr>";
         echo "<tr><td>Needed Skills</td><td><input name='needed_skills' type='text'></td></tr>";
-        echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text'></td></tr>";
+        echo "<tr><td>Available Spots</td><td><input name='available_spots' type='text' Required></td></tr>";
         echo "<tr><td>Type</td><td><input name='type' type='text'></td></tr>";
 
         echo "<tr><td>Technology</td><td><input name='technology' type='text'></td></tr>";
@@ -206,13 +206,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         }
 
         $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
-
+        
         if(isset($_POST['available_spots'])) {
             $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
         } else {
             $stmt->bindValue(':available_spots', NULL);
         }
-
         $stmt->bindValue(':type', trim($_POST['type']));
         
         if($_POST['organizerID'] != -1) {
@@ -229,21 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
         $stmt->execute();
 
-        // $stmt = $conn->prepare("INSERT INTO volunteer_events (title, description, startdate, enddate, link, age_minimum, needed_skills, available_spots,type, organizerID, approverID)
-        //                         VALUES (:title, :description, :startdate, :enddate, :link, :age_minimum, :needed_skills, :available_spots,:type, :organizerID, :approverID)");
-
-        // $stmt->bindValue(':title', trim($_POST['title']));
-        // $stmt->bindValue(':description', trim($_POST['description']));
-        // $stmt->bindValue(':startdate', trim($_POST['startdate']));
-        // $stmt->bindValue(':enddate', trim($_POST['enddate']));
-        // $stmt->bindValue(':link', trim($_POST['link']));
-        // $stmt->bindValue(':age_minimum', trim($_POST['age_minimum']));
-        // $stmt->bindValue(':needed_skills', trim($_POST['needed_skills']));
-        // $stmt->bindValue(':available_spots', trim($_POST['available_spots']));
-        // $stmt->bindValue(':type', trim($_POST['type']));
-
     } catch (PDOException $e) {
-        //header("location:addEvent.php"); 
         echo "Failed to add event"; 
         echo "Error: " . $e->getMessage();
         die();
